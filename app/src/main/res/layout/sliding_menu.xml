@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/slidingPage"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_gravity="left"
+        android:layout_width="174dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/baseMyAccount"
+            style="@style/menuBtnBase">
+            
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/menu_img_account"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtMyAccount"
+                style="@style/center16spBlackText"
+                android:text="@string/myAccountSetting"/>
+            
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseMyStat"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/menu_img_stat"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtMyStat"
+                style="@style/center16spBlackText"
+                android:text="@string/myStatistic"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseMyRecord"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    android:background="@drawable/menu_img_rec"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtMyRecord"
+                style="@style/center16spBlackText"
+                android:text="@string/myRecord"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseMeasure"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/menu_img_measure"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtMeasure"
+                style="@style/center16spBlackText"
+                android:text="@string/measure"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseNotice"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="19dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/menu_img_notice"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtNotice"
+                style="@style/center16spBlackText"
+                android:text="@string/notice"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseSetting"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/menu_img_setting"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtSetting"
+                style="@style/center16spBlackText"
+                android:text="@string/setting"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseBluetooth"
+            style="@style/menuBtnBase">
+
+            <LinearLayout
+                style="@style/menuImgBase">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="19dp"
+                    android:background="@drawable/menu_img_bt"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtBluetooth"
+                style="@style/center16spBlackText"
+                android:text="@string/bluetooth"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

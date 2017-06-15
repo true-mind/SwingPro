@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCommonBack"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head" />
+
+    <FrameLayout style="@style/m_m_Frame">
+
+
+        <LinearLayout style="@style/m_m_Vertical">
+
+            <ScrollView style="@style/m_m_NoScrollBar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="174dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/img_demo" />
+
+                    <LinearLayout
+                        android:id="@+id/tabView"
+                        android:background="#fff"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout style="@style/m_w_Horizontal">
+
+                            <LinearLayout style="@style/tabViewTxtBase"
+                                android:id="@+id/tab1">
+
+                                <TextView
+                                    android:id="@+id/tabTxt1"
+                                    style="@style/plain16spText"
+                                    android:textColor="@color/colorMint"
+                                    android:text="@string/myRecord"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/tabViewTxtBase"
+                                android:id="@+id/tab2">
+
+                                <TextView
+                                    android:id="@+id/tabTxt2"
+                                    style="@style/plain16spText"
+                                    android:textColor="#000"
+                                    android:text="@string/measure"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout style="@style/tabViewTxtBase"
+                                android:id="@+id/tab3">
+
+                                <TextView
+                                    android:id="@+id/tabTxt3"
+                                    style="@style/plain16spText"
+                                    android:textColor="#000"
+                                    android:text="@string/setting"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout style="@style/m_w_Horizontal">
+
+                            <View
+                                android:id="@+id/tabMark1"
+                                style="@style/weight1_H4dp_View"
+                                android:background="@color/colorMint" />
+
+                            <View style="@style/weight1_H4dp_View"
+                                android:id="@+id/tabMark2" />
+
+                            <View style="@style/weight1_H4dp_View"
+                                android:id="@+id/tabMark3"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+        <include layout="@layout/sliding_menu" />
+    </FrameLayout>
+</LinearLayout>

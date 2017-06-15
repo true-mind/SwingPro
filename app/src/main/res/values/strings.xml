@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SwingPro</string>
+    <string name="myAccountSetting">내 계정 설정</string>
+    <string name="myStatistic">내 통계 보기</string>
+    <string name="myRecord">내 기록</string>
+    <string name="notice">공지사항</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="measure">측정하기</string>
+    <string name="setting">설정</string>
 </resources>
