@@ -14,5 +14,6 @@ public class Constants {
     public static int GRAPH_HEIGHT = 100;
     public static int GRAPH_INTERVAL;
     public static int GRAPH_MAX_COUNT = 15;
+    public static final String SWING_BEAT_LINK = "https://play.google.com/store/apps/details?id=com.truemind.swingbeat";
 
 }

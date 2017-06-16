@@ -1,5 +1,7 @@
 package com.truemind.swingpro.ui.main;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.support.v4.app.FragmentManager;
@@ -65,6 +68,8 @@ public class MainActivity extends BaseActivity {
     private View tabMark2;
     private View tabMark3;
 
+    ImageView img;
+
     FrameLayout container;
 
     public int currentTab = Constants.TAB_POSITION;
@@ -89,7 +94,7 @@ public class MainActivity extends BaseActivity {
     /** View Initializing*/
     public void initView() {
         container = (FrameLayout) findViewById(R.id.container);
-
+        img = (ImageView)findViewById(R.id.img);
         tabTxt1 = (TextView) findViewById(R.id.tabTxt1);
         tabTxt2 = (TextView) findViewById(R.id.tabTxt2);
         tabTxt3 = (TextView) findViewById(R.id.tabTxt3);
@@ -126,6 +131,13 @@ public class MainActivity extends BaseActivity {
         tab3.setOnClickListener(movePageListener);
         tab3.setTag(THIRD_TAB);
 
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.SWING_BEAT_LINK)));
+            }
+        });
+
     }
 
     /**
@@ -141,27 +153,6 @@ public class MainActivity extends BaseActivity {
         public void onClick(View v) {
             currentTab = (int) v.getTag();
             initTab(currentTab);
-            /*
-            switch (currentTab) {
-                case FIRST_TAB:
-                    getFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.container, new MyRecordFragment())
-                            .commit();
-                    break;
-                case SECOND_TAB:
-                    getFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.container, new MeasureFragment())
-                            .commit();
-                    break;
-                case THIRD_TAB:
-                    getFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.container, new SettingFragment())
-                            .commit();
-                    break;
-            }*/
             tabMarking(currentTab);
             if(currentTab > previousTab){
                 container.startAnimation(pageAnimationLeft);
@@ -169,6 +160,7 @@ public class MainActivity extends BaseActivity {
                 container.startAnimation(pageAnimationRight);
             }else{
                 //intentionally do nothing
+                //Refresh
             }
 
         }

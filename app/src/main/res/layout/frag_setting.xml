@@ -2,6 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="650dp"
-    android:background="#464836">
+    android:background="@color/colorCommonBack">
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        style="@style/m_none_fragItemBase"
+        android:layout_height="100dp">
+
+    </LinearLayout>
 
 </LinearLayout>

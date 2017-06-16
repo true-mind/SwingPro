@@ -60,22 +60,22 @@
                 android:background="@color/graphBase" />
 
             <LinearLayout
-                android:paddingTop="2dp"
-                android:background="#fff"
                 android:id="@+id/graphBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="#fff"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
 
                 <TextView
                     android:id="@+id/para1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="(평균속도 / 회차)"
                     android:textColor="@color/graphLine"
                     android:textSize="12sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:text="(평균속도 / 회차)"/>
+                    android:textStyle="bold" />
 
                 <View style="@style/space_hori" />
 
@@ -83,59 +83,59 @@
                     android:id="@+id/paraMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1부터 15까지의 최근 기록만 표시됩니다."
                     android:textColor="#000"
                     android:textSize="12sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:text="1부터 15까지의 최근 기록만 표시됩니다."/>
-<!--
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="1" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="2" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="3" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="4" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="5" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="6" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="7" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="8" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="9" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="10" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="11" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="12" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="13" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="14" />
-                <View style="@style/space_hori" />
-                <TextView style="@style/graphBaseNumber"
-                    android:text="15" />
-                <View style="@style/space_hori" />
--->
+                    android:textStyle="bold" />
+                <!--
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="1" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="2" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="3" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="4" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="5" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="6" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="7" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="8" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="9" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="10" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="11" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="12" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="13" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="14" />
+                                <View style="@style/space_hori" />
+                                <TextView style="@style/graphBaseNumber"
+                                    android:text="15" />
+                                <View style="@style/space_hori" />
+                -->
 
             </LinearLayout>
 
@@ -148,18 +148,18 @@
             android:layout_weight="1" />
 
         <LinearLayout
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="24dp"
-            android:background="#f4e4e4">
+            android:background="#444444"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/statMessage"
-                android:textColor="#000"
-                android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아주 빠르게 호전되고 있습니다."/>
+                android:text="아주 빠르게 호전되고 있습니다."
+                android:textColor="#fff"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -284,6 +284,46 @@
 
 
         </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        style="@style/m_none_fragItemBase"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/myRecordFragScrollBtn"
+                    android:layout_marginLeft="10dp">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/myRecordFragScrollBtn">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/myRecordFragScrollBtn">
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
     </LinearLayout>
 

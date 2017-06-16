@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.truemind.swingpro.BaseActivity;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.ui.main.MainActivity;
+import com.truemind.swingpro.ui.util.CommonDialog;
 
 /**
  * Created by 현석 on 2017-06-16.
@@ -67,7 +68,16 @@ public class LoginActivity extends BaseActivity{
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CommonDialog  dialog = new CommonDialog();
+                dialog.showDialog(getContext(), "지금은 로컬에서만 시작 가능합니다.");
+            }
+        });
 
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog  dialog = new CommonDialog();
+                dialog.showDialog(getContext(), "지금은 로컬에서만 시작 가능합니다.");
             }
         });
     }

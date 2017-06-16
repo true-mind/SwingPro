@@ -36,8 +36,6 @@ public class MyRecordFragment extends BaseFragment {
     LineGraph lineGraph;
     LinearLayout graph;
 
-    public static final int GRAPH_DOMAIN_MAX = 16;
-
     public MyRecordFragment(){
 
     }
