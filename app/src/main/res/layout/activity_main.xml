@@ -9,7 +9,6 @@
 
     <FrameLayout style="@style/m_m_Frame">
 
-
         <LinearLayout style="@style/m_m_Vertical">
 
             <ScrollView style="@style/m_m_NoScrollBar">
@@ -22,48 +21,51 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="174dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/img_demo" />
+                        android:background="@drawable/img_demo"
+                        android:scaleType="centerCrop" />
 
                     <LinearLayout
                         android:id="@+id/tabView"
-                        android:background="#fff"
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
+                        android:background="#fff"
                         android:orientation="vertical">
 
                         <LinearLayout style="@style/m_w_Horizontal">
 
-                            <LinearLayout style="@style/tabViewTxtBase"
-                                android:id="@+id/tab1">
+                            <LinearLayout
+                                android:id="@+id/tab1"
+                                style="@style/tabViewTxtBase">
 
                                 <TextView
                                     android:id="@+id/tabTxt1"
                                     style="@style/plain16spText"
-                                    android:textColor="@color/colorMint"
-                                    android:text="@string/myRecord"/>
+                                    android:text="@string/myRecord"
+                                    android:textColor="@color/colorMint" />
 
                             </LinearLayout>
 
-                            <LinearLayout style="@style/tabViewTxtBase"
-                                android:id="@+id/tab2">
+                            <LinearLayout
+                                android:id="@+id/tab2"
+                                style="@style/tabViewTxtBase">
 
                                 <TextView
                                     android:id="@+id/tabTxt2"
                                     style="@style/plain16spText"
-                                    android:textColor="#000"
-                                    android:text="@string/measure"/>
+                                    android:text="@string/measure"
+                                    android:textColor="#000" />
 
                             </LinearLayout>
 
-                            <LinearLayout style="@style/tabViewTxtBase"
-                                android:id="@+id/tab3">
+                            <LinearLayout
+                                android:id="@+id/tab3"
+                                style="@style/tabViewTxtBase">
 
                                 <TextView
                                     android:id="@+id/tabTxt3"
                                     style="@style/plain16spText"
-                                    android:textColor="#000"
-                                    android:text="@string/setting"/>
+                                    android:text="@string/setting"
+                                    android:textColor="#000" />
 
                             </LinearLayout>
 
@@ -77,11 +79,13 @@
                                 style="@style/weight1_H4dp_View"
                                 android:background="@color/colorMint" />
 
-                            <View style="@style/weight1_H4dp_View"
-                                android:id="@+id/tabMark2" />
+                            <View
+                                android:id="@+id/tabMark2"
+                                style="@style/weight1_H4dp_View" />
 
-                            <View style="@style/weight1_H4dp_View"
-                                android:id="@+id/tabMark3"/>
+                            <View
+                                android:id="@+id/tabMark3"
+                                style="@style/weight1_H4dp_View" />
 
                         </LinearLayout>
 
@@ -90,14 +94,14 @@
                     <FrameLayout
                         android:id="@+id/container"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content" />
 
 
                 </LinearLayout>
             </ScrollView>
 
-
         </LinearLayout>
+
         <include layout="@layout/sliding_menu" />
     </FrameLayout>
 </LinearLayout>

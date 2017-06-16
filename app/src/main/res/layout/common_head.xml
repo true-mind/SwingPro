@@ -11,13 +11,19 @@
         android:orientation="horizontal"
         android:background="@color/colorPrimaryDark">
 
-        <ImageButton
+        <LinearLayout
             android:id="@+id/menuBtn"
-            android:layout_margin="18dp"
-            android:layout_gravity="center"
-            android:layout_width="24dp"
-            android:layout_height="18dp"
-            android:background="@drawable/menu_btn"/>
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="24dp"
+                android:layout_height="18dp"
+                android:background="@drawable/menu_btn"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtTitleBar"

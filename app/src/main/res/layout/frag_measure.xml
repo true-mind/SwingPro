@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorCommonBack">
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        style="@style/m_none_fragItemBase"
+        android:layout_height="130dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#fffaef">
+
+            <TextView
+                android:id="@+id/testSeqTitle"
+                style="@style/center16spBlackText"
+                android:layout_marginLeft="10dp"
+                android:text="@string/test_seq" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_marginLeft="10dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/s_btn_test_seq"/>
+
+            <TextView
+                android:id="@+id/testSeqDesc"
+                android:layout_margin="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:text="@string/test_seq_desc"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        style="@style/m_none_fragItemBase"
+        android:layout_height="130dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#f5fff7">
+
+            <TextView
+                android:id="@+id/testTempoTitle"
+                android:layout_marginLeft="10dp"
+                style="@style/center16spBlackText"
+                android:text="@string/test_tempo"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_marginLeft="10dp"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/s_btn_test_tempo"/>
+
+            <TextView
+                android:id="@+id/testTempoDesc"
+                android:layout_margin="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#000"
+                android:textSize="12sp"
+                android:text="@string/test_tempo_desc"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

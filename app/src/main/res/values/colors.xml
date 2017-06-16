@@ -6,4 +6,16 @@
     <color name="colorAccent">#d6e0cc</color>
     <color name="colorCommonBack">#e0dfd9</color>
     <color name="colorMint">#99bfa3</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+
+    <color name="plainDarkBtn1">#352d40</color>
+    <color name="plainDarkBtn1_s">#171b26</color>
+    <color name="plainDarkBtn2">#667350</color>
+    <color name="plainDarkBtn2_s">#391d1d</color>
+    <color name="plainDarkBtn3">#333333</color>
+    <color name="plainDarkBtn3_s">#1a1a1a</color>
+
+    <color name="graphLine">#6c82c2</color>
+    <color name="graphBase">#666666</color>
 </resources>

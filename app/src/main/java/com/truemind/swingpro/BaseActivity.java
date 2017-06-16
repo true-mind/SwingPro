@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.media.AudioManager;
-import android.view.KeyEvent;
+import android.os.Build;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -13,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.truemind.swingpro.ui.main.MainActivity;
 
 
 /**
@@ -24,7 +25,7 @@ public abstract class BaseActivity extends Activity {
     Animation translateLeftAnim;
     Animation translateRightAnim;
     LinearLayout slidingPage;
-    ImageButton menuBtn;
+    LinearLayout menuBtn;
 
     LinearLayout baseMyAccount;
     LinearLayout baseMyStat;
@@ -64,6 +65,22 @@ public abstract class BaseActivity extends Activity {
             view.setTypeface(NanumNormal);
     }
 
+    public void setColor(View v, int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            v.setBackgroundColor(getResources().getColor(color, null));
+        } else {
+            v.setBackgroundColor(getResources().getColor(color));
+        }
+    }
+
+    public void setTxtColor(TextView v, int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            v.setTextColor(getResources().getColor(color, null));
+        } else {
+            v.setTextColor(getResources().getColor(color));
+        }
+    }
+
     public void goBTSetting() {
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MAIN");
@@ -88,7 +105,7 @@ public abstract class BaseActivity extends Activity {
     public void initSlideMenu(String headerTitle) {
 
         slidingPage = (LinearLayout)findViewById(R.id.slidingPage);
-        menuBtn = (ImageButton)findViewById(R.id.menuBtn);
+        menuBtn = (LinearLayout)findViewById(R.id.menuBtn);
         TextView txtTitleBar = (TextView)findViewById(R.id.txtTitleBar);
         txtTitleBar.setText(headerTitle);
 
@@ -109,8 +126,8 @@ public abstract class BaseActivity extends Activity {
         TextView txtBluetooth = (TextView)findViewById(R.id.txtBluetooth);
         setFontToViewBold(txtBluetooth, txtSetting, txtNotice, txtMeasure, txtMyRecord, txtMyStat, txtMyAccount, txtTitleBar);
 
-        translateLeftAnim = AnimationUtils.loadAnimation(this, R.anim.translate_left);
-        translateRightAnim = AnimationUtils.loadAnimation(this, R.anim.translate_right);
+        translateLeftAnim = AnimationUtils.loadAnimation(this, R.anim.slide_from_left);
+        translateRightAnim = AnimationUtils.loadAnimation(this, R.anim.slide_from_right);
 
         SlidingPageAnimationListener animationListener = new SlidingPageAnimationListener();
         translateLeftAnim.setAnimationListener(animationListener);
@@ -128,14 +145,18 @@ public abstract class BaseActivity extends Activity {
 
     public void menuEvent(){
         if(isPageOpen){
-            slidingPage.startAnimation(translateLeftAnim);
+            slidingPage.startAnimation(translateRightAnim);
         }
         else{
             slidingPage.setVisibility(View.VISIBLE);
-            slidingPage.startAnimation(translateRightAnim);
+            slidingPage.startAnimation(translateLeftAnim);
         }
     }
 
+    /**
+     *Side Menu Button Listener
+     *
+     * */
     public void menuBtnListener(){
 
         baseMyAccount.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +186,10 @@ public abstract class BaseActivity extends Activity {
         baseMeasure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "4", Toast.LENGTH_SHORT).show();
+                Constants.TAB_POSITION = 1;
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 menuEvent();
             }
         });
