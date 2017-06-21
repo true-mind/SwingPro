@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.truemind.swingpro.BaseFragment;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
-import com.truemind.swingpro.ui.util.LineGraph;
+import com.truemind.swingpro.util.LineGraph;
 
 /**
  * Created by 현석 on 2017-06-15.

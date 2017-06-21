@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="650dp"
+    android:layout_height="wrap_content"
     android:background="@color/colorCommonBack"
     android:orientation="vertical">
 
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="(평균속도 / 회차)"
+                    android:text="@string/domainBase"
                     android:textColor="@color/graphLine"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -84,7 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="1부터 15까지의 최근 기록만 표시됩니다."
+                    android:text="@string/_1_15"
                     android:textColor="#000"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -157,7 +157,7 @@
                 android:id="@+id/statMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아주 빠르게 호전되고 있습니다."
+                android:text="@string/demo_text_status"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 
@@ -295,9 +295,9 @@
         android:orientation="vertical">
 
         <HorizontalScrollView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:scrollbars="none">
 
             <LinearLayout
@@ -306,24 +306,151 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/btnNotice"
                     style="@style/myRecordFragScrollBtn"
                     android:layout_marginLeft="10dp">
 
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_notice" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_margin="5dp"
+                            android:id="@+id/noticeAlert"
+                            style="@style/itemNewAlertBsae" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/btnTxtNotice"
+                        style="@style/btnBottomBaseItems"
+                        android:text="@string/notice" />
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/btnMessage"
                     style="@style/myRecordFragScrollBtn">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_message" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:layout_margin="5dp"
+                            android:id="@+id/messageAlert"
+                            style="@style/itemNewAlertBsae" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/btnTxtMessage"
+                        style="@style/btnBottomBaseItems"
+                        android:text="@string/message" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/btnAccount"
                     style="@style/myRecordFragScrollBtn">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_account" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/btnTxtAccount"
+                        style="@style/btnBottomBaseItems"
+                        android:text="@string/personal_account" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
         </HorizontalScrollView>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/btnTempo"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/s_btn_plain_light2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@drawable/btn_test_tempo" />
+
+            <TextView
+                android:id="@+id/btnTextTempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/test_tempo"
+                android:textColor="#000"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnSeq"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/s_btn_plain_light2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@drawable/btn_test_seq" />
+
+            <TextView
+                android:id="@+id/btnTextSeq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/test_seq"
+                android:textColor="#000"
+                android:textSize="10sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

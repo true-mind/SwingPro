@@ -22,4 +22,20 @@
     <string name="login">로그인</string>
     <string name="cancel">취소</string>
     <string name="confirm">확인</string>
+    <string name="key_map">Key Map</string>
+    <string name="KeyMap">Key1 : 방향키 위(↑)\nKey2 : 방향키 아래(↓)\nKey3 : 방향키 좌(←)\nKey4 : 방향키 우(→)
+\nKey5 : 엔터(Enter)\n\nExtension Mode (2 Swing Air)\n\nKey6 : 1\nKey7 : 2\nKey8 : 3\nKey9 : 4\nKey10 : 5</string>
+    <string name="message">메시지함</string>
+    <string name="personal_account">개인계정</string>
+    <string name="_1_15">1회부터 15회까지의 최근 기록만 표시됩니다.</string>
+    <string name="domainBase">(평균속도 / 회차)</string>
+    <string name="demo_text_status">아주 빠르게 호전되고 있습니다.</string>
+    <string name="normal_setting">일반설정</string>
+    <string name="auto_login">자동으로 로그인</string>
+    <string name="recv_no_message">메시지 받지 않기</string>
+    <string name="swingair">SwingAir</string>
+    <string name="tempo_test_btn_adjust">박자맞춰 누르기 테스트 버튼 설정</string>
+    <string name="privacy">개인정보</string>
+    <string name="clear_data">데이터 전부 삭제</string>
+    <string name="delete">삭제</string>
 </resources>

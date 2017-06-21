@@ -1,4 +1,4 @@
-package com.truemind.swingpro;
+package com.truemind.swingpro.base;
 
 import android.app.Activity;
 import android.app.Fragment;

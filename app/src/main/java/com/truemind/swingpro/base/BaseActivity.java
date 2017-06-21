@@ -1,4 +1,4 @@
-package com.truemind.swingpro;
+package com.truemind.swingpro.base;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.truemind.swingpro.Constants;
+import com.truemind.swingpro.R;
 import com.truemind.swingpro.ui.main.MainActivity;
+import com.truemind.swingpro.ui.notice.NoticeActivity;
 
 
 /**
@@ -197,7 +200,9 @@ public abstract class BaseActivity extends Activity {
         baseNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "5", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), NoticeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 menuEvent();
             }
         });
@@ -205,7 +210,10 @@ public abstract class BaseActivity extends Activity {
         baseSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "6", Toast.LENGTH_SHORT).show();
+                Constants.TAB_POSITION = 2;
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 menuEvent();
             }
         });
@@ -213,7 +221,6 @@ public abstract class BaseActivity extends Activity {
         baseBluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "7", Toast.LENGTH_SHORT).show();
                 menuEvent();
                 goBTSetting();
             }

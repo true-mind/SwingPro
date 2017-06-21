@@ -1,4 +1,4 @@
-package com.truemind.swingpro.ui.util;
+package com.truemind.swingpro.util;
 
 import android.app.Dialog;
 import android.content.Context;

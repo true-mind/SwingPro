@@ -1,23 +1,15 @@
-package com.truemind.swingpro.ui.util;
+package com.truemind.swingpro.util;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 
 import com.truemind.swingpro.Constants;
-import com.truemind.swingpro.R;
 
 import java.util.ArrayList;
 
@@ -68,7 +60,7 @@ public class LineGraph extends View {
          * */
         for(int current_count = 1; current_count<max_count; current_count++){
 
-            //LINE START POINT
+            //LINE START POINT`
             int startX = current_count*interval;
 
             //DUMMY DATA
