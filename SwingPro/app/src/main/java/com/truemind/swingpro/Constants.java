@@ -14,5 +14,9 @@ public class Constants {
     public static int GRAPH_HEIGHT = 100;
     public static int GRAPH_INTERVAL;
     public static int GRAPH_MAX_COUNT = 15;
+    public static final String SWING_BEAT_LINK = "https://play.google.com/store/apps/details?id=com.truemind.swingbeat";
+    public final static String MINTO_WEB_LINK = "http://www.mintosys.com/";
+    public static int TEST_TEMPO_KEY = 1;
+    public static final int VIEW_PAGER_MAX_COUNT = 2;
 
 }

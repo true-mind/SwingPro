@@ -18,11 +18,27 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="174dp"
-                        android:background="@drawable/img_demo"
-                        android:scaleType="centerCrop" />
+                        android:layout_height="wrap_content">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/imgPager"
+                            android:layout_width="match_parent"
+                            android:layout_height="174dp" />
+
+                        <Button
+                            android:layout_margin="10dp"
+                            android:layout_gravity="end"
+                            android:id="@+id/btnGoLook"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:textSize="10sp"
+                            android:background="@drawable/s_btn_plain_dark2_circle"
+                            android:textColor="#fff"
+                            android:text="@string/goLook"/>
+
+                    </FrameLayout>
 
                     <LinearLayout
                         android:id="@+id/tabView"
@@ -89,6 +105,7 @@
 
                         </LinearLayout>
 
+
                     </LinearLayout>
 
                     <FrameLayout
@@ -98,7 +115,59 @@
 
 
                 </LinearLayout>
-            </ScrollView>
+        </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin = "5dp"
+            android:id="@+id/settingBtnBase"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/btnKeyMap"
+                android:gravity="center"
+                android:layout_width="130dp"
+                android:layout_height="25dp"
+                android:background="@drawable/s_btn_plain_dark1">
+
+                <TextView
+                    android:id="@+id/txtKeyMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#fff"
+                    android:text="@string/key_map"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_hori"/>
+
+            <LinearLayout
+                android:id="@+id/btnBluetooth"
+                android:gravity="center"
+                android:layout_width="130dp"
+                android:layout_height="25dp"
+                android:background="@drawable/s_btn_plain_dark2">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/menu_img_bt"/>
+
+                <TextView
+                    android:id="@+id/txtBluetooth2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#fff"
+                    android:text="@string/bluetooth"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

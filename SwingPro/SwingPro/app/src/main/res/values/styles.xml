@@ -5,4 +5,161 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Base application theme. -->
+    <style name="AppThemeGreenBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="menuImgBase">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="menuBtnBase">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="center16spBlackText">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="plain16spText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="m_m_Vertical">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="m_w_Horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="m_m_NoScrollBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scrollbars">none</item>
+    </style>
+
+    <style name="m_m_Frame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="tabViewTxtBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="weight1_H4dp_View">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">4dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="m_none_fragItemBase">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#fff</item>
+    </style>
+
+    <style name="fragItemTitleTxt">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="fragItemTitleBase">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="fragItemTitleUL">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">#000</item>
+    </style>
+
+    <style name="fragItemDetailBase">
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="space_hori">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="fragItemDetailTxt">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#00008b</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:text">@string/show_detail</item>
+    </style>
+
+    <style name="fragItemDetailArrow">
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">5dp</item>
+        <item name="android:layout_height">10dp</item>
+        <item name="android:background">@drawable/arrow_blue</item>
+    </style>
+
+    <style name="fragMyRecordCircleBase">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="m_40_plainBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="graphBaseNumber">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppThemeGreenBar">
-        <activity android:name=".ui.IntroActivity"
+        <activity android:name=".ui.intro.IntroActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -22,12 +22,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.LoginActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".ui.main.MainActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.notice.NoticeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.message.MessageActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.detail.MyStatDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.test_seq.TestSeqActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.test_tempo.TestTempoActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

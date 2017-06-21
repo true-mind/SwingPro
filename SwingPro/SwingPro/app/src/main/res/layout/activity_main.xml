@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCommonBack"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head" />
+
+    <FrameLayout style="@style/m_m_Frame">
+
+        <LinearLayout style="@style/m_m_Vertical">
+
+            <ScrollView style="@style/m_m_NoScrollBar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="174dp"
+                        android:background="@drawable/img_demo"
+                        android:scaleType="centerCrop" />
+
+                    <LinearLayout
+                        android:id="@+id/tabView"
+                        android:layout_width="match_parent"
+                        android:layout_height="34dp"
+                        android:background="#fff"
+                        android:orientation="vertical">
+
+                        <LinearLayout style="@style/m_w_Horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/tab1"
+                                style="@style/tabViewTxtBase">
+
+                                <TextView
+                                    android:id="@+id/tabTxt1"
+                                    style="@style/plain16spText"
+                                    android:text="@string/myRecord"
+                                    android:textColor="@color/colorMint" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/tab2"
+                                style="@style/tabViewTxtBase">
+
+                                <TextView
+                                    android:id="@+id/tabTxt2"
+                                    style="@style/plain16spText"
+                                    android:text="@string/measure"
+                                    android:textColor="#000" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/tab3"
+                                style="@style/tabViewTxtBase">
+
+                                <TextView
+                                    android:id="@+id/tabTxt3"
+                                    style="@style/plain16spText"
+                                    android:text="@string/setting"
+                                    android:textColor="#000" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout style="@style/m_w_Horizontal">
+
+                            <View
+                                android:id="@+id/tabMark1"
+                                style="@style/weight1_H4dp_View"
+                                android:background="@color/colorMint" />
+
+                            <View
+                                android:id="@+id/tabMark2"
+                                style="@style/weight1_H4dp_View" />
+
+                            <View
+                                android:id="@+id/tabMark3"
+                                style="@style/weight1_H4dp_View" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <include layout="@layout/sliding_menu" />
+    </FrameLayout>
+</LinearLayout>

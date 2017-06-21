@@ -1,7 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="650dp"
-    android:background="#464836">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorCommonBack"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/m_none_fragItemBase"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/normalSetting"
+            style="@style/settingTitleText"
+            android:text="@string/normal_setting" />
+
+        <LinearLayout
+            style="@style/settingItemBase">
+
+            <TextView
+                android:id="@+id/txtLogin"
+                style="@style/settingItemText"
+                android:text="@string/auto_login" />
+
+            <View style="@style/space_hori" />
+
+            <CheckBox
+                android:id="@+id/checkLogin"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:checked="true"
+                android:background="@drawable/check_box"
+                android:button="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/settingItemBase">
+
+            <TextView
+                android:id="@+id/txtMessage"
+                style="@style/settingItemText"
+                android:text="@string/recv_no_message" />
+
+            <View style="@style/space_hori" />
+
+            <CheckBox
+                android:id="@+id/checkMessage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/check_box"
+                android:button="@null" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/m_none_fragItemBase"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleSwingAir"
+            style="@style/settingTitleText"
+            android:text="@string/swingair" />
+
+        <LinearLayout
+            style="@style/settingItemBase">
+
+            <TextView
+                android:id="@+id/testTempoSetting"
+                style="@style/settingItemText"
+                android:text="@string/tempo_test_btn_adjust" />
+
+            <View style="@style/space_hori" />
+
+            <Spinner
+                android:id="@+id/spinnerTempoBtn"
+                android:layout_marginRight="10dp"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/spinner" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/m_none_fragItemBase"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titlePrivacy"
+            style="@style/settingTitleText"
+            android:text="@string/privacy" />
+
+        <LinearLayout
+            style="@style/settingItemBase">
+
+            <TextView
+                android:id="@+id/txtDeleteAll"
+                style="@style/settingItemText"
+                android:text="@string/clear_data" />
+
+            <View style="@style/space_hori" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/delete"
+                android:background="@drawable/s_btn_corner_red"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
