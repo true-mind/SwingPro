@@ -4,14 +4,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.truemind.swingpro.R;
 
 /**
  * Created by 현석 on 2017-06-15.
  */
 
 public class BaseFragment extends Fragment {
-
 
     /**
      * Typeface로 폰트 적용
@@ -27,4 +29,17 @@ public class BaseFragment extends Fragment {
             view.setTypeface(NanumNormal);
     }
 
+    public void initFooter(Context context, LinearLayout layout){
+        TextView txtFooter = (TextView)layout.findViewById(R.id.txtFooter);
+        TextView txtFooter2 = (TextView)layout.findViewById(R.id.txtFooter2);
+        setFontToViewBold2(context, txtFooter, txtFooter2);
+    }
+
+
+    public void setFontToViewBold2(Context context, TextView... views) {
+        Typeface NanumNormal = Typeface.createFromAsset(context.getAssets(), "BMDOHYEON_ttf.ttf");
+
+        for (TextView view : views)
+            view.setTypeface(NanumNormal);
+    }
 }

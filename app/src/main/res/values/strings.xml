@@ -38,4 +38,11 @@
     <string name="privacy">개인정보</string>
     <string name="clear_data">데이터 전부 삭제</string>
     <string name="delete">삭제</string>
+    <string name="goLook">보러가기</string>
+    <string name="timesMeasure">측정 횟수</string>
+    <string name="measureStartDate">측정 시작일</string>
+    <string name="myAvgRecord">내 평균 기록</string>
+    <string name="myBestRecord">내 최고 기록</string>
+    <string name="mintosys">MINTOSYS</string>
+    <string name="mintosys_addr">06631 서울특별시 서초구 서초대로 356 서초지웰타워 14층</string>
 </resources>

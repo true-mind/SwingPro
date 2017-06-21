@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
+import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
 
@@ -146,6 +147,12 @@ public abstract class BaseActivity extends Activity {
         menuBtnListener();
     }
 
+    public void initFooter(){
+        TextView txtFooter = (TextView)findViewById(R.id.txtFooter);
+        TextView txtFooter2 = (TextView)findViewById(R.id.txtFooter2);
+        setFontToViewBold2(txtFooter, txtFooter2);
+    }
+
     public void menuEvent(){
         if(isPageOpen){
             slidingPage.startAnimation(translateRightAnim);
@@ -173,7 +180,9 @@ public abstract class BaseActivity extends Activity {
         baseMyStat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "2", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), MyStatDetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 menuEvent();
             }
         });
@@ -249,73 +258,5 @@ public abstract class BaseActivity extends Activity {
 
         }
     }
-
-
-/*
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event) {
-        if(event.getAction() == KeyEvent.ACTION_DOWN) {
-            int keyCode = event.getKeyCode();
-            if(keyCode == KeyEvent.KEYCODE_DPAD_UP) {
-                onkey1();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
-                onkey2();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
-                onkey3();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
-                onkey4();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_ENTER) {
-                onkey5();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_1) {
-                onkey6();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_2) {
-                onkey7();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_3) {
-                onkey8();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_4) {
-                onkey9();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_5) {
-                onkey10();
-            }
-            else if(keyCode == KeyEvent.KEYCODE_BACK){
-                onKeyBack();
-            }else if(keyCode == KeyEvent.KEYCODE_VOLUME_DOWN){
-                AudioManager mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-                mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                        AudioManager.ADJUST_LOWER,
-                        AudioManager.FLAG_SHOW_UI);
-            }else if(keyCode == KeyEvent.KEYCODE_VOLUME_UP){
-                AudioManager mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-                mAudioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC,
-                        AudioManager.ADJUST_RAISE,
-                        AudioManager.FLAG_SHOW_UI);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public abstract void onkey1();
-    public abstract void onkey2();
-    public abstract void onkey3();
-    public abstract void onkey4();
-    public abstract void onkey5();
-
-    public abstract void onkey6();
-    public abstract void onkey7();
-    public abstract void onkey8();
-    public abstract void onkey9();
-    public abstract void onkey10();
-
-    public abstract void onKeyBack();*/
 
 }

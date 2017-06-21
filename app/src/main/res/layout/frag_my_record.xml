@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorCommonBack"
@@ -288,6 +289,30 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        style="@style/m_none_fragItemBase"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_ad"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_demo3" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:background="@color/colorMint"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="SwingBeat (AD)"/>
+
+    </LinearLayout>
 
     <LinearLayout
         style="@style/m_none_fragItemBase"
@@ -321,10 +346,10 @@
                             android:background="@drawable/btn_notice" />
 
                         <TextView
-                            android:visibility="gone"
-                            android:layout_margin="5dp"
                             android:id="@+id/noticeAlert"
-                            style="@style/itemNewAlertBsae" />
+                            style="@style/itemNewAlertBsae"
+                            android:layout_margin="5dp"
+                            android:visibility="gone" />
 
                     </FrameLayout>
 
@@ -350,10 +375,10 @@
                             android:background="@drawable/btn_message" />
 
                         <TextView
-                            android:visibility="gone"
-                            android:layout_margin="5dp"
                             android:id="@+id/messageAlert"
-                            style="@style/itemNewAlertBsae" />
+                            style="@style/itemNewAlertBsae"
+                            android:layout_margin="5dp"
+                            android:visibility="gone" />
 
                     </FrameLayout>
 
@@ -393,66 +418,6 @@
 
     </LinearLayout>
 
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/btnTempo"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/s_btn_plain_light2"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="58dp"
-                android:layout_height="58dp"
-                android:background="@drawable/btn_test_tempo" />
-
-            <TextView
-                android:id="@+id/btnTextTempo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/test_tempo"
-                android:textColor="#000"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnSeq"
-            android:layout_width="80dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/s_btn_plain_light2"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="58dp"
-                android:layout_height="58dp"
-                android:background="@drawable/btn_test_seq" />
-
-            <TextView
-                android:id="@+id/btnTextSeq"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/test_seq"
-                android:textColor="#000"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+    <include layout="@layout/common_footer"/>
 
 </LinearLayout>

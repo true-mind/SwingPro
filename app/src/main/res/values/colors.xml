@@ -14,6 +14,8 @@
     <color name="plainDarkBtn1_s">#171b26</color>
     <color name="plainDarkBtn2">#667350</color>
     <color name="plainDarkBtn2_s">#391d1d</color>
+    <color name="plainDarkBtn2_tran">#88667350</color>
+    <color name="plainDarkBtn2_tran_s">#88391d1d</color>
     <color name="plainDarkBtn3">#333333</color>
     <color name="plainDarkBtn3_s">#1a1a1a</color>
 
@@ -22,7 +24,7 @@
 
     <color name="scrollBtn">#f9f6eb</color>
     <color name="scrollBtn_s">#a8e2ca</color>
-
+`
     <color name="color_blue">#6666ff</color>
     <color name="color_red">#ff6666</color>
     <color name="color_green">#66ff66</color>

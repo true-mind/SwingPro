@@ -39,7 +39,8 @@
 
                                 <TextView
                                     android:id="@+id/txtPrevious"
-                                    style="@style/fragItemDetailTxt" />
+                                    style="@style/fragItemDetailMore"
+                                    android:text="이전 기록 열람"/>
 
                             </LinearLayout>
 
@@ -51,7 +52,8 @@
 
                                 <TextView
                                     android:id="@+id/txtNext"
-                                    style="@style/fragItemDetailTxt" />
+                                    style="@style/fragItemDetailMore"
+                                    android:text="다음 기록 열람" />
 
                                 <ImageView style="@style/fragItemDetailArrow" />
                             </LinearLayout>
@@ -209,6 +211,11 @@
                                     android:layout_height="30dp"
                                     android:gravity="center">
 
+                                    <TextView
+                                        android:id="@+id/tableRow1"
+                                        style="@style/center14spBlackText"
+                                        android:text="@string/myBestRecord"/>
+
                                 </LinearLayout>
 
                                 <View
@@ -221,6 +228,8 @@
                                     android:layout_height="30dp"
                                     android:layout_weight="1"
                                     android:gravity="center">
+
+
 
                                 </LinearLayout>
 
@@ -244,6 +253,11 @@
                                     android:layout_width="100dp"
                                     android:layout_height="30dp"
                                     android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tableRow2"
+                                        style="@style/center14spBlackText"
+                                        android:text="@string/myAvgRecord"/>
 
                                 </LinearLayout>
 
@@ -281,6 +295,11 @@
                                     android:layout_height="30dp"
                                     android:gravity="center">
 
+                                    <TextView
+                                        android:id="@+id/tableRow3"
+                                        style="@style/center14spBlackText"
+                                        android:text="@string/measureStartDate"/>
+
                                 </LinearLayout>
 
                                 <View
@@ -316,6 +335,11 @@
                                     android:layout_width="100dp"
                                     android:layout_height="30dp"
                                     android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tableRow4"
+                                        style="@style/center14spBlackText"
+                                        android:text="@string/timesMeasure"/>
 
                                 </LinearLayout>
 

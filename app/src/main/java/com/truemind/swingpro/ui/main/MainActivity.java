@@ -103,7 +103,6 @@ public class MainActivity extends BaseActivity {
         initListener();
 
         initSlideMenu("SwingPro");
-
         viewPagerTimerControll(5);
     }
 
@@ -138,12 +137,15 @@ public class MainActivity extends BaseActivity {
         txtBluetooth2 = (TextView) findViewById(R.id.txtBluetooth2);
         setFontToViewBold(tabTxt1, tabTxt2, tabTxt3, txtKeyMap, txtBluetooth2, btnGoLook);
 
+        /** View Pager*/
         CustomAdapter viewPagerAdapter = new CustomAdapter(getLayoutInflater());
         imgPager.setAdapter(viewPagerAdapter);
 
+        /** "Measure" 탭에서의 하단 버튼 생성을 위해*/
         alphaBounce = AnimationUtils.loadAnimation(getContext(), R.anim.alpha_bounce);
         settingBtnBaseInit();
 
+        /** 뷰페이저를 이용하지 않는 탭 뷰의 애니메이션을 위해 존재*/
         pageChange animationListener = new pageChange();
         pageAnimationRight = AnimationUtils.loadAnimation(getContext(), R.anim.slide_to_right_fast);
         pageAnimationLeft = AnimationUtils.loadAnimation(getContext(), R.anim.slide_to_left_fast);
@@ -161,6 +163,12 @@ public class MainActivity extends BaseActivity {
 
         tab3.setOnClickListener(movePageListener);
         tab3.setTag(THIRD_TAB);
+
+        /**
+         * 뷰페이저 아이템 마다의 "보러가기" 버튼을 위해 있음.
+         * 아이템의 보러가기를 눌렀을 때 해당 아이템의 위치에 따라서
+         * 이동되는 링크가 다르기 때문에 각각을 switch-case로 정의해야함.
+         * */
 
         btnGoLook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +191,8 @@ public class MainActivity extends BaseActivity {
     /**
      * ViewPager 주기적인 자동 스크롤 태스크
      * @param seconds 초단위로 스크롤 타이밍을 받음 - 예 : 4초 간격
+     *
+     *  무조건 오른쪽으로 스크롤 됨.
      * */
     public void viewPagerTimerControll(int seconds) {
         timer = new Timer();
@@ -190,18 +200,16 @@ public class MainActivity extends BaseActivity {
     }
 
     class viewPagerTimer extends TimerTask {
-
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
                 public void run() {
                     int vp_page = imgPager.getCurrentItem();
-                    if(vp_page == 0){
-                        imgPager.setCurrentItem(vp_page+1, true);
-                    }else if(vp_page == 1){
-                        imgPager.setCurrentItem(vp_page+1, true);
-                    }else if(vp_page == 2){
+                    int max_page = Constants.VIEW_PAGER_MAX_COUNT;
+                    if(vp_page == max_page-1){
                         imgPager.setCurrentItem(0, true);
+                    }else{
+                        imgPager.setCurrentItem(vp_page+1, true);
                     }
 
                 }

@@ -21,6 +21,8 @@ import com.truemind.swingpro.ui.notice.NoticeActivity;
 
 /**
  * Created by 현석 on 2017-06-19.
+ *
+ * 모든 testActivity에서는 이 BaseDispatchKey를 상속받아야 한다.
  */
 
 public abstract class BaseDispatchKey extends Activity {

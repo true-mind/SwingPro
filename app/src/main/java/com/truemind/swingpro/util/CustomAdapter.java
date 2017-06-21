@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 
 /**
@@ -22,7 +23,7 @@ public class CustomAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return Constants.VIEW_PAGER_MAX_COUNT;
     }
 
     @Override
@@ -35,15 +36,11 @@ public class CustomAdapter extends PagerAdapter {
 
         switch (position) {
             case 0:
-                img.setImageResource(R.drawable.img_demo);
+                img.setImageResource(R.drawable.img_demo1);
                 img.setOnClickListener(mPagerListener);
                 break;
             case 1:
                 img.setImageResource(R.drawable.img_demo2);
-                img.setOnClickListener(mPagerListener);
-                break;
-            case 2:
-                img.setImageResource(R.drawable.img_demo3);
                 img.setOnClickListener(mPagerListener);
                 break;
         }
