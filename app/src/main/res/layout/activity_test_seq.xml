@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCurSeq"
+                    style="@style/center20spBlackText"
+                    android:text="1" />
+
+                <TextView
+                    android:id="@+id/txt1"
+                    style="@style/center20spBlackText"
+                    android:text="/4회차" />
+
+                <View style="@style/space_hori" />
+
+                <TextView
+                    android:id="@+id/txtTotalTime"
+                    style="@style/center20spBlackText"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    style="@style/center20spBlackText"
+                    android:text="ms" />
+
+                <View style="@style/space_hori" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtStart"
+                    style="@style/center18spBlackText"
+                    android:text="1번 버튼을 눌러 테스트 시작" />
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <LinearLayout style="@style/m_w_Horizontal">
+
+                <Button
+                    android:id="@+id/btn1"
+                    style="@style/textSeqBtnStyle"
+                    android:background="@drawable/circle_btn_blue"
+                    android:text="@string/_1" />
+
+                <View style="@style/space_hori"/>
+
+                <TextView
+                    android:id="@+id/txtBtn1Time"
+                    style="@style/center40spBlackText"
+                    android:text="0" />
+
+
+                <TextView
+                    android:id="@+id/txt3"
+                    style="@style/center40spBlackText"
+                    android:layout_marginLeft="5dp"
+                    android:text="ms" />
+
+
+                <View style="@style/space_hori"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <LinearLayout style="@style/m_w_Horizontal">
+
+                <Button
+                    android:id="@+id/btn2"
+                    style="@style/textSeqBtnStyle"
+                    android:background="@drawable/circle_btn_red"
+                    android:text="@string/_2" />
+
+
+                <View style="@style/space_hori"/>
+
+                <TextView
+                    android:id="@+id/txtBtn2Time"
+                    style="@style/center40spBlackText"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/txt4"
+                    style="@style/center40spBlackText"
+                    android:layout_marginLeft="5dp"
+                    android:text="ms" />
+
+
+                <View style="@style/space_hori"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <LinearLayout style="@style/m_w_Horizontal">
+
+                <Button
+                    android:id="@+id/btn3"
+                    style="@style/textSeqBtnStyle"
+                    android:background="@drawable/circle_btn_green"
+                    android:text="@string/_3" />
+
+
+                <View style="@style/space_hori"/>
+
+                <TextView
+                    android:id="@+id/txtBtn3Time"
+                    style="@style/center40spBlackText"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/txt5"
+                    style="@style/center40spBlackText"
+                    android:layout_marginLeft="5dp"
+                    android:text="ms" />
+
+
+                <View style="@style/space_hori"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <LinearLayout style="@style/m_w_Horizontal">
+
+                <Button
+                    android:id="@+id/btn4"
+                    style="@style/textSeqBtnStyle"
+                    android:background="@drawable/circle_btn_yellow"
+                    android:text="@string/_4" />
+
+                <View style="@style/space_hori"/>
+
+                <TextView
+                    android:id="@+id/txtBtn4Time"
+                    style="@style/center40spBlackText"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/txt6"
+                    style="@style/center40spBlackText"
+                    android:layout_marginLeft="5dp"
+                    android:text="ms" />
+
+                <View style="@style/space_hori"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt7"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="회차"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <TextView
+                        android:id="@+id/txt8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="회차별 누적 시간"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt9"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/_1"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtSeq1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txt10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/ms"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt11"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/_2"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtSeq2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txt12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/ms"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt13"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/_3"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtSeq3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txt14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/ms"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt15"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/_4"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtSeq4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txt16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/ms"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/table_row_back"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt17"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/avg"
+                        android:textColor="#000"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#000" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtSeqAvg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/txt18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:text="@string/ms"
+                            android:textColor="#000"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/sliding_menu" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.truemind.swingpro.ui.main;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.R;
+import com.truemind.swingpro.ui.test_seq.TestSeqActivity;
 
 /**
  * Created by 현석 on 2017-06-15.
@@ -57,7 +59,9 @@ public class MeasureFragment extends BaseFragment{
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), TestSeqActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 

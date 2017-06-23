@@ -45,4 +45,9 @@
     <string name="myBestRecord">내 최고 기록</string>
     <string name="mintosys">MINTOSYS</string>
     <string name="mintosys_addr">06631 서울특별시 서초구 서초대로 356 서초지웰타워 14층</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="avg">평균</string>
 </resources>
