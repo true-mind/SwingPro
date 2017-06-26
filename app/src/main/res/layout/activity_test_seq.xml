@@ -36,6 +36,11 @@
                 <View style="@style/space_hori" />
 
                 <TextView
+                    android:id="@+id/txt19"
+                    style="@style/center20spBlackText"
+                    android:text="회차 누적 시간 : " />
+
+                <TextView
                     android:id="@+id/txtTotalTime"
                     style="@style/center20spBlackText"
                     android:text="0" />
@@ -89,6 +94,13 @@
 
                 <View style="@style/space_hori"/>
 
+                <View
+                    android:id="@+id/marker1"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/arrow_long"/>
+
             </LinearLayout>
 
             <View style="@style/space_verti" />
@@ -118,6 +130,13 @@
 
                 <View style="@style/space_hori"/>
 
+                <View
+                    android:id="@+id/marker2"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/arrow_long"/>
             </LinearLayout>
 
             <View style="@style/space_verti" />
@@ -147,6 +166,13 @@
 
                 <View style="@style/space_hori"/>
 
+                <View
+                    android:id="@+id/marker3"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/arrow_long"/>
             </LinearLayout>
 
             <View style="@style/space_verti" />
@@ -173,6 +199,14 @@
                     android:text="ms" />
 
                 <View style="@style/space_hori"/>
+
+                <View
+                    android:id="@+id/marker4"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/arrow_long"/>
 
             </LinearLayout>
 

@@ -169,6 +169,7 @@
     <LinearLayout
         style="@style/m_none_fragItemBase"
         android:layout_height="216dp"
+        android:background="@drawable/table_row_back"
         android:orientation="vertical">
 
         <LinearLayout

@@ -253,6 +253,14 @@ public abstract class BaseDispatchKey extends Activity {
         }
     }
 
+    public void viewOnVisible(View viewVisible, View... viewsGone){
+
+        viewVisible.setVisibility(View.VISIBLE);
+        for (View view : viewsGone){
+            view.setVisibility(View.GONE);
+        }
+
+    }
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {

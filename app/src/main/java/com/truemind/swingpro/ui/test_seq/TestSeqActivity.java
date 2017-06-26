@@ -35,6 +35,11 @@ public class TestSeqActivity extends BaseDispatchKey {
     public int cur_Status = TIMER_INIT;
     public long myBaseTime;
 
+    View marker1;
+    View marker2;
+    View marker3;
+    View marker4;
+
     TextView txtCurSeq;
     TextView txtTotalTime;
     TextView txtStart;
@@ -95,6 +100,7 @@ public class TestSeqActivity extends BaseDispatchKey {
         TextView txt16 = (TextView) findViewById(R.id.txt16);
         TextView txt17 = (TextView) findViewById(R.id.txt17);
         TextView txt18 = (TextView) findViewById(R.id.txt18);
+        TextView txt19 = (TextView) findViewById(R.id.txt19);
 
         txtBtn1Time = (TextView) findViewById(R.id.txtBtn1Time);
         txtBtn2Time = (TextView) findViewById(R.id.txtBtn2Time);
@@ -108,8 +114,14 @@ public class TestSeqActivity extends BaseDispatchKey {
         txtSeqAvg = (TextView) findViewById(R.id.txtSeqAvg);
 
         setFontToViewBold(txt1, txt2, txt3, txt4, txt5, txt6, txt7, txt8, txt9, txt10, txt11, txt12,
-                txt13, txt14, txt15, txt16, txt17, txt18, txtCurSeq, txtTotalTime, txtStart, btn1, btn2,
+                txt13, txt14, txt15, txt16, txt17, txt18, txt19, txtCurSeq, txtTotalTime, txtStart, btn1, btn2,
                 btn3, btn4, txtSeq1, txtSeq2, txtSeq3, txtSeq4, txtSeqAvg);
+
+        marker1 = findViewById(R.id.marker1);
+        marker2 = findViewById(R.id.marker2);
+        marker3 = findViewById(R.id.marker3);
+        marker4 = findViewById(R.id.marker4);
+
 
     }
 
@@ -123,6 +135,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                     myTimer.sendEmptyMessage(0);
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON2;
+                    markerSwitch(CURRENT_SEQUENCE);
                     txtStart.setVisibility(View.INVISIBLE);
                 } else {
                     Toast.makeText(getContext(), "버튼 순서가 맞지 않습니다.", Toast.LENGTH_SHORT).show();
@@ -138,6 +151,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                     txtBtn2Time.setText(getTimeOut());
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON3;
+                    markerSwitch(CURRENT_SEQUENCE);
                 } else {
                     Toast.makeText(getContext(), "버튼 순서가 맞지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -151,6 +165,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                     txtBtn3Time.setText(getTimeOut());
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON4;
+                    markerSwitch(CURRENT_SEQUENCE);
                 } else {
                     Toast.makeText(getContext(), "버튼 순서가 맞지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -163,6 +178,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                 if (CURRENT_SEQUENCE == BUTTON4) {
                     txtBtn4Time.setText(getTimeOut());
                     cur_Status = TIMER_STOP;
+                    markerSwitch(CURRENT_SEQUENCE);
                     myTimer.removeMessages(0);
                     myTimer.sendEmptyMessage(1);
                 } else {
@@ -184,6 +200,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                 case 1:
                     myBaseTime = 0;
                     CURRENT_SEQUENCE = BUTTON1;
+                    markerSwitch(CURRENT_SEQUENCE);
                     switch (CURRENT_COUNT) {
                         case 1:
                             txtSeq1.setText(txtTotalTime.getText().toString());
@@ -215,6 +232,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                                     , Integer.parseInt(txtSeq4.getText().toString())));
                             break;
                     }
+
                     if (CURRENT_COUNT < 5) {
                         txtCurSeq.setText(Integer.toString(CURRENT_COUNT));
                     } else {
@@ -223,11 +241,37 @@ public class TestSeqActivity extends BaseDispatchKey {
                         btn2.setEnabled(false);
                         btn3.setEnabled(false);
                         btn4.setEnabled(false);
+                        markerSwitch(0);
                     }
             }
 
         }
     };
+
+    public void markerSwitch(int markerOnView){
+        switch (markerOnView){
+            case 1:
+                viewOnVisible(marker1, marker2, marker3, marker4);
+                break;
+            case 2:
+                viewOnVisible(marker2, marker1, marker3, marker4);
+                break;
+            case 3:
+                viewOnVisible(marker3, marker1, marker2, marker4);
+                break;
+            case 4:
+                viewOnVisible(marker4, marker1, marker2, marker3);
+                break;
+            case 0:
+                marker1.setVisibility(View.GONE);
+                marker2.setVisibility(View.GONE);
+                marker3.setVisibility(View.GONE);
+                marker4.setVisibility(View.GONE);
+                break;
+        }
+
+
+    }
 
     public String MathAvg(int... times) {
         int timesAdd = 0;

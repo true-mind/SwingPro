@@ -236,6 +236,15 @@ public abstract class BaseActivity extends Activity {
         });
     }
 
+    public void viewOnVisible(View viewVisible, View... viewsGone){
+
+        viewVisible.setVisibility(View.VISIBLE);
+        for (View view : viewsGone){
+            view.setVisibility(View.GONE);
+        }
+
+    }
+
     private class SlidingPageAnimationListener implements Animation.AnimationListener {
         @Override
         public void onAnimationEnd(Animation animation) {
