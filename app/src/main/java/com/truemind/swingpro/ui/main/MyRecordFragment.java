@@ -48,7 +48,7 @@ public class MyRecordFragment extends BaseFragment {
     TextView messageAlert;
 
     ImageView img_ad;
-    boolean isNotice = false;
+    boolean isNotice = true;
 
     public MyRecordFragment(){
 

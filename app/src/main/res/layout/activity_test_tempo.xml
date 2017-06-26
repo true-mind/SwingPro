@@ -16,12 +16,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="40dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="70dp"
                 android:orientation="vertical">
 
                 <FrameLayout style="@style/m_w_Frame">
 
                     <ImageButton
+                        android:id="@+id/imgDot"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:background="@drawable/black_circle" />
@@ -39,12 +40,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <EditText
-                    style="@style/roundedBorderEditText"
+                <Spinner
+                    android:id="@+id/spinnerTempo"
                     android:layout_width="80dp"
                     android:layout_height="30dp"
                     android:layout_marginRight="5dp"
-                    android:inputType="number" />
+                    android:layout_gravity="center"
+                    android:background="@drawable/spinner" />
 
                 <TextView
                     android:id="@+id/txtBpm"
