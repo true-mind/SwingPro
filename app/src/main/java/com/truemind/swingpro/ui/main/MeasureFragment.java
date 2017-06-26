@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.ui.test_seq.TestSeqActivity;
+import com.truemind.swingpro.ui.test_tempo.TestTempoActivity;
 
 /**
  * Created by 현석 on 2017-06-15.
@@ -68,7 +69,9 @@ public class MeasureFragment extends BaseFragment{
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), TestTempoActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

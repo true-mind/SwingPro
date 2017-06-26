@@ -3,6 +3,7 @@ package com.truemind.swingpro.ui.test_tempo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseDispatchKey;
 
 /**
@@ -14,6 +15,7 @@ public class TestTempoActivity extends BaseDispatchKey{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test_tempo);
     }
 
     @Override

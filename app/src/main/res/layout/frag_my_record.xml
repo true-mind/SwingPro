@@ -348,7 +348,7 @@
 
                         <TextView
                             android:id="@+id/noticeAlert"
-                            style="@style/itemNewAlertBsae"
+                            style="@style/itemNewAlertBase"
                             android:layout_margin="5dp"
                             android:visibility="gone" />
 
@@ -377,7 +377,7 @@
 
                         <TextView
                             android:id="@+id/messageAlert"
-                            style="@style/itemNewAlertBsae"
+                            style="@style/itemNewAlertBase"
                             android:layout_margin="5dp"
                             android:visibility="gone" />
 
