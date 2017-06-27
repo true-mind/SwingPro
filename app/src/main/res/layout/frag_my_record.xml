@@ -49,11 +49,27 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/graph"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal" />
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/graph"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:visibility="invisible"
+                    android:id="@+id/txtNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:text="표시 가능한 데이터가 없습니다."/>
+
+            </FrameLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -348,7 +364,7 @@
 
                         <TextView
                             android:id="@+id/noticeAlert"
-                            style="@style/itemNewAlertBsae"
+                            style="@style/itemNewAlertBase"
                             android:layout_margin="5dp"
                             android:visibility="gone" />
 
@@ -377,7 +393,7 @@
 
                         <TextView
                             android:id="@+id/messageAlert"
-                            style="@style/itemNewAlertBsae"
+                            style="@style/itemNewAlertBase"
                             android:layout_margin="5dp"
                             android:visibility="gone" />
 

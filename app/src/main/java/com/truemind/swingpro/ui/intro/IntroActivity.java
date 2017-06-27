@@ -2,6 +2,7 @@ package com.truemind.swingpro.ui.intro;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.truemind.swingpro.base.BaseActivity;
@@ -19,16 +20,20 @@ public class IntroActivity extends BaseActivity {
     public long backPressedTime = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_intro);
+        super.onCreate(savedInstanceState);
 
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, new IntroFragment())
                 .commit();
 
+        goLogin();
 
+    }
+
+    public void goLogin(){
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

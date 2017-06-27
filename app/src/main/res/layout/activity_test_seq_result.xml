@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCommonBack">
+
+    <include layout="@layout/common_head"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                style="@style/m_none_fragItemBase"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTitle1"
+                    android:layout_marginBottom="10dp"
+                    style="@style/plain20spBlackText"
+                    android:text="결과 - 버튼별"/>
+
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt1"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/ms_unit"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txt2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/no1"/>
+
+                    <TextView
+                        android:id="@+id/txt3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/no2"/>
+
+                    <TextView
+                        android:id="@+id/txt4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/no3"/>
+
+                    <TextView
+                        android:id="@+id/txt5"
+                        style="@style/resultTableItemText"
+                        android:text="@string/no4"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt6"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/first_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn1Time1"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn1Time2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn1Time3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn1Time4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt7"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/second_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn2Time1"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn2Time2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn2Time3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn2Time4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt8"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/third_try"
+                        android:layout_height="match_parent" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn3Time1"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn3Time2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn3Time3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn3Time4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt9"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/fourth_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn4Time1"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn4Time2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn4Time3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                    <TextView
+                        android:id="@+id/txtBtn4Time4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:padding="10dp"
+                style="@style/m_none_fragItemBase"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTitle2"
+                    android:layout_marginBottom="10dp"
+                    style="@style/plain20spBlackText"
+                    android:text="결과 - 누적시간별"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt10"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/ms_unit"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txt11"
+                        style="@style/resultTableItemText"
+                        android:text="@string/total_time"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt12"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/first_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalTime1"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt13"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/second_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalTime2"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt14"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/third_try"
+                        android:layout_height="match_parent" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalTime3"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt15"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/fourth_try"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtTotalTime4"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+                <LinearLayout
+                    style="@style/resultTableLinearLayout">
+
+                    <TextView
+                        android:id="@+id/txt16"
+                        style="@style/center16spBlackText"
+                        android:minWidth="80dp"
+                        android:gravity="center"
+                        android:text="@string/avg"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorDarkGrey"/>
+
+                    <TextView
+                        android:id="@+id/txtAvgTime"
+                        style="@style/resultTableItemText"
+                        android:text="@string/_0"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDarkGrey"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti"/>
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/s_btn_plain_dark2"
+                android:text="처음으로 돌아가기"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+
+
+        <include layout="@layout/sliding_menu" />
+    </FrameLayout>
+
+</LinearLayout>

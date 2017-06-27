@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
@@ -23,12 +25,18 @@ import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.message.MessageActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
 import com.truemind.swingpro.util.LineGraph;
+import com.truemind.swingpro.util.ProgressDialog;
 
 /**
  * Created by 현석 on 2017-06-15.
  */
 
 public class MyRecordFragment extends BaseFragment {
+
+    private static final int LIST_SIZE_BIGGER_THAN_16 = 0;
+    private static final int LIST_SIZE_SMALLER_THAN_16 = 1;
+    private static final int LIST_SIZE_ZERO = 2;
+
 
     LinearLayout layout;
     TextView speedAvg;
@@ -46,11 +54,13 @@ public class MyRecordFragment extends BaseFragment {
 
     TextView noticeAlert;
     TextView messageAlert;
+    TextView txtNoData;
 
+    ProgressDialog progressDialog;
     ImageView img_ad;
-    boolean isNotice = false;
+    boolean isNotice = true;
 
-    public MyRecordFragment(){
+    public MyRecordFragment() {
 
     }
 
@@ -63,81 +73,118 @@ public class MyRecordFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        layout = (LinearLayout)inflater.inflate(R.layout.frag_my_record, container, false);
+        layout = (LinearLayout) inflater.inflate(R.layout.frag_my_record, container, false);
         initView();
         initFooter(getActivity(), layout);
-        initListener();
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.show();
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (Constants.LIST_AVG.size() < 16) {
+                    threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
+                } else if (Constants.LIST_AVG.size() < 1) {
+                    threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
+                } else {
+                    threadhandler.sendEmptyMessage(LIST_SIZE_BIGGER_THAN_16);
+                }
+            }
+        });
         return layout;
     }
 
-    public void initView(){
+    /**
+     * LineGraph를 통해 막대그래프를 추가할 때, constants에 있는 arrayList를 가지고 들어감.
+     * 따라서 lineGraph의 domain에선 arrayList가 사용되어야 하며, 해당 그래프의 최대 출력 개수는
+     * constants의 Max_count가 사용된다.
+     */
+    private Handler threadhandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case LIST_SIZE_BIGGER_THAN_16:
+                    for (int i = 0; i < Constants.GRAPH_MAX_COUNT; i++) {
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                        txtNoData.setVisibility(View.INVISIBLE);
+                        lineGraph = new LineGraph(getActivity());
+                        graph.addView(lineGraph);
+                    }
+                    break;
+                case LIST_SIZE_SMALLER_THAN_16:
+                    for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                        txtNoData.setVisibility(View.INVISIBLE);
+                        lineGraph = new LineGraph(getActivity());
+                        graph.addView(lineGraph);
+                    }
+                    break;
+                case LIST_SIZE_ZERO:
+                    txtNoData.setVisibility(View.VISIBLE);
+                    break;
+            }
+            initListener();
+            progressDialog.dismiss();
+        }
+    };
 
-        graph = (LinearLayout)layout.findViewById(R.id.graph);
+    public void initView() {
 
-        TextView titleStat = (TextView)layout.findViewById(R.id.titleStat);
-        TextView titleRec = (TextView)layout.findViewById(R.id.titleRecord);
+        graph = (LinearLayout) layout.findViewById(R.id.graph);
 
-        TextView para1 = (TextView)layout.findViewById(R.id.para1);
-        TextView paraMessage = (TextView)layout.findViewById(R.id.paraMessage);
+        TextView titleStat = (TextView) layout.findViewById(R.id.titleStat);
+        TextView titleRec = (TextView) layout.findViewById(R.id.titleRecord);
 
-        txtDetail1 = (TextView)layout.findViewById(R.id.txtDetail1);
-        txtDetail2 = (TextView)layout.findViewById(R.id.txtDetail2);
+        TextView para1 = (TextView) layout.findViewById(R.id.para1);
+        TextView paraMessage = (TextView) layout.findViewById(R.id.paraMessage);
 
-        TextView txtSpeedFast = (TextView)layout.findViewById(R.id.txtSpeedFast);
-        TextView txtSpeedAvg = (TextView)layout.findViewById(R.id.txtSpeedAvg);
+        txtDetail1 = (TextView) layout.findViewById(R.id.txtDetail1);
+        txtDetail2 = (TextView) layout.findViewById(R.id.txtDetail2);
 
-        statMessage = (TextView)layout.findViewById(R.id.statMessage);
+        TextView txtSpeedFast = (TextView) layout.findViewById(R.id.txtSpeedFast);
+        TextView txtSpeedAvg = (TextView) layout.findViewById(R.id.txtSpeedAvg);
+
+        statMessage = (TextView) layout.findViewById(R.id.statMessage);
 
         /** "내 기록" 란에서 사용됨.
          * -> Speedfast는 내 최고 속도,
          * -> SpeedAvg는 내 평균 속도에서 기록되어야 함.*/
-        speedFast = (TextView)layout.findViewById(R.id.speedFast);
-        speedAvg = (TextView)layout.findViewById(R.id.speedAvg);
+        speedFast = (TextView) layout.findViewById(R.id.speedFast);
+        speedAvg = (TextView) layout.findViewById(R.id.speedAvg);
 
-        TextView ms1 = (TextView)layout.findViewById(R.id.ms1);
-        TextView ms2 = (TextView)layout.findViewById(R.id.ms2);
+        TextView ms1 = (TextView) layout.findViewById(R.id.ms1);
+        TextView ms2 = (TextView) layout.findViewById(R.id.ms2);
 
-        TextView btnTxtNotice = (TextView)layout.findViewById(R.id.btnTxtNotice);
-        TextView btnTxtMessage = (TextView)layout.findViewById(R.id.btnTxtMessage);
-        TextView btnTxtAccount = (TextView)layout.findViewById(R.id.btnTxtAccount);
+        TextView btnTxtNotice = (TextView) layout.findViewById(R.id.btnTxtNotice);
+        TextView btnTxtMessage = (TextView) layout.findViewById(R.id.btnTxtMessage);
+        TextView btnTxtAccount = (TextView) layout.findViewById(R.id.btnTxtAccount);
 
-        noticeAlert = (TextView)layout.findViewById(R.id.noticeAlert);
-        messageAlert = (TextView)layout.findViewById(R.id.messageAlert);
+        noticeAlert = (TextView) layout.findViewById(R.id.noticeAlert);
+        messageAlert = (TextView) layout.findViewById(R.id.messageAlert);
 
-        btnNotice = (LinearLayout)layout.findViewById(R.id.btnNotice);
-        btnMessage = (LinearLayout)layout.findViewById(R.id.btnMessage);
-        btnAccount = (LinearLayout)layout.findViewById(R.id.btnAccount);
+        btnNotice = (LinearLayout) layout.findViewById(R.id.btnNotice);
+        btnMessage = (LinearLayout) layout.findViewById(R.id.btnMessage);
+        btnAccount = (LinearLayout) layout.findViewById(R.id.btnAccount);
 
-        img_ad = (ImageView)layout.findViewById(R.id.img_ad);
-/*
-        graph.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        graph.getMeasuredWidth();
-        graph.getMeasuredHeight();
-*/
+        img_ad = (ImageView) layout.findViewById(R.id.img_ad);
 
-        /** LineGraph를 통해 막대그래프를 추가할 때, constants에 있는 arrayList를 가지고 들어감.
-         * 따라서 lineGraph의 domain에선 arrayList가 사용되어야 하며, 해당 그래프의 최대 출력 개수는
-         * constants의 Max_count가 사용된다.
-         * */
-        lineGraph = new LineGraph(getActivity());
-        graph.addView(lineGraph);
+        txtNoData = (TextView) layout.findViewById(R.id.txtNoData);
+
 
         Animation slide = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_from_bottom);
 
         setFontToViewBold(getActivity(), titleStat, titleRec, txtDetail1, txtDetail2, txtSpeedFast, txtSpeedAvg, para1, paraMessage,
-                speedFast, speedAvg, ms1, ms2, statMessage, btnTxtNotice, btnTxtMessage, btnTxtAccount, noticeAlert, messageAlert);
+                speedFast, speedAvg, ms1, ms2, statMessage, btnTxtNotice, btnTxtMessage, btnTxtAccount, noticeAlert, messageAlert, txtNoData);
         graph.startAnimation(slide);
 
         alertSetter();
     }
 
     /**
-     *  각 버튼 베이스에서 알림이 떴는지 여부를 알려주기 위함.
+     * 각 버튼 베이스에서 알림이 떴는지 여부를 알려주기 위함.
      * 각 알림 텍스트 뷰 들의 경우 해당 뷰 들의 visibility가 gone으로 설정되어 있으므로,
      * 만약 message 혹은 notice가 존재할 경우 isNotice를 true로 만들어주어야 한다.
-     * */
-    public void alertSetter(){
-        if(isNotice /*TODO : notice가 있을 때*/) {
+     */
+    public void alertSetter() {
+        if (isNotice /*TODO : notice가 있을 때*/) {
 
             noticeAlert.setVisibility(View.VISIBLE);
             messageAlert.setVisibility(View.VISIBLE);
@@ -148,14 +195,18 @@ public class MyRecordFragment extends BaseFragment {
     }
 
 
-    public void initListener(){
+    public void initListener() {
 
         txtDetail1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyStatDetailActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                if (Constants.LIST_AVG.size() < 1) {
+                    Toast.makeText(getActivity(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), MyStatDetailActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -199,8 +250,6 @@ public class MyRecordFragment extends BaseFragment {
         });
 
     }
-
-
 
 
 }

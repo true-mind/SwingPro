@@ -27,6 +27,8 @@ public class MyStatDetailActivity extends BaseActivity {
 
     LineGraph lineGraph;
 
+    private int position_now = 0;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

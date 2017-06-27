@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_head" />
+
+    <FrameLayout style="@style/m_m_Frame">
+
+        <LinearLayout style="@style/m_m_Vertical">
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="70dp"
+                android:orientation="vertical">
+
+                <FrameLayout style="@style/m_w_Frame">
+
+                    <ImageButton
+                        android:id="@+id/imgDot"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/black_circle" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/black_rect_corner" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Spinner
+                    android:id="@+id/spinnerTempo"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/spinner" />
+
+                <TextView
+                    android:id="@+id/txtBpm"
+                    style="@style/center16spBlackText"
+                    android:text="BPM" />
+
+                <View style="@style/space_hori" />
+
+                <ToggleButton
+                    android:id="@+id/btnTempoToggle"
+                    style="@style/roundedBlackBtn"
+                    android:layout_width="130dp"
+                    android:layout_height="30dp"
+                    android:textOff="Start"
+                    android:textOn="Stop"/>
+
+            </LinearLayout>
+
+            <View style="@style/space_verti" />
+
+            <TextView
+                android:id="@+id/txtDistance"
+                style="@style/center40spBlackText"
+                android:text="0ms" />
+
+            <Button
+                android:id="@+id/btnTempo"
+                style="@style/textTempoBtnStyle"
+                android:text="@string/_1" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

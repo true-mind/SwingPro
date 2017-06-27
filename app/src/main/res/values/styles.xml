@@ -48,6 +48,14 @@
         <item name="android:textColor">#000</item>
     </style>
 
+    <style name="center25spBlackText">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
     <style name="center20spBlackText">
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
@@ -97,9 +105,19 @@
         <item name="android:scrollbars">none</item>
     </style>
 
+    <style name="m_w_Frame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="m_m_Frame">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="w_w_Frame">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="tabViewTxtBase">
@@ -265,7 +283,20 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="itemNewAlertBsae">
+    <style name="roundedBorderEditText">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/black_rounded_border</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="roundedBlackBtn">
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@drawable/black_rect_corner</item>
+    </style>
+
+    <style name="itemNewAlertBase">
         <item name="android:layout_gravity">end</item>
         <item name="android:layout_width">16dp</item>
         <item name="android:layout_height">16dp</item>
@@ -319,6 +350,56 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:textColor">#000</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+<<<<<<< HEAD
+    <style name="plain16spBlackText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="plain20spBlackText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="plain18spBlackText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="resultTableLinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="resultTableItemText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">16sp</item>
+=======
+    <style name="textTempoBtnStyle">
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_height">180dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginBottom">70dp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">70sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@drawable/circle_btn_blue</item>
+>>>>>>> origin/master
     </style>
 
 </resources>

@@ -48,7 +48,7 @@ public abstract class BaseActivity extends Activity {
      *              ,로 구분하여 무제한 개수의 동시 적용 가능
      * */
     public void setFontToViewBold(TextView... views) {
-        Typeface NanumNormal = Typeface.createFromAsset(this.getAssets(), "BMJUA_ttf.ttf");
+        Typeface NanumNormal = Typeface.createFromAsset(getContext().getAssets(), "BMJUA_ttf.ttf");
 
         for (TextView view : views)
             view.setTypeface(NanumNormal);
@@ -63,7 +63,7 @@ public abstract class BaseActivity extends Activity {
      * */
 
     public void setFontToViewBold2(TextView... views) {
-        Typeface NanumNormal = Typeface.createFromAsset(this.getAssets(), "BMDOHYEON_ttf.ttf");
+        Typeface NanumNormal = Typeface.createFromAsset(getContext().getAssets(), "BMDOHYEON_ttf.ttf");
 
         for (TextView view : views)
             view.setTypeface(NanumNormal);

@@ -12,9 +12,10 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppThemeGreenBar">
-        <activity android:name=".ui.intro.IntroActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.intro.IntroActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +36,9 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.test_seq.TestSeqActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.test_seq.TestSeqResult"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.test_tempo.TestTempoActivity"

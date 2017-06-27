@@ -10,6 +10,7 @@ public class Constants {
 
     public static int TAB_POSITION = 0;
     public static ArrayList<Integer> LIST_AVG = new ArrayList<>();
+    public static ArrayList<Integer> LIST_FOR_GRAPH = new ArrayList<>();
     public static int GRAPH_WIDTH;
     public static int GRAPH_HEIGHT = 100;
     public static int GRAPH_INTERVAL;
