@@ -19,5 +19,7 @@ public class Constants {
     public final static String MINTO_WEB_LINK = "http://www.mintosys.com/";
     public static int TEST_TEMPO_KEY = 1;
     public static final int VIEW_PAGER_MAX_COUNT = 2;
+    public static int TEST_TEMPO_BPM = 60;
+    public static int TEST_TEMPO_BPM_KEY = 5;
 
 }
