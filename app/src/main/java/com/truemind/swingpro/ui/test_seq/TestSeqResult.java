@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class TestSeqResult extends BaseActivity {
 
-    ArrayList<String> dataClone = new ArrayList<>();;
+    ArrayList<String> dataClone = new ArrayList<>();
     Button btnBack;
 
     TextView txtBtn1Time1;
