@@ -44,6 +44,9 @@
         <activity android:name=".ui.test_tempo.TestTempoActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.test_tempo.TempoResultActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
