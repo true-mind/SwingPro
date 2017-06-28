@@ -10,6 +10,7 @@ public class Constants {
 
     public static int TAB_POSITION = 0;
     public static ArrayList<Integer> LIST_AVG = new ArrayList<>();
+    public static ArrayList<Integer> LIST_FOR_GRAPH = new ArrayList<>();
     public static int GRAPH_WIDTH;
     public static int GRAPH_HEIGHT = 100;
     public static int GRAPH_INTERVAL;
@@ -19,6 +20,6 @@ public class Constants {
     public static int TEST_TEMPO_KEY = 1;
     public static final int VIEW_PAGER_MAX_COUNT = 2;
     public static int TEST_TEMPO_BPM = 60;
-    public static int TEST_TEMPO_BPM_KEY = 6;
+    public static int TEST_TEMPO_BPM_KEY = 5;
 
 }

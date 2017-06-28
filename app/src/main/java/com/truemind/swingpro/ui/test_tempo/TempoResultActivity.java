@@ -1,16 +1,14 @@
 package com.truemind.swingpro.ui.test_tempo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseActivity;
-import com.truemind.swingpro.ui.test_tempo.adapter.TempoRecyclerAdapter;
+import com.truemind.swingpro.util.TempoRecyclerAdapter;
 
 import java.util.ArrayList;
 

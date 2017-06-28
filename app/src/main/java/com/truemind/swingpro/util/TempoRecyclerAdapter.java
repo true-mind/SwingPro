@@ -1,4 +1,4 @@
-package com.truemind.swingpro.ui.test_tempo.adapter;
+package com.truemind.swingpro.util;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -50,4 +50,21 @@
     <string name="_3">3</string>
     <string name="_4">4</string>
     <string name="avg">평균</string>
+    <string name="ms_unit">단위(ms)</string>
+    <string name="no1">1번</string>
+    <string name="no2">2번</string>
+    <string name="no3">3번</string>
+    <string name="no4">4번</string>
+    <string name="first_try">1회차</string>
+    <string name="_0">0</string>
+    <string name="second_try">2회차</string>
+    <string name="third_try">3회차</string>
+    <string name="fourth_try">4회차</string>
+    <string name="of_fourth_try">/4회차</string>
+    <string name="total_time_each">회차 누적 시간 :</string>
+    <string name="_ms">ms</string>
+    <string name="test_seq_start_message">1번 버튼을 눌러 테스트 시작</string>
+    <string name="try_time">회차</string>
+    <string name="total_time_per_each">회차별 누적 시간</string>
+    <string name="total_time">총 누적시간</string>
 </resources>

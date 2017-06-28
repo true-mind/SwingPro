@@ -1,5 +1,6 @@
 package com.truemind.swingpro.ui.test_seq;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseDispatchKey;
+
+import java.util.ArrayList;
 
 /**
  * Created by 현석 on 2017-06-21.
@@ -59,6 +62,8 @@ public class TestSeqActivity extends BaseDispatchKey {
     TextView txtSeq3;
     TextView txtSeq4;
     TextView txtSeqAvg;
+
+    ArrayList<String> data = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,7 +120,7 @@ public class TestSeqActivity extends BaseDispatchKey {
 
         setFontToViewBold(txt1, txt2, txt3, txt4, txt5, txt6, txt7, txt8, txt9, txt10, txt11, txt12,
                 txt13, txt14, txt15, txt16, txt17, txt18, txt19, txtCurSeq, txtTotalTime, txtStart, btn1, btn2,
-                btn3, btn4, txtSeq1, txtSeq2, txtSeq3, txtSeq4, txtSeqAvg);
+                btn3, btn4, txtSeq1, txtSeq2, txtSeq3, txtSeq4, txtSeqAvg, txtBtn1Time, txtBtn2Time, txtBtn3Time, txtBtn4Time);
 
         marker1 = findViewById(R.id.marker1);
         marker2 = findViewById(R.id.marker2);
@@ -136,6 +141,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON2;
                     markerSwitch(CURRENT_SEQUENCE);
+                    data.add("0");
                     txtStart.setVisibility(View.INVISIBLE);
                 } else {
                     Toast.makeText(getContext(), "버튼 순서가 맞지 않습니다.", Toast.LENGTH_SHORT).show();
@@ -148,7 +154,9 @@ public class TestSeqActivity extends BaseDispatchKey {
             @Override
             public void onClick(View v) {
                 if (CURRENT_SEQUENCE == BUTTON2) {
-                    txtBtn2Time.setText(getTimeOut());
+                    String now = getTimeOut();
+                    txtBtn2Time.setText(now);
+                    data.add(now);
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON3;
                     markerSwitch(CURRENT_SEQUENCE);
@@ -162,7 +170,9 @@ public class TestSeqActivity extends BaseDispatchKey {
             @Override
             public void onClick(View v) {
                 if (CURRENT_SEQUENCE == BUTTON3) {
-                    txtBtn3Time.setText(getTimeOut());
+                    String now = getTimeOut();
+                    txtBtn3Time.setText(now);
+                    data.add(now);
                     cur_Status = TIMER_RUN;
                     CURRENT_SEQUENCE = BUTTON4;
                     markerSwitch(CURRENT_SEQUENCE);
@@ -176,7 +186,9 @@ public class TestSeqActivity extends BaseDispatchKey {
             @Override
             public void onClick(View v) {
                 if (CURRENT_SEQUENCE == BUTTON4) {
-                    txtBtn4Time.setText(getTimeOut());
+                    String now = getTimeOut();
+                    txtBtn4Time.setText(now);
+                    data.add(now);
                     cur_Status = TIMER_STOP;
                     markerSwitch(CURRENT_SEQUENCE);
                     myTimer.removeMessages(0);
@@ -203,33 +215,37 @@ public class TestSeqActivity extends BaseDispatchKey {
                     markerSwitch(CURRENT_SEQUENCE);
                     switch (CURRENT_COUNT) {
                         case 1:
-                            txtSeq1.setText(txtTotalTime.getText().toString());
+                            txtSeq1.setText(txtBtn4Time.getText().toString());
                             CURRENT_COUNT++;
                             txtStart.setVisibility(View.VISIBLE);
-                            txtSeqAvg.setText(MathAvg(Integer.parseInt(txtTotalTime.getText().toString())));
+                            txtSeqAvg.setText(MathAvg(Integer.parseInt(txtSeq1.getText().toString())));
+                            data.add(txtSeq1.getText().toString());
                             break;
                         case 2:
-                            txtSeq2.setText(txtTotalTime.getText().toString());
+                            txtSeq2.setText(txtBtn4Time.getText().toString());
                             CURRENT_COUNT++;
                             txtStart.setVisibility(View.VISIBLE);
                             txtSeqAvg.setText(MathAvg(Integer.parseInt(txtSeq1.getText().toString())
                                     , Integer.parseInt(txtSeq2.getText().toString())));
+                            data.add(txtSeq2.getText().toString());
                             break;
                         case 3:
-                            txtSeq3.setText(txtTotalTime.getText().toString());
+                            txtSeq3.setText(txtBtn4Time.getText().toString());
                             CURRENT_COUNT++;
                             txtStart.setVisibility(View.VISIBLE);
                             txtSeqAvg.setText(MathAvg(Integer.parseInt(txtSeq1.getText().toString())
                                     , Integer.parseInt(txtSeq2.getText().toString())
                                     , Integer.parseInt(txtSeq3.getText().toString())));
+                            data.add(txtSeq3.getText().toString());
                             break;
                         case 4:
-                            txtSeq4.setText(txtTotalTime.getText().toString());
+                            txtSeq4.setText(txtBtn4Time.getText().toString());
                             CURRENT_COUNT++;
                             txtSeqAvg.setText(MathAvg(Integer.parseInt(txtSeq1.getText().toString())
                                     , Integer.parseInt(txtSeq2.getText().toString())
                                     , Integer.parseInt(txtSeq3.getText().toString())
                                     , Integer.parseInt(txtSeq4.getText().toString())));
+                            data.add(txtSeq4.getText().toString());
                             break;
                     }
 
@@ -241,6 +257,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                         btn2.setEnabled(false);
                         btn3.setEnabled(false);
                         btn4.setEnabled(false);
+                        data.add(txtSeqAvg.getText().toString());
                         markerSwitch(0);
                     }
             }
@@ -267,10 +284,24 @@ public class TestSeqActivity extends BaseDispatchKey {
                 marker2.setVisibility(View.GONE);
                 marker3.setVisibility(View.GONE);
                 marker4.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "테스트가 종료되었습니다. 곧 결과 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                goResult();
                 break;
         }
 
 
+    }
+
+    public void goResult(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(getContext(), TestSeqResult.class);
+                intent.putStringArrayListExtra("data", data);
+                startActivity(intent);
+                finish();
+            }
+        }, 3000);
     }
 
     public String MathAvg(int... times) {
@@ -291,6 +322,7 @@ public class TestSeqActivity extends BaseDispatchKey {
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub
+        myTimer.removeMessages(0);
         super.onDestroy();
     }
 

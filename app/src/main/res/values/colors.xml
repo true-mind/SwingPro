@@ -9,6 +9,7 @@
     <color name="colorWhite">#fff</color>
     <color name="colorLightGrey">#eee</color>
     <color name="colorBlack">#000</color>
+    <color name="colorDarkGrey">#444444</color>
 
     <color name="plainDarkBtn1">#352d40</color>
     <color name="plainDarkBtn1_s">#171b26</color>
