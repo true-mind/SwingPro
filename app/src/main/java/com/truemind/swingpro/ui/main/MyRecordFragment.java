@@ -8,9 +8,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -21,10 +23,11 @@ import android.widget.Toast;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.R;
+import com.truemind.swingpro.graph_util.GraphCall;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.message.MessageActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
-import com.truemind.swingpro.util.LineGraph;
+import com.truemind.swingpro.graph_util.LineGraph;
 import com.truemind.swingpro.util.ProgressDialog;
 
 /**
@@ -37,12 +40,11 @@ public class MyRecordFragment extends BaseFragment {
     private static final int LIST_SIZE_SMALLER_THAN_16 = 1;
     private static final int LIST_SIZE_ZERO = 2;
 
-
     LinearLayout layout;
     TextView speedAvg;
     TextView speedFast;
     TextView statMessage;
-    LineGraph lineGraph;
+    GraphCall graphCall;
     LinearLayout graph;
 
     TextView txtDetail1;
@@ -78,20 +80,49 @@ public class MyRecordFragment extends BaseFragment {
         initFooter(getActivity(), layout);
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.show();
+
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (Constants.LIST_AVG.size() < 16) {
-                    threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
-                } else if (Constants.LIST_AVG.size() < 1) {
+                Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Constants.LIST_AVG.size()));
+                if (Constants.LIST_AVG.size() < 1) {
                     threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
+                } else if (Constants.LIST_AVG.size() < 16) {
+                    for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                        txtNoData.setVisibility(View.INVISIBLE);
+                    }
+                    graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            graph.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            graphCall = new GraphCall(getActivity(), graph, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
+                            graphCall.setGraph();
+                        }
+                    });
+
+                    threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
+                    for (int i = Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT;
+                         i < Constants.LIST_AVG.size(); i++) {
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                        txtNoData.setVisibility(View.INVISIBLE);
+                    }
+                    graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            graph.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            graphCall = new GraphCall(getActivity(), graph, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
+                            graphCall.setGraph();
+                        }
+                    });
                     threadhandler.sendEmptyMessage(LIST_SIZE_BIGGER_THAN_16);
                 }
             }
         });
         return layout;
     }
+
 
     /**
      * LineGraph를 통해 막대그래프를 추가할 때, constants에 있는 arrayList를 가지고 들어감.
@@ -102,20 +133,12 @@ public class MyRecordFragment extends BaseFragment {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case LIST_SIZE_BIGGER_THAN_16:
-                    for (int i = 0; i < Constants.GRAPH_MAX_COUNT; i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
-                        txtNoData.setVisibility(View.INVISIBLE);
-                        lineGraph = new LineGraph(getActivity());
-                        graph.addView(lineGraph);
-                    }
+                    graphCall.showGraph();
+                    txtNoData.setVisibility(View.INVISIBLE);
                     break;
                 case LIST_SIZE_SMALLER_THAN_16:
-                    for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
-                        txtNoData.setVisibility(View.INVISIBLE);
-                        lineGraph = new LineGraph(getActivity());
-                        graph.addView(lineGraph);
-                    }
+                    graphCall.showGraph();
+                    txtNoData.setVisibility(View.INVISIBLE);
                     break;
                 case LIST_SIZE_ZERO:
                     txtNoData.setVisibility(View.VISIBLE);
@@ -168,12 +191,8 @@ public class MyRecordFragment extends BaseFragment {
 
         txtNoData = (TextView) layout.findViewById(R.id.txtNoData);
 
-
-        Animation slide = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_from_bottom);
-
         setFontToViewBold(getActivity(), titleStat, titleRec, txtDetail1, txtDetail2, txtSpeedFast, txtSpeedAvg, para1, paraMessage,
                 speedFast, speedAvg, ms1, ms2, statMessage, btnTxtNotice, btnTxtMessage, btnTxtAccount, noticeAlert, messageAlert, txtNoData);
-        graph.startAnimation(slide);
 
         alertSetter();
     }
