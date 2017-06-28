@@ -28,12 +28,17 @@
                 android:id="@+id/txt21"
                 style="@style/center25spBlackText"
                 android:text="Time" />
-
-            <ListView
-                android:id="@+id/tempo_result_listview"
+            <View
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                style="@style/m_m_Frame"></ListView>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBlack"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/tempo_result_recyclerView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                style="@style/m_m_Frame"/>
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

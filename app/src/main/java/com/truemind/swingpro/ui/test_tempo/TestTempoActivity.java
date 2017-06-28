@@ -57,6 +57,7 @@ public class TestTempoActivity extends BaseDispatchKey{
         setContentView(R.layout.activity_test_tempo);
 
         initView();
+        initSlideMenu("Test");
         initListener();
     }
 
@@ -82,8 +83,7 @@ public class TestTempoActivity extends BaseDispatchKey{
         spinner.setAdapter(spinnerAdapter);
         spinner.setSelection(Constants.TEST_TEMPO_BPM_KEY-1);
 
-        distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 305, getResources().getDisplayMetrics()); //305dp 구하기
-        Log.d("MyTag", "distance:"+distance);
+        distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 305, getResources().getDisplayMetrics());
     }
 
     public void initListener(){
@@ -138,7 +138,6 @@ public class TestTempoActivity extends BaseDispatchKey{
     }
 
     private void endMetronome() {
-        //dot 원위치로
         imgDot.animate().cancel();
         imgDot.setX(0);
         txtDistance.setText("");
