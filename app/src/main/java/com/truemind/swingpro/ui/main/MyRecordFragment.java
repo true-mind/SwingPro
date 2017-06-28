@@ -225,6 +225,7 @@ public class MyRecordFragment extends BaseFragment {
                     Intent intent = new Intent(getActivity(), MyStatDetailActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });

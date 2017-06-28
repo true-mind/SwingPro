@@ -1,5 +1,6 @@
 package com.truemind.swingpro.ui.detail;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,8 @@ import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.base.BaseActivity;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.graph_util.GraphCall;
+import com.truemind.swingpro.ui.main.MainActivity;
+import com.truemind.swingpro.ui.test_tempo.TestTempoActivity;
 import com.truemind.swingpro.util.ProgressDialog;
 
 /**
@@ -155,6 +158,16 @@ public class MyStatDetailActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION=0;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
 }
