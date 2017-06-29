@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center"
+        style="@style/m_w_Horizontal">
+        <TextView
+            android:gravity="center"
+            style="@style/center16spBlackText"
+            android:minHeight="30dp"
+            android:id="@+id/listitem_record_tv"/>
+        <TextView
+            android:gravity="center"
+            android:text="ms"
+            style="@style/center16spBlackText"
+            android:minHeight="30dp"
+            android:id="@+id/listitem_record_tv_ms"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBlack"/>
+</LinearLayout>

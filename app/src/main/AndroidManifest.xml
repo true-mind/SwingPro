@@ -19,8 +19,9 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -47,8 +48,10 @@
         <activity
             android:name=".ui.test_tempo.TempoResultActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.account.MyAccountSetting"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.account.MyAccountSetting"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.detail.MyRecordDetailActivity"></activity>
     </application>
 
 </manifest>
