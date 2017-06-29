@@ -3,7 +3,10 @@ package com.truemind.swingpro.base;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -42,4 +45,54 @@ public class BaseFragment extends Fragment {
         for (TextView view : views)
             view.setTypeface(NanumNormal);
     }
+
+    public void setColor(View v, int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            v.setBackgroundColor(getResources().getColor(color, null));
+        } else {
+            v.setBackgroundColor(getResources().getColor(color));
+        }
+    }
+
+    public void setTxtColor(TextView v, int color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            v.setTextColor(getResources().getColor(color, null));
+        } else {
+            v.setTextColor(getResources().getColor(color));
+        }
+    }
+
+    public int getMyPreferences(int seq){
+        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
+        return Integer.parseInt(pref.getString(Integer.toString(seq), "0"));
+    }
+
+    public int getMyPreferencesSize(){
+        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
+        return Integer.parseInt(pref.getString("Max", "0"));
+    }
+
+    public void saveMyPreferences(int seq, int value, int max){
+        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(Integer.toString(seq), Integer.toString(value));
+        editor.putString("Max", Integer.toString(max));
+        editor.apply();
+    }
+
+    public void removeMyPreferences(int seq){
+        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove(Integer.toString(seq));
+        editor.apply();
+    }
+
+    public void removeMyAllPreferences(){
+        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.apply();
+    }
+
+
 }

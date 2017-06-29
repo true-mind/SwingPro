@@ -60,7 +60,7 @@ public class MyRecordFragment extends BaseFragment {
 
     ProgressDialog progressDialog;
     ImageView img_ad;
-    boolean isNotice = true;
+    boolean isNotice = false;
 
     public MyRecordFragment() {
 
@@ -172,6 +172,7 @@ public class MyRecordFragment extends BaseFragment {
          * -> SpeedAvg는 내 평균 속도에서 기록되어야 함.*/
         speedFast = (TextView) layout.findViewById(R.id.speedFast);
         speedAvg = (TextView) layout.findViewById(R.id.speedAvg);
+        TextView txtCPSDesc = (TextView)layout.findViewById(R.id.txtCPSDesc);
 
         TextView ms1 = (TextView) layout.findViewById(R.id.ms1);
         TextView ms2 = (TextView) layout.findViewById(R.id.ms2);
@@ -191,9 +192,10 @@ public class MyRecordFragment extends BaseFragment {
 
         txtNoData = (TextView) layout.findViewById(R.id.txtNoData);
 
-        setFontToViewBold(getActivity(), titleStat, titleRec, txtDetail1, txtDetail2, txtSpeedFast, txtSpeedAvg, para1, paraMessage,
+        setFontToViewBold(getActivity(), titleStat, titleRec, txtDetail1, txtDetail2, txtSpeedFast, txtSpeedAvg, para1, paraMessage, txtCPSDesc,
                 speedFast, speedAvg, ms1, ms2, statMessage, btnTxtNotice, btnTxtMessage, btnTxtAccount, noticeAlert, messageAlert, txtNoData);
 
+        bindData();
         alertSetter();
     }
 
@@ -213,6 +215,17 @@ public class MyRecordFragment extends BaseFragment {
         }
     }
 
+    public void bindData(){
+        if(Constants.BEST_SCORE == 999999999){
+            speedFast.setText("NR");
+            speedAvg.setText("NR");
+        }else{
+            speedFast.setText(Float.toString(1 / Constants.BEST_SCORE * 1000));
+            Log.d("MyTag", "BEST_SCORE: "+Float.toString(1 / Constants.BEST_SCORE * 1000));
+            speedAvg.setText(Float.toString(1 / Constants.AVG_SCORE * 1000));
+            Log.d("MyTag", "AVG_SCORE: "+Float.toString(1 / Constants.AVG_SCORE * 1000));
+        }
+    }
 
     public void initListener() {
 

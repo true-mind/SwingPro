@@ -1,5 +1,6 @@
 package com.truemind.swingpro.ui.main;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.util.AdapterSpinner;
+import com.truemind.swingpro.util.CommonDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,8 @@ public class SettingFragment extends BaseFragment {
     Button btnDelete;
 
     LinearLayout layout;
+
+    private boolean isLocal = false;
 
     SpinnerAdapter spinnerAdapter;
     public SettingFragment(){
@@ -83,6 +87,13 @@ public class SettingFragment extends BaseFragment {
         setFontToViewBold(getActivity(), normalSetting, txtDeleteAll, txtLogin, txtMessage, titlePrivacy, titleSwingAir,
                 testTempoSetting, btnDelete);
 
+        if(!isLocal){
+            setTxtColor(txtMessage, R.color.colorLightGrey);
+            checkMessage.setChecked(true);
+            checkMessage.setClickable(false);
+            checkLogin.setChecked(false);
+            checkLogin.setClickable(false);
+        }
 
         spinnerAdapter = new AdapterSpinner(getActivity(), keyValues);
 
@@ -105,6 +116,36 @@ public class SettingFragment extends BaseFragment {
             }
         });
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog dialog = new CommonDialog();
+                dialog.setOnCloseListener(new CommonDialog.OnCloseListener() {
+                    @Override
+                    public void onClose(DialogInterface dialog, int which, Object data) {
+                        if(which==1){
+                            if(Constants.LIST_AVG.size()<1){
+                                CommonDialog dialogDone = new CommonDialog();
+                                dialogDone.showDialog(getActivity(), "삭제할 데이터가 존재하지 않습니다.");
+                            }else{
+                                Constants.LIST_AVG.clear();
+                                Constants.BEST_SCORE = 999999999;
+                                Constants.AVG_SCORE = 999999999;
+                                Constants.START_DATE = "";
+                                if(Constants.LIST_AVG.size()<1){
+                                    CommonDialog dialogDone = new CommonDialog();
+                                    dialogDone.showDialog(getActivity(), "데이터가 전부 삭제되었습니다.");
+                                }
+                            }
+                        }
+                    }
+                });
+                dialog.showDialog(getActivity(), "데이터를 전부 삭제하시겠습니까? 삭제된 데이터는 복구되지 않습니다.");
+            }
+        });
+
     }
+
+
 
 }

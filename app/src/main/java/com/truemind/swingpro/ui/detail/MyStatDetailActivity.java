@@ -40,8 +40,14 @@ public class MyStatDetailActivity extends BaseActivity {
 
     TextView statMessage;
 
+    TextView value1;
+    TextView value2;
+    TextView value3;
+    TextView value4;
+
     GraphCall graphCall;
 
+    private int STATUS = 0;
     private int position_now = 0;
 
     ProgressDialog progressDialog;
@@ -115,6 +121,7 @@ public class MyStatDetailActivity extends BaseActivity {
                 case LIST_SIZE_ZERO:
                     break;
             }
+            STATUS = msg.what;
             initListener();
             progressDialog.dismiss();
         }
@@ -137,8 +144,15 @@ public class MyStatDetailActivity extends BaseActivity {
         TextView tableRow4 = (TextView)findViewById(R.id.tableRow4);
         graph_detail = (LinearLayout)findViewById(R.id.graph_detail);
 
+        value1 = (TextView)findViewById(R.id.table1Value);
+        value2 = (TextView)findViewById(R.id.table2Value);
+        value3 = (TextView)findViewById(R.id.table3Value);
+        value4 = (TextView)findViewById(R.id.table4Value);
+
         setFontToViewBold(txtPrevious, txtNext, para1, paraMessage, statMessage,
         tableRow1, tableRow2, tableRow3, tableRow4);
+
+        bindData();
 
     }
 
@@ -160,9 +174,15 @@ public class MyStatDetailActivity extends BaseActivity {
 
     }
 
+    public void bindData(){
+        value1.setText(Float.toString(Constants.BEST_SCORE));
+        value2.setText(Float.toString(Constants.AVG_SCORE));
+        value3.setText(Constants.START_DATE);
+        value4.setText(Integer.toString(Constants.LIST_AVG.size()));
+    }
+
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public void onBack() {
         Intent intent = new Intent(getContext(), MainActivity.class);
         Constants.TAB_POSITION=0;
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

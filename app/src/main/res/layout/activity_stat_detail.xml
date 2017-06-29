@@ -40,7 +40,7 @@
                                 <TextView
                                     android:id="@+id/txtPrevious"
                                     style="@style/fragItemDetailMore"
-                                    android:text="이전 기록 열람"/>
+                                    android:text="이전 기록 열람" />
 
                             </LinearLayout>
 
@@ -214,7 +214,7 @@
                                     <TextView
                                         android:id="@+id/tableRow1"
                                         style="@style/center14spBlackText"
-                                        android:text="@string/myBestRecord"/>
+                                        android:text="@string/myBestRecord" />
 
                                 </LinearLayout>
 
@@ -229,7 +229,10 @@
                                     android:layout_weight="1"
                                     android:gravity="center">
 
-
+                                    <TextView
+                                        android:id="@+id/table1Value"
+                                        style="@style/center14spBlackText"
+                                        android:text="0" />
 
                                 </LinearLayout>
 
@@ -240,7 +243,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="#000"/>
+                                android:background="#000" />
 
                             <!-- Table Row 2 Start -->
 
@@ -257,7 +260,7 @@
                                     <TextView
                                         android:id="@+id/tableRow2"
                                         style="@style/center14spBlackText"
-                                        android:text="@string/myAvgRecord"/>
+                                        android:text="@string/myAvgRecord" />
 
                                 </LinearLayout>
 
@@ -272,6 +275,11 @@
                                     android:layout_weight="1"
                                     android:gravity="center">
 
+                                    <TextView
+                                        android:id="@+id/table2Value"
+                                        style="@style/center14spBlackText"
+                                        android:text="0"/>
+
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -281,7 +289,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="#000"/>
+                                android:background="#000" />
 
                             <!-- Table Row 3 Start -->
 
@@ -298,7 +306,7 @@
                                     <TextView
                                         android:id="@+id/tableRow3"
                                         style="@style/center14spBlackText"
-                                        android:text="@string/measureStartDate"/>
+                                        android:text="@string/measureStartDate" />
 
                                 </LinearLayout>
 
@@ -313,6 +321,11 @@
                                     android:layout_weight="1"
                                     android:gravity="center">
 
+                                    <TextView
+                                        android:id="@+id/table3Value"
+                                        style="@style/center14spBlackText"
+                                        android:text="0"/>
+
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -322,7 +335,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="#000"/>
+                                android:background="#000" />
 
                             <!-- Table Row 4 Start -->
 
@@ -339,7 +352,7 @@
                                     <TextView
                                         android:id="@+id/tableRow4"
                                         style="@style/center14spBlackText"
-                                        android:text="@string/timesMeasure"/>
+                                        android:text="@string/timesMeasure" />
 
                                 </LinearLayout>
 
@@ -353,6 +366,11 @@
                                     android:layout_height="30dp"
                                     android:layout_weight="1"
                                     android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/table4Value"
+                                        style="@style/center14spBlackText"
+                                        android:text="0"/>
 
                                 </LinearLayout>
 

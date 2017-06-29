@@ -46,7 +46,7 @@ public class IntroActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBack() {
         long tempTime = System.currentTimeMillis();
         long intervalTime = tempTime - backPressedTime;
 

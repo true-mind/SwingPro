@@ -31,7 +31,7 @@ public class TempoResultActivity extends BaseActivity {
     }
 
     private void addData() {
-        recyclerView.setAdapter(new TempoRecyclerAdapter(results, R.layout.listitem_tempo));
+        recyclerView.setAdapter(new TempoRecyclerAdapter(getContext(), results, R.layout.listitem_tempo));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
@@ -44,5 +44,10 @@ public class TempoResultActivity extends BaseActivity {
         recyclerView = (RecyclerView) findViewById(R.id.tempo_result_recyclerView);
 
         setFontToViewBold(txtBpm, txt1, txt2);
+    }
+
+    @Override
+    public void onBack() {
+        finish();
     }
 }

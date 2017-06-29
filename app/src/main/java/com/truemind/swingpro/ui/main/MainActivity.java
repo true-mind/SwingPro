@@ -3,6 +3,7 @@ package com.truemind.swingpro.ui.main;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -94,6 +95,7 @@ public class MainActivity extends BaseActivity {
      */
     public static final long FINISH_INTERVAL_TIME = 2000;
     public long backPressedTime = 0;
+    private int backCount = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -199,7 +201,7 @@ public class MainActivity extends BaseActivity {
         timer.scheduleAtFixedRate(new viewPagerTimer(), 0, seconds * 1000);
     }
 
-    class viewPagerTimer extends TimerTask {
+    private class viewPagerTimer extends TimerTask {
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
@@ -233,14 +235,14 @@ public class MainActivity extends BaseActivity {
             initTab(currentTab);
             tabMarking(currentTab);
             if (currentTab > previousTab) {
-                container.startAnimation(pageAnimationLeft);
+                //container.startAnimation(pageAnimationLeft);
             } else if (previousTab > currentTab) {
-                container.startAnimation(pageAnimationRight);
+                //container.startAnimation(pageAnimationRight);
             } else {
                 //intentionally do nothing
                 //Refresh
             }
-
+            settingBtnBaseInit();
         }
     };
 
@@ -273,7 +275,8 @@ public class MainActivity extends BaseActivity {
      * 이 후 두번째 탭일 경우 추가 세팅 버튼 레이아웃을 노출시킨다.
      * */
     public void settingBtnBaseInit() {
-        if (currentTab == SECOND_TAB) {
+        if (currentTab == SECOND_TAB
+                ||currentTab == THIRD_TAB) {
             settingBtnBase.setVisibility(View.VISIBLE);
             settingBtnBase.startAnimation(alphaBounce);
             btnKeyMap.setOnClickListener(new View.OnClickListener() {
@@ -372,16 +375,17 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    public void onBackPressed() {
-        long tempTime = System.currentTimeMillis();
-        long intervalTime = tempTime - backPressedTime;
-
-        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
-            Constants.TAB_POSITION = 0;
-            super.onBackPressed();
-        } else {
-            backPressedTime = tempTime;
-            Toast.makeText(getContext(), R.string.exitMessage, Toast.LENGTH_SHORT).show();
+    public void onBack() {
+        backCount++;
+        Toast.makeText(getContext(), R.string.exitMessage, Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                backCount = 0;
+            }
+        }, 2000);
+        if(backCount>1){
+            finish();
         }
     }
 

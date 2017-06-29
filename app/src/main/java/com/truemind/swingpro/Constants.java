@@ -20,6 +20,11 @@ public class Constants {
     public static int TEST_TEMPO_KEY = 1;
     public static final int VIEW_PAGER_MAX_COUNT = 2;
     public static int TEST_TEMPO_BPM = 60;
-    public static int TEST_TEMPO_BPM_KEY = 5;
+    public static int TEST_TEMPO_BPM_KEY = 6;
+
+    public static float BEST_SCORE = 999999999;
+    public static float AVG_SCORE = 999999999;
+
+    public static String START_DATE = "";
 
 }

@@ -1,6 +1,7 @@
 package com.truemind.swingpro.ui.test_tempo;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.truemind.swingpro.Constants;
@@ -31,7 +33,7 @@ import java.util.TimerTask;
  * Created by 현석 on 2017-06-21.
  */
 
-public class TestTempoActivity extends BaseDispatchKey{
+public class TestTempoActivity extends BaseDispatchKey {
 
     private ImageView imgDot;
     private Spinner spinner;
@@ -48,7 +50,9 @@ public class TestTempoActivity extends BaseDispatchKey{
     private long timeInterval;
     private float distance;
     private boolean reverse;
+    boolean HANDLER_ACTIVE = false;
 
+    private int BUTTON_KEY = 1;
     private Handler handler;
 
     @Override
@@ -64,7 +68,7 @@ public class TestTempoActivity extends BaseDispatchKey{
     private void initView() {
         results = new ArrayList<>();
         keyValues = new ArrayList<>();
-        for(int i = 10; i<110; i = i+10){
+        for (int i = 10; i < 110; i = i + 10) {
             keyValues.add(Integer.toString(i));
         }
 
@@ -81,18 +85,20 @@ public class TestTempoActivity extends BaseDispatchKey{
         spinnerAdapter = new AdapterSpinner(getContext(), keyValues);
 
         spinner.setAdapter(spinnerAdapter);
-        spinner.setSelection(Constants.TEST_TEMPO_BPM_KEY-1);
+        spinner.setSelection(Constants.TEST_TEMPO_BPM_KEY - 1);
 
         distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 305, getResources().getDisplayMetrics());
+
+        getBtnKey();
     }
 
-    public void initListener(){
+    public void initListener() {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Constants.TEST_TEMPO_BPM_KEY = (position+1);
+                Constants.TEST_TEMPO_BPM_KEY = (position + 1);
                 Constants.TEST_TEMPO_BPM = Integer.parseInt(keyValues.get(position));
-                if(toggle.isChecked()){
+                if (toggle.isChecked()) {
                     toggle.performClick();
                 }
             }
@@ -106,9 +112,9 @@ public class TestTempoActivity extends BaseDispatchKey{
         toggle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(toggle.isChecked()){
+                if (toggle.isChecked()) {
                     startMetronome();
-                }else{
+                } else {
                     endMetronome();
                 }
             }
@@ -117,22 +123,26 @@ public class TestTempoActivity extends BaseDispatchKey{
         btnTempo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long curTime;
-                long distance;
-                String txt = "";
-                curTime = SystemClock.elapsedRealtime();
-                distance = curTime-myBaseTime;
-                if(distance>0){
-                    if(distance>timeInterval/2){
-                        txt = "-"+String.valueOf(timeInterval-distance)+"ms";
-                    }else{
-                        txt = "+"+String.valueOf(distance)+"ms";
+                if (toggle.isChecked()) {
+                    long curTime;
+                    long distance;
+                    String txt = "";
+                    curTime = SystemClock.elapsedRealtime();
+                    distance = curTime - myBaseTime;
+                    if (distance > 0) {
+                        if (distance > timeInterval / 2) {
+                            txt = "-" + String.valueOf(timeInterval - distance) + "ms";
+                        } else {
+                            txt = "+" + String.valueOf(distance) + "ms";
+                        }
+                    } else if (distance == 0) {
+                        txt = "0ms";
                     }
-                }else if(distance==0){
-                    txt = "0ms";
+                    txtDistance.setText(txt);
+                    results.add(txt);
+                } else {
+                    Toast.makeText(getContext(), "먼저 Start 해주세요.", Toast.LENGTH_SHORT).show();
                 }
-                txtDistance.setText(txt);
-                results.add(txt);
             }
         });
     }
@@ -145,6 +155,7 @@ public class TestTempoActivity extends BaseDispatchKey{
         handler.removeMessages(0);
         handler = null;
         btnTempo.setClickable(false);
+        HANDLER_ACTIVE = false;
 
         Intent intent = new Intent(TestTempoActivity.this, TempoResultActivity.class);
         intent.putStringArrayListExtra("results", results);
@@ -157,16 +168,17 @@ public class TestTempoActivity extends BaseDispatchKey{
         myBaseTime = SystemClock.elapsedRealtime();
         reverse = false;
 
-        handler = new Handler(){
+        handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if(!reverse){
-                    Log.d("MyTag", "x:"+imgDot.getX());
+                if (!reverse) {
+                    Log.d("MyTag", "x:" + imgDot.getX());
                     imgDot.animate().translationX(distance).setDuration(timeInterval).start(); //+305
-                }else{
+                } else {
                     imgDot.animate().translationX(0).setDuration(timeInterval).start();
                 }
                 reverse = !reverse;
+                HANDLER_ACTIVE = true;
                 handler.sendEmptyMessageDelayed(0, timeInterval);
                 myBaseTime = SystemClock.elapsedRealtime();
             }
@@ -176,24 +188,58 @@ public class TestTempoActivity extends BaseDispatchKey{
         btnTempo.setClickable(true);
     }
 
+    public void getBtnKey() {
+        BUTTON_KEY = Constants.TEST_TEMPO_KEY;
+        switch (Constants.TEST_TEMPO_KEY) {
+            case 1:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnTempo.setBackground(getDrawable(R.drawable.circle_btn_blue));
+                }
+                btnTempo.setText("1");
+                break;
+            case 2:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnTempo.setBackground(getDrawable(R.drawable.circle_btn_red));
+                }
+                btnTempo.setText("2");
+                break;
+            case 3:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnTempo.setBackground(getDrawable(R.drawable.circle_btn_green));
+                }
+                btnTempo.setText("3");
+                break;
+            case 4:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    btnTempo.setBackground(getDrawable(R.drawable.circle_btn_yellow));
+                }
+                btnTempo.setText("4");
+                break;
+        }
+    }
+
     @Override
     public void onkey1() {
-        btnTempo.performClick();
+        if (BUTTON_KEY == 1)
+            btnTempo.performClick();
     }
 
     @Override
     public void onkey2() {
-
+        if (BUTTON_KEY == 2)
+            btnTempo.performClick();
     }
 
     @Override
     public void onkey3() {
-
+        if (BUTTON_KEY == 3)
+            btnTempo.performClick();
     }
 
     @Override
     public void onkey4() {
-
+        if (BUTTON_KEY == 4)
+            btnTempo.performClick();
     }
 
     @Override
@@ -227,8 +273,10 @@ public class TestTempoActivity extends BaseDispatchKey{
     }
 
     @Override
-    public void onKeyBack() {
-        handler.removeMessages(0);
+    public void onBack() {
+        if (HANDLER_ACTIVE) {
+            handler.removeMessages(0);
+        }
         handler = null;
         finish();
     }

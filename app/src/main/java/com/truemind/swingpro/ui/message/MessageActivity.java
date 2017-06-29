@@ -29,4 +29,9 @@ public class MessageActivity extends BaseActivity{
         noMessage = (TextView)findViewById(R.id.noMessage);
         setFontToViewBold(noMessage);
     }
+
+    @Override
+    public void onBack() {
+        finish();
+    }
 }

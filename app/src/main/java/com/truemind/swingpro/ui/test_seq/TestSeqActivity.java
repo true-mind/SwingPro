@@ -301,7 +301,7 @@ public class TestSeqActivity extends BaseDispatchKey {
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 1000);
     }
 
     public String MathAvg(int... times) {
@@ -377,7 +377,7 @@ public class TestSeqActivity extends BaseDispatchKey {
     }
 
     @Override
-    public void onKeyBack() {
+    public void onBack() {
         finish();
     }
 }

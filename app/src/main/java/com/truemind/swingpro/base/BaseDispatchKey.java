@@ -3,6 +3,7 @@ package com.truemind.swingpro.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.os.Build;
@@ -326,6 +327,47 @@ public abstract class BaseDispatchKey extends Activity {
     public abstract void onkey9();
     public abstract void onkey10();
 
-    public abstract void onKeyBack();
+    public void onKeyBack(){
+        if(isPageOpen){
+            menuEvent();
+        }else{
+            onBack();
+        }
+    }
 
+    public abstract void onBack();
+
+
+
+    public int getMyPreferences(int seq){
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        return Integer.parseInt(pref.getString(Integer.toString(seq), "0"));
+    }
+
+    public int getMyPreferencesSize(){
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        return Integer.parseInt(pref.getString("Max", "0"));
+    }
+
+    public void saveMyPreferences(int seq, int value, int max){
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(Integer.toString(seq), Integer.toString(value));
+        editor.putString("Max", Integer.toString(max));
+        editor.apply();
+    }
+
+    public void removeMyPreferences(String seq){
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.remove(seq);
+        editor.apply();
+    }
+
+    public void removeMyAllPreferences(){
+        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.clear();
+        editor.apply();
+    }
 }
