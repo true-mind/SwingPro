@@ -141,4 +141,8 @@ public class MyAccountSetting extends BaseActivity {
         return phoneNumber;
     }
 
+    @Override
+    public void onBack() {
+        finish();
+    }
 }

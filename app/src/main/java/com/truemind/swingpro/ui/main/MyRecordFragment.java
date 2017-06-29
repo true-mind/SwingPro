@@ -24,6 +24,7 @@ import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.graph_util.GraphCall;
+import com.truemind.swingpro.ui.account.MyAccountSetting;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.message.MessageActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
@@ -271,7 +272,9 @@ public class MyRecordFragment extends BaseFragment {
         btnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Account", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), MyAccountSetting.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
 
