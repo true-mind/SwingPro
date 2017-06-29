@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
+import com.truemind.swingpro.ui.account.MyAccountSetting;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
@@ -173,7 +174,9 @@ public abstract class BaseActivity extends Activity {
         baseMyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), MyAccountSetting.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 menuEvent();
             }
         });

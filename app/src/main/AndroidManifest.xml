@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:allowBackup="true"
@@ -17,36 +19,36 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.main.MainActivity"
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.notice.NoticeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.message.MessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.detail.MyStatDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.test_seq.TestSeqActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.test_seq.TestSeqResult"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.test_tempo.TestTempoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.test_tempo.TempoResultActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.account.MyAccountSetting"
             android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.notice.NoticeActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.message.MessageActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.MyStatDetailActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.test_seq.TestSeqActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.test_seq.TestSeqResult"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.test_tempo.TestTempoActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.test_tempo.TempoResultActivity"
-            android:screenOrientation="portrait"/>
-
     </application>
 
 </manifest>
