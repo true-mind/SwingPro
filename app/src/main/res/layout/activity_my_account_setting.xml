@@ -1,9 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.truemind.swingpro.ui.account.MyAccountSettingActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/m_m_Vertical"
+    android:background="@color/colorCommonBack">
+    <include layout="@layout/common_head" />
+    <FrameLayout style="@style/m_m_Frame">
+        <LinearLayout style="@style/m_m_Vertical">
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="58dp">
+                <TextView
+                    android:id="@+id/txt22"
+                    android:text="로그인된 계정"
+                    style="@style/plain12spBlackText"/>
+                <Space style="@style/space_verti"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/account_tv_id"
+                        android:text="ant_tree@naver.com"
+                        style="@style/plain18spBlackText"/>
+                    <Space style="@style/space_hori"/>
+                    <Button
+                        android:id="@+id/account_btn_logout"
+                        android:background="@drawable/s_btn_plain_dark3"
+                        android:text="로그아웃"
+                        android:textColor="@color/colorWhite"
+                        android:layout_width="58dp"
+                        android:layout_height="20dp" />
+                </LinearLayout>
+            </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="58dp">
+                <TextView
+                    android:id="@+id/txt23"
+                    android:text="이름"
+                    style="@style/plain12spBlackText"/>
+                <Space style="@style/space_verti"/>
+                <TextView
+                    android:id="@+id/account_tv_name"
+                    android:text="심현석"
+                    style="@style/plain18spBlackText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:background="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="58dp">
+                <TextView
+                    android:id="@+id/txt24"
+                    android:text="전화번호"
+                    style="@style/plain12spBlackText"/>
+                <Space style="@style/space_verti"/>
+                <TextView
+                    android:id="@+id/account_tv_phone"
+                    android:text="+821030091563"
+                    style="@style/plain18spBlackText"/>
+            </LinearLayout>
+
+            <Space style="@style/space_verti"/>
+
+            <Button
+                android:id="@+id/account_btn_change_pwd"
+                android:textSize="18sp"
+                android:background="@drawable/s_btn_plain_dark1"
+                android:textColor="@color/colorWhite"
+                android:text="비밀번호 변경"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/account_btn_dropout"
+                android:textSize="18sp"
+                android:background="@drawable/s_btn_plain_dark2"
+                android:textColor="@color/colorWhite"
+                android:text="회원탈퇴"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <include layout="@layout/sliding_menu"/>
+    </FrameLayout>
+</LinearLayout>

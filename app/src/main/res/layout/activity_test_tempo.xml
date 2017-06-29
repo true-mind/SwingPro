@@ -78,6 +78,8 @@
                 android:text="@string/_1" />
 
         </LinearLayout>
+
+        <include layout="@layout/sliding_menu"/>
     </FrameLayout>
 
 </LinearLayout>

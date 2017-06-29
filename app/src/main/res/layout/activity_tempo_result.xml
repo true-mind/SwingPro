@@ -40,5 +40,6 @@
                 android:layout_marginRight="10dp"
                 style="@style/m_m_Frame"/>
         </LinearLayout>
+        <include layout="@layout/sliding_menu"/>
     </FrameLayout>
 </LinearLayout>

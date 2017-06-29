@@ -32,6 +32,14 @@
         <item name="android:orientation">horizontal</item>
     </style>
 
+    <style name="center12spBlackText">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
     <style name="center18spBlackText">
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
@@ -72,10 +80,24 @@
         <item name="android:textColor">#000</item>
     </style>
 
+    <style name="plain12spBlackText">
+        <item name="android:textColor">#000</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="plain16spText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="plain18spBlackText">
+        <item name="android:textColor">#000</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="center14spBlackText">
@@ -364,13 +386,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#000</item>
         <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="plain18spBlackText">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#000</item>
-        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="resultTableLinearLayout">
