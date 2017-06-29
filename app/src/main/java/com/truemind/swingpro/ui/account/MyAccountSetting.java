@@ -9,13 +9,14 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.TelephonyManager;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseActivity;
+import com.truemind.swingpro.util.CommonDialog;
 
 public class MyAccountSetting extends BaseActivity {
 
@@ -35,6 +36,25 @@ public class MyAccountSetting extends BaseActivity {
         setContentView(R.layout.activity_my_account_setting);
         initView();
         initSlideMenu("내 계정 설정");
+        initListener();
+    }
+
+    private void initListener() {
+        btnChangePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog dialog = new CommonDialog();
+                dialog.showDialog(MyAccountSetting.this, "로컬 버전에서는 사용할 수 없습니다.");
+            }
+        });
+
+        btnDropout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog dialog = new CommonDialog();
+                dialog.showDialog(MyAccountSetting.this, "로컬 버전에서는 사용할 수 없습니다.");
+            }
+        });
     }
 
     private void initView() {
@@ -74,10 +94,9 @@ public class MyAccountSetting extends BaseActivity {
             case 1:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(MyAccountSetting.this, "Permission Granted!", Toast.LENGTH_SHORT).show();
                     tv_phone.setText(getPhoneNumber());
                 } else {
-                    Toast.makeText(MyAccountSetting.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyAccountSetting.this, "Permission Denied.", Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -119,8 +138,6 @@ public class MyAccountSetting extends BaseActivity {
         catch(Exception e) {
             e.printStackTrace();
         }
-
-        Log.d("MyTag", "phone:" + phoneNumber);
         return phoneNumber;
     }
 
