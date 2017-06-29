@@ -20,13 +20,13 @@ import com.truemind.swingpro.ui.test_tempo.TestTempoActivity;
  * Created by 현석 on 2017-06-15.
  */
 
-public class MeasureFragment extends BaseFragment{
+public class MeasureFragment extends BaseFragment {
 
     LinearLayout layout;
     LinearLayout btn1;
     LinearLayout btn2;
 
-    public MeasureFragment(){
+    public MeasureFragment() {
 
     }
 
@@ -39,30 +39,31 @@ public class MeasureFragment extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        layout = (LinearLayout)inflater.inflate(R.layout.frag_measure, container, false);
+        layout = (LinearLayout) inflater.inflate(R.layout.frag_measure, container, false);
         initView();
         initListener();
         return layout;
     }
 
-    public void initView(){
-        TextView testSeqTitle = (TextView)layout.findViewById(R.id.testSeqTitle);
-        TextView testTempoTitle = (TextView)layout.findViewById(R.id.testTempoTitle);
-        TextView testSeqDesc = (TextView)layout.findViewById(R.id.testSeqDesc);
-        TextView testTempoDesc = (TextView)layout.findViewById(R.id.testTempoDesc);
+    public void initView() {
+        TextView testSeqTitle = (TextView) layout.findViewById(R.id.testSeqTitle);
+        TextView testTempoTitle = (TextView) layout.findViewById(R.id.testTempoTitle);
+        TextView testSeqDesc = (TextView) layout.findViewById(R.id.testSeqDesc);
+        TextView testTempoDesc = (TextView) layout.findViewById(R.id.testTempoDesc);
 
-        btn1 = (LinearLayout)layout.findViewById(R.id.btn1);
-        btn2 = (LinearLayout)layout.findViewById(R.id.btn2);
+        btn1 = (LinearLayout) layout.findViewById(R.id.btn1);
+        btn2 = (LinearLayout) layout.findViewById(R.id.btn2);
         setFontToViewBold(getActivity(), testSeqTitle, testTempoTitle, testSeqDesc, testTempoDesc);
     }
 
-    public void initListener(){
+    public void initListener() {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TestSeqActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
 
@@ -72,6 +73,7 @@ public class MeasureFragment extends BaseFragment{
                 Intent intent = new Intent(getActivity(), TestTempoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
     }

@@ -17,11 +17,11 @@ import java.util.ArrayList;
  */
 
 public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAdapter.ViewHolder> {
-    private ArrayList<Float> results;
+    private ArrayList<Integer> results;
     private int itemLayout;
     Context context;
 
-    public RecordRecyclerAdapter(Context context, ArrayList<Float> results, int itemLayout){
+    public RecordRecyclerAdapter(Context context, ArrayList<Integer> results, int itemLayout) {
         this.context = context;
         this.results = results;
         this.itemLayout = itemLayout;
@@ -35,8 +35,8 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Float item = results.get(position);
-        holder.tv.setText(""+item);
+        int item = results.get(position);
+        holder.tv.setText("" + item);
         setFontToViewBold(holder.tv, holder.tv_ms);
         holder.itemView.setTag(item);
     }
@@ -46,10 +46,11 @@ public class RecordRecyclerAdapter extends RecyclerView.Adapter<RecordRecyclerAd
         return results.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
         TextView tv_ms;
-        ViewHolder(View itemView){
+
+        ViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.listitem_record_tv);
             tv_ms = (TextView) itemView.findViewById(R.id.listitem_record_tv_ms);

@@ -51,7 +51,8 @@
         <activity
             android:name=".ui.account.MyAccountSetting"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.detail.MyRecordDetailActivity"></activity>
+
+        <activity android:name=".ui.detail.MyRecordDetailActivity" />
     </application>
 
 </manifest>

@@ -42,7 +42,8 @@ public class SettingFragment extends BaseFragment {
     private boolean isLocal = false;
 
     SpinnerAdapter spinnerAdapter;
-    public SettingFragment(){
+
+    public SettingFragment() {
 
     }
 
@@ -55,13 +56,13 @@ public class SettingFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        layout = (LinearLayout)inflater.inflate(R.layout.frag_setting, container, false);
+        layout = (LinearLayout) inflater.inflate(R.layout.frag_setting, container, false);
         initView();
         initListener();
         return layout;
     }
 
-    public void initView(){
+    public void initView() {
 
         List<String> keyValues = new ArrayList<>();
         keyValues.add("1");
@@ -69,24 +70,24 @@ public class SettingFragment extends BaseFragment {
         keyValues.add("3");
         keyValues.add("4");
 
-        TextView normalSetting = (TextView)layout.findViewById(R.id.normalSetting);
-        TextView txtLogin = (TextView)layout.findViewById(R.id.txtLogin);
-        TextView txtMessage = (TextView)layout.findViewById(R.id.txtMessage);
-        TextView titleSwingAir = (TextView)layout.findViewById(R.id.titleSwingAir);
-        TextView testTempoSetting = (TextView)layout.findViewById(R.id.testTempoSetting);
-        TextView titlePrivacy = (TextView)layout.findViewById(R.id.titlePrivacy);
-        TextView txtDeleteAll = (TextView)layout.findViewById(R.id.txtDeleteAll);
+        TextView normalSetting = (TextView) layout.findViewById(R.id.normalSetting);
+        TextView txtLogin = (TextView) layout.findViewById(R.id.txtLogin);
+        TextView txtMessage = (TextView) layout.findViewById(R.id.txtMessage);
+        TextView titleSwingAir = (TextView) layout.findViewById(R.id.titleSwingAir);
+        TextView testTempoSetting = (TextView) layout.findViewById(R.id.testTempoSetting);
+        TextView titlePrivacy = (TextView) layout.findViewById(R.id.titlePrivacy);
+        TextView txtDeleteAll = (TextView) layout.findViewById(R.id.txtDeleteAll);
 
-        checkLogin = (CheckBox)layout.findViewById(R.id.checkLogin);
-        checkMessage = (CheckBox)layout.findViewById(R.id.checkMessage);
+        checkLogin = (CheckBox) layout.findViewById(R.id.checkLogin);
+        checkMessage = (CheckBox) layout.findViewById(R.id.checkMessage);
 
-        spinnerKey = (Spinner)layout.findViewById(R.id.spinnerTempoBtn);
-        btnDelete = (Button)layout.findViewById(R.id.btnDelete);
+        spinnerKey = (Spinner) layout.findViewById(R.id.spinnerTempoBtn);
+        btnDelete = (Button) layout.findViewById(R.id.btnDelete);
 
         setFontToViewBold(getActivity(), normalSetting, txtDeleteAll, txtLogin, txtMessage, titlePrivacy, titleSwingAir,
                 testTempoSetting, btnDelete);
 
-        if(!isLocal){
+        if (!isLocal) {
             setTxtColor(txtMessage, R.color.colorLightGrey);
             checkMessage.setChecked(true);
             checkMessage.setClickable(false);
@@ -99,16 +100,16 @@ public class SettingFragment extends BaseFragment {
         spinnerAdapter = new AdapterSpinner(getActivity(), keyValues);
 
         spinnerKey.setAdapter(spinnerAdapter);
-        spinnerKey.setSelection(Constants.TEST_TEMPO_KEY-1);
+        spinnerKey.setSelection(Constants.TEST_TEMPO_KEY - 1);
 
     }
 
-    public void initListener(){
+    public void initListener() {
 
         spinnerKey.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Constants.TEST_TEMPO_KEY = (position+1);
+                Constants.TEST_TEMPO_KEY = (position + 1);
             }
 
             @Override
@@ -124,16 +125,16 @@ public class SettingFragment extends BaseFragment {
                 dialog.setOnCloseListener(new CommonDialog.OnCloseListener() {
                     @Override
                     public void onClose(DialogInterface dialog, int which, Object data) {
-                        if(which==1){
-                            if(Constants.LIST_AVG.size()<1){
+                        if (which == 1) {
+                            if (Constants.LIST_AVG.size() < 1) {
                                 CommonDialog dialogDone = new CommonDialog();
                                 dialogDone.showDialog(getActivity(), "삭제할 데이터가 존재하지 않습니다.");
-                            }else{
+                            } else {
                                 Constants.LIST_AVG.clear();
                                 Constants.BEST_SCORE = 999999999;
                                 Constants.AVG_SCORE = 999999999;
                                 Constants.START_DATE = "";
-                                if(Constants.LIST_AVG.size()<1){
+                                if (Constants.LIST_AVG.size() < 1) {
                                     CommonDialog dialogDone = new CommonDialog();
                                     dialogDone.showDialog(getActivity(), "데이터가 전부 삭제되었습니다.");
                                 }
@@ -146,7 +147,6 @@ public class SettingFragment extends BaseFragment {
         });
 
     }
-
 
 
 }

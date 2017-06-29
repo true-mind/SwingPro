@@ -11,7 +11,7 @@ import com.truemind.swingpro.R;
  * Created by 현석 on 2017-06-19.
  */
 
-public class MessageActivity extends BaseActivity{
+public class MessageActivity extends BaseActivity {
 
     TextView noMessage;
 
@@ -24,9 +24,9 @@ public class MessageActivity extends BaseActivity{
         initView();
     }
 
-    public void initView(){
+    public void initView() {
 
-        noMessage = (TextView)findViewById(R.id.noMessage);
+        noMessage = (TextView) findViewById(R.id.noMessage);
         setFontToViewBold(noMessage);
     }
 

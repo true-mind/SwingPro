@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity {
         initTab(Constants.TAB_POSITION);
         tabMarking(Constants.TAB_POSITION);
 
-        btnGoLook = (Button)findViewById(R.id.btnGoLook);
+        btnGoLook = (Button) findViewById(R.id.btnGoLook);
 
         settingBtnBase = (LinearLayout) findViewById(R.id.settingBtnBase);
         btnKeyMap = (LinearLayout) findViewById(R.id.btnKeyMap);
@@ -192,10 +192,11 @@ public class MainActivity extends BaseActivity {
 
     /**
      * ViewPager 주기적인 자동 스크롤 태스크
-     * @param seconds 초단위로 스크롤 타이밍을 받음 - 예 : 4초 간격
      *
-     *  무조건 오른쪽으로 스크롤 됨.
-     * */
+     * @param seconds 초단위로 스크롤 타이밍을 받음 - 예 : 4초 간격
+     *                <p>
+     *                무조건 오른쪽으로 스크롤 됨.
+     */
     public void viewPagerTimerControll(int seconds) {
         timer = new Timer();
         timer.scheduleAtFixedRate(new viewPagerTimer(), 0, seconds * 1000);
@@ -208,10 +209,10 @@ public class MainActivity extends BaseActivity {
                 public void run() {
                     int vp_page = imgPager.getCurrentItem();
                     int max_page = Constants.VIEW_PAGER_MAX_COUNT;
-                    if(vp_page == max_page-1){
+                    if (vp_page == max_page - 1) {
                         imgPager.setCurrentItem(0, true);
-                    }else{
-                        imgPager.setCurrentItem(vp_page+1, true);
+                    } else {
+                        imgPager.setCurrentItem(vp_page + 1, true);
                     }
 
                 }
@@ -273,10 +274,10 @@ public class MainActivity extends BaseActivity {
     /**
      * 아래 메서드는 모든 fragment 갱신 시 호출 되며, 호출 직후 현재 탭이 두번째 탭인지 확인.
      * 이 후 두번째 탭일 경우 추가 세팅 버튼 레이아웃을 노출시킨다.
-     * */
+     */
     public void settingBtnBaseInit() {
         if (currentTab == SECOND_TAB
-                ||currentTab == THIRD_TAB) {
+                || currentTab == THIRD_TAB) {
             settingBtnBase.setVisibility(View.VISIBLE);
             settingBtnBase.startAnimation(alphaBounce);
             btnKeyMap.setOnClickListener(new View.OnClickListener() {
@@ -384,7 +385,7 @@ public class MainActivity extends BaseActivity {
                 backCount = 0;
             }
         }, 2000);
-        if(backCount>1){
+        if (backCount > 1) {
             finish();
         }
     }

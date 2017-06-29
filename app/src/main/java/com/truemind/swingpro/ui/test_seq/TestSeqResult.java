@@ -160,7 +160,7 @@ public class TestSeqResult extends BaseActivity {
         float sumAll = (Constants.AVG_SCORE * Constants.LIST_AVG.size()) + Integer.parseInt(dataIntoConstants);
         Constants.LIST_AVG.add(Integer.parseInt(dataIntoConstants));
         Constants.AVG_SCORE = sumAll / Constants.LIST_AVG.size();
-        if(Constants.START_DATE.length()<3){
+        if (Constants.START_DATE.length() < 3) {
             long today = System.currentTimeMillis();
             SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
             Constants.START_DATE = date.format(today);

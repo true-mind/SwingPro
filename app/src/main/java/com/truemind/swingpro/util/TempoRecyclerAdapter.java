@@ -22,7 +22,7 @@ public class TempoRecyclerAdapter extends RecyclerView.Adapter<TempoRecyclerAdap
     private int itemLayout;
     Context context;
 
-    public TempoRecyclerAdapter(Context context, ArrayList<String> results, int itemLayout){
+    public TempoRecyclerAdapter(Context context, ArrayList<String> results, int itemLayout) {
         this.itemLayout = itemLayout;
         this.results = results;
         this.context = context;
@@ -47,9 +47,10 @@ public class TempoRecyclerAdapter extends RecyclerView.Adapter<TempoRecyclerAdap
         return results.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
-        ViewHolder(View itemView){
+
+        ViewHolder(View itemView) {
             super(itemView);
             tv = (TextView) itemView.findViewById(R.id.listitem_tempo_tv);
         }

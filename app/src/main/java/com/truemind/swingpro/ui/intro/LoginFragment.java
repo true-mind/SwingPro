@@ -24,7 +24,7 @@ import com.truemind.swingpro.util.CommonDialog;
  * Created by 현석 on 2017-06-19.
  */
 
-public class LoginFragment extends BaseFragment{
+public class LoginFragment extends BaseFragment {
 
     FrameLayout layout;
     ImageView titleLogo;
@@ -32,7 +32,7 @@ public class LoginFragment extends BaseFragment{
     Button btnJoin;
     Button btnSignIn;
 
-    public LoginFragment(){
+    public LoginFragment() {
 
     }
 
@@ -46,7 +46,7 @@ public class LoginFragment extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        layout = (FrameLayout)inflater.inflate(R.layout.frag_login, container, false);
+        layout = (FrameLayout) inflater.inflate(R.layout.frag_login, container, false);
         initView();
         initListener();
         return layout;
@@ -55,18 +55,18 @@ public class LoginFragment extends BaseFragment{
     public void initView() {
 
 
-        titleLogo = (ImageView)layout.findViewById(R.id.titleLogo);
-        btnLocal = (Button)layout.findViewById(R.id.btnLocal);
-        btnJoin = (Button)layout.findViewById(R.id.btnJoin);
-        btnSignIn = (Button)layout.findViewById(R.id.btnSignIn);
-        LinearLayout btnBase = (LinearLayout)layout.findViewById(R.id.btnBase);
+        titleLogo = (ImageView) layout.findViewById(R.id.titleLogo);
+        btnLocal = (Button) layout.findViewById(R.id.btnLocal);
+        btnJoin = (Button) layout.findViewById(R.id.btnJoin);
+        btnSignIn = (Button) layout.findViewById(R.id.btnSignIn);
+        LinearLayout btnBase = (LinearLayout) layout.findViewById(R.id.btnBase);
 
-        ImageView titleLogo = (ImageView)layout.findViewById(R.id.titleLogo);
-        Animation animation = AnimationUtils.loadAnimation(getActivity(),R.anim.slide_to_top);
+        ImageView titleLogo = (ImageView) layout.findViewById(R.id.titleLogo);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_to_top);
         titleLogo.startAnimation(animation);
 
         btnBase.setVisibility(View.VISIBLE);
-        Animation btnAnimation = AnimationUtils.loadAnimation(getActivity(),R.anim.btn_alpha);
+        Animation btnAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.btn_alpha);
         btnBase.startAnimation(btnAnimation);
 
         setFontToViewBold(getActivity(), btnLocal, btnJoin, btnSignIn);
@@ -74,7 +74,7 @@ public class LoginFragment extends BaseFragment{
     }
 
 
-    public void initListener(){
+    public void initListener() {
         btnLocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +95,7 @@ public class LoginFragment extends BaseFragment{
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommonDialog  dialog = new CommonDialog();
+                CommonDialog dialog = new CommonDialog();
                 dialog.showDialog(getActivity(), "지금은 로컬에서만 시작 가능합니다.");
             }
         });

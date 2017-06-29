@@ -8,13 +8,13 @@
         <TextView
             android:gravity="center"
             style="@style/center16spBlackText"
-            android:minHeight="30dp"
+            android:minHeight="20dp"
             android:id="@+id/listitem_record_tv"/>
         <TextView
             android:gravity="center"
             android:text="ms"
             style="@style/center16spBlackText"
-            android:minHeight="30dp"
+            android:minHeight="20dp"
             android:id="@+id/listitem_record_tv_ms"/>
     </LinearLayout>
 

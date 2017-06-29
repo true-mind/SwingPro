@@ -19,11 +19,11 @@ import com.truemind.swingpro.R;
  * Created by 현석 on 2017-06-19.
  */
 
-public class IntroFragment extends BaseFragment{
+public class IntroFragment extends BaseFragment {
 
     FrameLayout layout;
 
-    public IntroFragment(){
+    public IntroFragment() {
 
     }
 
@@ -37,15 +37,15 @@ public class IntroFragment extends BaseFragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        layout = (FrameLayout)inflater.inflate(R.layout.frag_intro, container, false);
+        layout = (FrameLayout) inflater.inflate(R.layout.frag_intro, container, false);
         initView();
         return layout;
     }
 
     public void initView() {
 
-        ImageView titleLogo = (ImageView)layout.findViewById(R.id.titleLogo);
-        Animation animation = AnimationUtils.loadAnimation(getActivity(),R.anim.alpha);
+        ImageView titleLogo = (ImageView) layout.findViewById(R.id.titleLogo);
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.alpha);
         titleLogo.startAnimation(animation);
     }
 

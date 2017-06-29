@@ -85,6 +85,7 @@ public class MyAccountSetting extends BaseActivity {
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(
             int requestCode,
@@ -120,22 +121,21 @@ public class MyAccountSetting extends BaseActivity {
         ActivityCompat.requestPermissions(this,
                 new String[]{permissionName}, permissionRequestCode);
     }
+
     private String getPhoneNumber() {
         readPermission();
         TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        String phoneNumber ="";
+        String phoneNumber = "";
 
         try {
             if (telephony.getLine1Number() != null) {
                 phoneNumber = telephony.getLine1Number();
-            }
-            else {
+            } else {
                 if (telephony.getSimSerialNumber() != null) {
                     phoneNumber = telephony.getSimSerialNumber();
                 }
             }
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return phoneNumber;

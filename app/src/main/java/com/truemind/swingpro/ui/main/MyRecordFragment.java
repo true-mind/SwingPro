@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +23,7 @@ import com.truemind.swingpro.base.BaseFragment;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.graph_util.GraphCall;
 import com.truemind.swingpro.ui.account.MyAccountSetting;
+import com.truemind.swingpro.ui.detail.MyRecordDetailActivity;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.message.MessageActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
@@ -81,35 +80,6 @@ public class MyRecordFragment extends BaseFragment {
         initFooter(getActivity(), layout);
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.show();
-/*
-        Constants.LIST_AVG.add(6234);
-        Constants.LIST_AVG.add(2334);
-        Constants.LIST_AVG.add(14234);
-        Constants.LIST_AVG.add(1254);
-        Constants.LIST_AVG.add(3424);
-        Constants.LIST_AVG.add(5624);
-        Constants.LIST_AVG.add(1324);
-        Constants.LIST_AVG.add(2234);
-        Constants.LIST_AVG.add(3234);
-        Constants.LIST_AVG.add(2334);
-        Constants.LIST_AVG.add(3434);
-        Constants.LIST_AVG.add(1534);
-        Constants.LIST_AVG.add(16634);
-        Constants.LIST_AVG.add(4534);
-        Constants.LIST_AVG.add(2334);
-        Constants.LIST_AVG.add(5234);
-        Constants.LIST_AVG.add(7734);
-        Constants.LIST_AVG.add(5334);
-        Constants.LIST_AVG.add(6634);
-        Constants.LIST_AVG.add(8834);
-        Constants.LIST_AVG.add(2534);
-        Constants.LIST_AVG.add(7534);
-        Constants.LIST_AVG.add(2334);
-        Constants.LIST_AVG.add(5534);
-        Constants.LIST_AVG.add(4234);
-        Constants.LIST_AVG.add(6434);
-        Constants.LIST_AVG.add(6734);
-*/
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -117,7 +87,7 @@ public class MyRecordFragment extends BaseFragment {
                 Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Constants.LIST_AVG.size()));
                 if (Constants.LIST_AVG.size() < 1) {
                     threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
-                } else if (Constants.LIST_AVG.size() < 16) {
+                } else if (Constants.LIST_AVG.size() < Constants.GRAPH_MAX_COUNT) {
                     for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
                     }
@@ -133,7 +103,7 @@ public class MyRecordFragment extends BaseFragment {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
+                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT+1), Constants.LIST_AVG.size());
                     txtNoData.setVisibility(View.INVISIBLE);
                     graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
@@ -273,7 +243,14 @@ public class MyRecordFragment extends BaseFragment {
         txtDetail2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Detail : My Record", Toast.LENGTH_SHORT).show();
+                if (Constants.LIST_AVG.size() < 1) {
+                    Toast.makeText(getActivity(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), MyRecordDetailActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
             }
         });
 

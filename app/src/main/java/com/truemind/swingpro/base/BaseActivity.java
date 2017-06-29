@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.ui.account.MyAccountSetting;
+import com.truemind.swingpro.ui.detail.MyRecordDetailActivity;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
@@ -54,7 +55,7 @@ public abstract class BaseActivity extends Activity {
      *
      * @param views 적용을 원하는 모든 TextView
      *              ,로 구분하여 무제한 개수의 동시 적용 가능
-     * */
+     */
     public void setFontToViewBold(TextView... views) {
         Typeface NanumNormal = Typeface.createFromAsset(getContext().getAssets(), "BMJUA_ttf.ttf");
 
@@ -68,7 +69,7 @@ public abstract class BaseActivity extends Activity {
      *
      * @param views 적용을 원하는 모든 TextView
      *              ,로 구분하여 무제한 개수의 동시 적용 가능
-     * */
+     */
 
     public void setFontToViewBold2(TextView... views) {
         Typeface NanumNormal = Typeface.createFromAsset(getContext().getAssets(), "BMDOHYEON_ttf.ttf");
@@ -77,7 +78,7 @@ public abstract class BaseActivity extends Activity {
             view.setTypeface(NanumNormal);
     }
 
-    public void setColor(View v, int color){
+    public void setColor(View v, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             v.setBackgroundColor(getResources().getColor(color, null));
         } else {
@@ -85,7 +86,7 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    public void setTxtColor(TextView v, int color){
+    public void setTxtColor(TextView v, int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             v.setTextColor(getResources().getColor(color, null));
         } else {
@@ -102,34 +103,33 @@ public abstract class BaseActivity extends Activity {
 
     /**
      * 현재 context를 불러오기
+     *
      * @return activity
-     * */
-    public Activity getContext()
-    {
+     */
+    public Activity getContext() {
         return this;
     }
 
-    public Context getAppContext()
-    {
+    public Context getAppContext() {
         return getApplicationContext();
     }
 
     public void initSlideMenu(String headerTitle) {
 
-        slidingPage = (LinearLayout)findViewById(R.id.slidingPage);
-        menuBtn = (LinearLayout)findViewById(R.id.menuBtn);
-        TextView txtTitleBar = (TextView)findViewById(R.id.txtTitleBar);
+        slidingPage = (LinearLayout) findViewById(R.id.slidingPage);
+        menuBtn = (LinearLayout) findViewById(R.id.menuBtn);
+        TextView txtTitleBar = (TextView) findViewById(R.id.txtTitleBar);
         txtTitleBar.setText(headerTitle);
 
-        baseMyAccount = (LinearLayout)findViewById(R.id.baseMyAccount);
-        baseMyStat = (LinearLayout)findViewById(R.id.baseMyStat);
-        baseMyRecord = (LinearLayout)findViewById(R.id.baseMyRecord);
-        baseMeasure = (LinearLayout)findViewById(R.id.baseMeasure);
-        baseNotice = (LinearLayout)findViewById(R.id.baseNotice);
-        baseSetting = (LinearLayout)findViewById(R.id.baseSetting);
-        baseBluetooth = (LinearLayout)findViewById(R.id.baseBluetooth);
-        privacyText = (TextView)findViewById(R.id.privacyText);
-        serviceText = (TextView)findViewById(R.id.serviceText);
+        baseMyAccount = (LinearLayout) findViewById(R.id.baseMyAccount);
+        baseMyStat = (LinearLayout) findViewById(R.id.baseMyStat);
+        baseMyRecord = (LinearLayout) findViewById(R.id.baseMyRecord);
+        baseMeasure = (LinearLayout) findViewById(R.id.baseMeasure);
+        baseNotice = (LinearLayout) findViewById(R.id.baseNotice);
+        baseSetting = (LinearLayout) findViewById(R.id.baseSetting);
+        baseBluetooth = (LinearLayout) findViewById(R.id.baseBluetooth);
+        privacyText = (TextView) findViewById(R.id.privacyText);
+        serviceText = (TextView) findViewById(R.id.serviceText);
 
         SpannableString contentPrivacy = new SpannableString("개인정보취급방침");
         contentPrivacy.setSpan(new UnderlineSpan(), 0, contentPrivacy.length(), 0);
@@ -140,13 +140,13 @@ public abstract class BaseActivity extends Activity {
         privacyText.setText(contentPrivacy);
         serviceText.setText(contentService);
 
-        TextView txtMyAccount = (TextView)findViewById(R.id.txtMyAccount);
-        TextView txtMyStat = (TextView)findViewById(R.id.txtMyStat);
-        TextView txtMyRecord = (TextView)findViewById(R.id.txtMyRecord);
-        TextView txtMeasure = (TextView)findViewById(R.id.txtMeasure);
-        TextView txtNotice = (TextView)findViewById(R.id.txtNotice);
-        TextView txtSetting = (TextView)findViewById(R.id.txtSetting);
-        TextView txtBluetooth = (TextView)findViewById(R.id.txtBluetooth);
+        TextView txtMyAccount = (TextView) findViewById(R.id.txtMyAccount);
+        TextView txtMyStat = (TextView) findViewById(R.id.txtMyStat);
+        TextView txtMyRecord = (TextView) findViewById(R.id.txtMyRecord);
+        TextView txtMeasure = (TextView) findViewById(R.id.txtMeasure);
+        TextView txtNotice = (TextView) findViewById(R.id.txtNotice);
+        TextView txtSetting = (TextView) findViewById(R.id.txtSetting);
+        TextView txtBluetooth = (TextView) findViewById(R.id.txtBluetooth);
         setFontToViewBold(txtBluetooth, txtSetting, txtNotice, txtMeasure, txtMyRecord, txtMyStat, txtMyAccount, txtTitleBar, privacyText, serviceText);
 
         translateLeftAnim = AnimationUtils.loadAnimation(this, R.anim.slide_from_left);
@@ -166,27 +166,25 @@ public abstract class BaseActivity extends Activity {
         menuBtnListener();
     }
 
-    public void initFooter(){
-        TextView txtFooter = (TextView)findViewById(R.id.txtFooter);
-        TextView txtFooter2 = (TextView)findViewById(R.id.txtFooter2);
+    public void initFooter() {
+        TextView txtFooter = (TextView) findViewById(R.id.txtFooter);
+        TextView txtFooter2 = (TextView) findViewById(R.id.txtFooter2);
         setFontToViewBold2(txtFooter, txtFooter2);
     }
 
-    public void menuEvent(){
-        if(isPageOpen){
+    public void menuEvent() {
+        if (isPageOpen) {
             slidingPage.startAnimation(translateRightAnim);
-        }
-        else{
+        } else {
             slidingPage.setVisibility(View.VISIBLE);
             slidingPage.startAnimation(translateLeftAnim);
         }
     }
 
     /**
-     *Side Menu Button Listener
-     *
-     * */
-    public void menuBtnListener(){
+     * Side Menu Button Listener
+     */
+    public void menuBtnListener() {
 
         baseMyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,7 +214,14 @@ public abstract class BaseActivity extends Activity {
         baseMyRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "3", Toast.LENGTH_SHORT).show();
+                if (Constants.LIST_AVG.size() < 1) {
+                    Toast.makeText(getContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getContext(), MyRecordDetailActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
                 menuEvent();
             }
         });
@@ -279,10 +284,10 @@ public abstract class BaseActivity extends Activity {
 
     }
 
-    public void viewOnVisible(View viewVisible, View... viewsGone){
+    public void viewOnVisible(View viewVisible, View... viewsGone) {
 
         viewVisible.setVisibility(View.VISIBLE);
-        for (View view : viewsGone){
+        for (View view : viewsGone) {
             view.setVisibility(View.GONE);
         }
 
@@ -294,8 +299,7 @@ public abstract class BaseActivity extends Activity {
             if (isPageOpen) {
                 slidingPage.setVisibility(View.GONE);
                 isPageOpen = false;
-            }
-            else {
+            } else {
                 isPageOpen = true;
             }
         }
@@ -311,17 +315,17 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    public int getMyPreferences(int seq){
+    public int getMyPreferences(int seq) {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         return Integer.parseInt(pref.getString(Integer.toString(seq), "0"));
     }
 
-    public int getMyPreferencesSize(){
+    public int getMyPreferencesSize() {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         return Integer.parseInt(pref.getString("Max", "0"));
     }
 
-    public void saveMyPreferences(int seq, int value, int max){
+    public void saveMyPreferences(int seq, int value, int max) {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString(Integer.toString(seq), Integer.toString(value));
@@ -329,14 +333,14 @@ public abstract class BaseActivity extends Activity {
         editor.apply();
     }
 
-    public void removeMyPreferences(String seq){
+    public void removeMyPreferences(String seq) {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.remove(seq);
         editor.apply();
     }
 
-    public void removeMyAllPreferences(){
+    public void removeMyAllPreferences() {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.clear();
@@ -345,9 +349,9 @@ public abstract class BaseActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if(isPageOpen){
+        if (isPageOpen) {
             menuEvent();
-        }else{
+        } else {
             onBack();
         }
     }

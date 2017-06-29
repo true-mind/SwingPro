@@ -13,23 +13,23 @@ import com.truemind.swingpro.R;
 
 /**
  * Created by 현석 on 2017-04-23.
- *
+ * <p>
  * 공통 dialog
  * btns로 버튼 개수 선택 가능 (최대 2개)
  * btns로 string을 받았을 때, 해당 개수에 맞는 버튼에 string을 넣음
- *
+ * <p>
  * ex)
- *
+ * <p>
  * new CommonDialog dialog = new CommonDialog();
  * dialog.setOnCloseListener(new UserSizeDialog.OnCloseListener() {
- *
- *      public void onClose(int which, Object data) {
- *          if(which==1){
- *              //TODO : btn1번 눌렸을 때
- *          }else if(which == 2){
- *              //TODO : btn1번 눌렸을 때
- *          }
- *      }
+ * <p>
+ * public void onClose(int which, Object data) {
+ * if(which==1){
+ * //TODO : btn1번 눌렸을 때
+ * }else if(which == 2){
+ * //TODO : btn1번 눌렸을 때
+ * }
+ * }
  * });
  * showDialog(getContext(), title, message, cancelable, btn1, btn2);
  */

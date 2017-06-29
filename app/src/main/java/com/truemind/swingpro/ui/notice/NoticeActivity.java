@@ -24,9 +24,9 @@ public class NoticeActivity extends BaseActivity {
         initView();
     }
 
-    public void initView(){
+    public void initView() {
 
-        noMessage = (TextView)findViewById(R.id.noMessage);
+        noMessage = (TextView) findViewById(R.id.noMessage);
         setFontToViewBold(noMessage);
     }
 

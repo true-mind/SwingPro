@@ -44,7 +44,7 @@ public class LineGraph extends View {
         paint.setStrokeWidth(GraphCall.LINE_WIDTH);
 
         for (int current_count = 0; current_count < max_count; current_count++) {
-            float startX = (current_count+1) * interval;
+            float startX = (current_count + 1) * interval;
             canvas.drawLine(startX, layout_height, startX, dataset.get(current_count), paint);
         }
     }

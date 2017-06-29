@@ -72,7 +72,7 @@ public class MyStatDetailActivity extends BaseActivity {
                 Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Constants.LIST_AVG.size()));
                 if (Constants.LIST_AVG.size() < 1) {
                     threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
-                } else if (Constants.LIST_AVG.size() < 16) {
+                } else if (Constants.LIST_AVG.size() < Constants.GRAPH_MAX_COUNT) {
                     for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
                     }
@@ -88,7 +88,7 @@ public class MyStatDetailActivity extends BaseActivity {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
+                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT + 1), Constants.LIST_AVG.size());
 
                     graph_detail.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -163,26 +163,26 @@ public class MyStatDetailActivity extends BaseActivity {
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (canGoPrevious && STATUS==LIST_SIZE_BIGGER_THAN_16) {
+                if (canGoPrevious && STATUS == LIST_SIZE_BIGGER_THAN_16) {
                     graph_detail.removeAllViews();
 
-                    if(position_now - Constants.GRAPH_MAX_COUNT >= 15){
-                        position_now = (position_now - Constants.GRAPH_MAX_COUNT);
-                        Log.d("MyTagStat", "Now Position is "+position_now);
-                        Log.d("MyTagStat", "Go Previous from "+(position_now - Constants.GRAPH_MAX_COUNT)+" to "+position_now);
+                    if (position_now - Constants.GRAPH_MAX_COUNT >= 15) {
+                        position_now = (position_now - Constants.GRAPH_MAX_COUNT + 1);
+                        Log.d("MyTagStat", "Now Position is " + position_now);
+                        Log.d("MyTagStat", "Go Previous from " + (position_now - Constants.GRAPH_MAX_COUNT) + " to " + position_now);
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((position_now - Constants.GRAPH_MAX_COUNT), position_now);
-                    }else{
-                        Log.d("MyTagStat", "Go Previous from "+0+" to "+position_now);
+                    } else {
+                        Log.d("MyTagStat", "Go Previous from " + 0 + " to " + position_now);
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(0, position_now);
                         position_now = 0;
-                        Log.d("MyTagStat", "Now Position is "+position_now);
+                        Log.d("MyTagStat", "Now Position is " + position_now);
                         canGoPrevious = false;
                     }
                     canGoNext = true;
                     graphCall = new GraphCall(getContext(), graph_detail, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
                     graphCall.setGraph();
                     graphCall.showGraph();
-                }else{
+                } else {
                     Toast.makeText(getContext(), "기록이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -191,26 +191,26 @@ public class MyStatDetailActivity extends BaseActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (canGoNext && STATUS==LIST_SIZE_BIGGER_THAN_16) {
+                if (canGoNext && STATUS == LIST_SIZE_BIGGER_THAN_16) {
                     graph_detail.removeAllViews();
 
-                    if(position_now + Constants.GRAPH_MAX_COUNT < Constants.LIST_AVG.size()-Constants.GRAPH_MAX_COUNT){
+                    if (position_now + Constants.GRAPH_MAX_COUNT < Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) {
                         position_now = (position_now + Constants.GRAPH_MAX_COUNT);
-                        Log.d("MyTag", "Now Position is "+position_now);
-                        Log.d("MyTag", "Go Next from "+position_now+" to "+(position_now + Constants.GRAPH_MAX_COUNT));
+                        Log.d("MyTag", "Now Position is " + position_now);
+                        Log.d("MyTag", "Go Next from " + position_now + " to " + (position_now + Constants.GRAPH_MAX_COUNT));
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(position_now, position_now + Constants.GRAPH_MAX_COUNT);
-                    }else{
-                        Log.d("MyTag", "Go Next from "+(Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT)+" to "+(Constants.LIST_AVG.size()-1));
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
-                        position_now = Constants.LIST_AVG.size()-1;
-                        Log.d("MyTag", "Now Position is "+position_now);
+                    } else {
+                        Log.d("MyTag", "Go Next from " + (Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) + " to " + (Constants.LIST_AVG.size()));
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) + 1, Constants.LIST_AVG.size());
+                        position_now = Constants.LIST_AVG.size();
+                        Log.d("MyTag", "Now Position is " + position_now);
                         canGoNext = false;
                     }
                     canGoPrevious = true;
                     graphCall = new GraphCall(getContext(), graph_detail, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
                     graphCall.setGraph();
                     graphCall.showGraph();
-                }else{
+                } else {
                     Toast.makeText(getContext(), "기록이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -234,7 +234,7 @@ public class MyStatDetailActivity extends BaseActivity {
                 canGoPrevious = false;
                 break;
             case LIST_SIZE_BIGGER_THAN_16:
-                position_now = Constants.LIST_AVG.size()-1;
+                position_now = Constants.LIST_AVG.size();
                 canGoNext = false;
                 canGoPrevious = true;
                 break;

@@ -33,7 +33,7 @@ public class IntroActivity extends BaseActivity {
 
     }
 
-    public void goLogin(){
+    public void goLogin() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

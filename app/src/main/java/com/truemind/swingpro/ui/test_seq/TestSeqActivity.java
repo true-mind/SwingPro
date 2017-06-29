@@ -265,8 +265,8 @@ public class TestSeqActivity extends BaseDispatchKey {
         }
     };
 
-    public void markerSwitch(int markerOnView){
-        switch (markerOnView){
+    public void markerSwitch(int markerOnView) {
+        switch (markerOnView) {
             case 1:
                 viewOnVisible(marker1, marker2, marker3, marker4);
                 break;
@@ -288,11 +288,9 @@ public class TestSeqActivity extends BaseDispatchKey {
                 goResult();
                 break;
         }
-
-
     }
 
-    public void goResult(){
+    public void goResult() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -317,7 +315,6 @@ public class TestSeqActivity extends BaseDispatchKey {
         long outTime = now - myBaseTime;
         return Long.toString(outTime);
     }
-
 
     @Override
     protected void onDestroy() {

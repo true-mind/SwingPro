@@ -13,24 +13,23 @@ import com.truemind.swingpro.R;
 
 /**
  * Created by 현석 on 2017-05-02.
- *
+ * <p>
  * CutomProgressDialog
  * 취소 불가능 (setCancelable - false)
- *
  */
 
-public class ProgressDialog extends Dialog{
+public class ProgressDialog extends Dialog {
 
-    public ProgressDialog(Context context){
+    public ProgressDialog(Context context) {
         super(context);
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         setContentView(R.layout.progress_dialog);
         getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         setCancelable(false);
 
-        ImageView icon = (ImageView)findViewById(R.id.progressIcon);
-        TextView text1 = (TextView)findViewById(R.id.textProgress);
-        TextView text2 = (TextView)findViewById(R.id.textProgress2);
+        ImageView icon = (ImageView) findViewById(R.id.progressIcon);
+        TextView text1 = (TextView) findViewById(R.id.textProgress);
+        TextView text2 = (TextView) findViewById(R.id.textProgress2);
 
         Animation animation = AnimationUtils.loadAnimation(context, R.anim.clock);
         icon.startAnimation(animation);
