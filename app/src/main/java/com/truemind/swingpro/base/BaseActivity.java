@@ -183,9 +183,14 @@ public abstract class BaseActivity extends Activity {
         baseMyStat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MyStatDetailActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                if (Constants.LIST_AVG.size() < 1) {
+                    Toast.makeText(getContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getContext(), MyStatDetailActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
                 menuEvent();
             }
         });
