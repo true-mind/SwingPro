@@ -160,6 +160,27 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            style="@style/menuBtnBaseVerti"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/privacyText"
+                android:layout_marginLeft="15dp"
+                style="@style/plain12spBlackText"
+                android:textColor="@color/color_true_blue"
+                android:text="개인정보취급방침"/>
+
+            <TextView
+                android:id="@+id/serviceText"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                style="@style/plain12spBlackText"
+                android:textColor="@color/color_true_blue"
+                android:text="서비스이용약관"/>
+
+            </LinearLayout>
+
 
     </LinearLayout>
 

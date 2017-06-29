@@ -81,6 +81,35 @@ public class MyRecordFragment extends BaseFragment {
         initFooter(getActivity(), layout);
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.show();
+/*
+        Constants.LIST_AVG.add(6234);
+        Constants.LIST_AVG.add(2334);
+        Constants.LIST_AVG.add(14234);
+        Constants.LIST_AVG.add(1254);
+        Constants.LIST_AVG.add(3424);
+        Constants.LIST_AVG.add(5624);
+        Constants.LIST_AVG.add(1324);
+        Constants.LIST_AVG.add(2234);
+        Constants.LIST_AVG.add(3234);
+        Constants.LIST_AVG.add(2334);
+        Constants.LIST_AVG.add(3434);
+        Constants.LIST_AVG.add(1534);
+        Constants.LIST_AVG.add(16634);
+        Constants.LIST_AVG.add(4534);
+        Constants.LIST_AVG.add(2334);
+        Constants.LIST_AVG.add(5234);
+        Constants.LIST_AVG.add(7734);
+        Constants.LIST_AVG.add(5334);
+        Constants.LIST_AVG.add(6634);
+        Constants.LIST_AVG.add(8834);
+        Constants.LIST_AVG.add(2534);
+        Constants.LIST_AVG.add(7534);
+        Constants.LIST_AVG.add(2334);
+        Constants.LIST_AVG.add(5534);
+        Constants.LIST_AVG.add(4234);
+        Constants.LIST_AVG.add(6434);
+        Constants.LIST_AVG.add(6734);
+*/
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -91,8 +120,8 @@ public class MyRecordFragment extends BaseFragment {
                 } else if (Constants.LIST_AVG.size() < 16) {
                     for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
                         Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
-                        txtNoData.setVisibility(View.INVISIBLE);
                     }
+                    txtNoData.setVisibility(View.INVISIBLE);
                     graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
                         public void onGlobalLayout() {
@@ -104,11 +133,8 @@ public class MyRecordFragment extends BaseFragment {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    for (int i = Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT;
-                         i < Constants.LIST_AVG.size(); i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
-                        txtNoData.setVisibility(View.INVISIBLE);
-                    }
+                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
+                    txtNoData.setVisibility(View.INVISIBLE);
                     graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
                         public void onGlobalLayout() {
@@ -173,7 +199,7 @@ public class MyRecordFragment extends BaseFragment {
          * -> SpeedAvg는 내 평균 속도에서 기록되어야 함.*/
         speedFast = (TextView) layout.findViewById(R.id.speedFast);
         speedAvg = (TextView) layout.findViewById(R.id.speedAvg);
-        TextView txtCPSDesc = (TextView)layout.findViewById(R.id.txtCPSDesc);
+        TextView txtCPSDesc = (TextView) layout.findViewById(R.id.txtCPSDesc);
 
         TextView ms1 = (TextView) layout.findViewById(R.id.ms1);
         TextView ms2 = (TextView) layout.findViewById(R.id.ms2);
@@ -216,15 +242,15 @@ public class MyRecordFragment extends BaseFragment {
         }
     }
 
-    public void bindData(){
-        if(Constants.BEST_SCORE == 999999999){
+    public void bindData() {
+        if (Constants.BEST_SCORE == 999999999) {
             speedFast.setText("NR");
             speedAvg.setText("NR");
-        }else{
+        } else {
             speedFast.setText(Float.toString(1 / Constants.BEST_SCORE * 1000));
-            Log.d("MyTag", "BEST_SCORE: "+Float.toString(1 / Constants.BEST_SCORE * 1000));
+            Log.d("MyTag", "BEST_SCORE: " + Float.toString(1 / Constants.BEST_SCORE * 1000));
             speedAvg.setText(Float.toString(1 / Constants.AVG_SCORE * 1000));
-            Log.d("MyTag", "AVG_SCORE: "+Float.toString(1 / Constants.AVG_SCORE * 1000));
+            Log.d("MyTag", "AVG_SCORE: " + Float.toString(1 / Constants.AVG_SCORE * 1000));
         }
     }
 

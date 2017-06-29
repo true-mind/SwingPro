@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 현석 on 2017-06-16.
@@ -35,7 +36,7 @@ public class LineGraph extends View {
         float interval = GraphCall.interval;
 
         /** ArrayList 에서 값을 꺼내와서 그래프를 그릴 수 있어야됨.*/
-        ArrayList<Float> dataset = GraphCall.GRAPH_MATCHED_DATA;
+        List<Float> dataset = GraphCall.GRAPH_MATCHED_DATA;
 
         Paint paint = new Paint();
         paint.setColor(GraphCall.color);

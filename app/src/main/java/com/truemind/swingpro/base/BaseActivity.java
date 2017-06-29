@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -20,6 +22,7 @@ import com.truemind.swingpro.ui.account.MyAccountSetting;
 import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
+import com.truemind.swingpro.util.CommonDialog;
 
 
 /**
@@ -40,6 +43,9 @@ public abstract class BaseActivity extends Activity {
     LinearLayout baseNotice;
     LinearLayout baseSetting;
     LinearLayout baseBluetooth;
+
+    TextView serviceText;
+    TextView privacyText;
 
 
     /**
@@ -122,6 +128,17 @@ public abstract class BaseActivity extends Activity {
         baseNotice = (LinearLayout)findViewById(R.id.baseNotice);
         baseSetting = (LinearLayout)findViewById(R.id.baseSetting);
         baseBluetooth = (LinearLayout)findViewById(R.id.baseBluetooth);
+        privacyText = (TextView)findViewById(R.id.privacyText);
+        serviceText = (TextView)findViewById(R.id.serviceText);
+
+        SpannableString contentPrivacy = new SpannableString("개인정보취급방침");
+        contentPrivacy.setSpan(new UnderlineSpan(), 0, contentPrivacy.length(), 0);
+
+        SpannableString contentService = new SpannableString("서비스이용약관");
+        contentService.setSpan(new UnderlineSpan(), 0, contentService.length(), 0);
+
+        privacyText.setText(contentPrivacy);
+        serviceText.setText(contentService);
 
         TextView txtMyAccount = (TextView)findViewById(R.id.txtMyAccount);
         TextView txtMyStat = (TextView)findViewById(R.id.txtMyStat);
@@ -130,7 +147,7 @@ public abstract class BaseActivity extends Activity {
         TextView txtNotice = (TextView)findViewById(R.id.txtNotice);
         TextView txtSetting = (TextView)findViewById(R.id.txtSetting);
         TextView txtBluetooth = (TextView)findViewById(R.id.txtBluetooth);
-        setFontToViewBold(txtBluetooth, txtSetting, txtNotice, txtMeasure, txtMyRecord, txtMyStat, txtMyAccount, txtTitleBar);
+        setFontToViewBold(txtBluetooth, txtSetting, txtNotice, txtMeasure, txtMyRecord, txtMyStat, txtMyAccount, txtTitleBar, privacyText, serviceText);
 
         translateLeftAnim = AnimationUtils.loadAnimation(this, R.anim.slide_from_left);
         translateRightAnim = AnimationUtils.loadAnimation(this, R.anim.slide_from_right);
@@ -243,6 +260,23 @@ public abstract class BaseActivity extends Activity {
                 goBTSetting();
             }
         });
+
+        privacyText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog dialog = new CommonDialog();
+                dialog.showDialog(getContext(), "로컬 버전에선 개인정보를 수집하지 않습니다.");
+            }
+        });
+
+        serviceText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonDialog dialog = new CommonDialog();
+                dialog.showDialog(getContext(), "서비스 이용약관에 해당되지 않습니다.");
+            }
+        });
+
     }
 
     public void viewOnVisible(View viewVisible, View... viewsGone){

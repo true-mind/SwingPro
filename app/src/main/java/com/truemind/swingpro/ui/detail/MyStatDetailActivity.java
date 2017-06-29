@@ -49,8 +49,11 @@ public class MyStatDetailActivity extends BaseActivity {
 
     private int STATUS = 0;
     private int position_now = 0;
+    private boolean canGoPrevious = false;
+    private boolean canGoNext = false;
 
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,10 +88,8 @@ public class MyStatDetailActivity extends BaseActivity {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    for (int i = Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT;
-                         i < Constants.LIST_AVG.size(); i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
-                    }
+                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
+
                     graph_detail.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                         @Override
@@ -126,65 +127,124 @@ public class MyStatDetailActivity extends BaseActivity {
             progressDialog.dismiss();
         }
     };
-    public void initView(){
 
-        TextView txtPrevious = (TextView)findViewById(R.id.txtPrevious);
-        TextView txtNext = (TextView)findViewById(R.id.txtNext);
-        btnPrevious = (LinearLayout)findViewById(R.id.btnPrevious);
-        btnNext = (LinearLayout)findViewById(R.id.btnNext);
+    public void initView() {
 
-        TextView para1 = (TextView)findViewById(R.id.para1);
-        TextView paraMessage = (TextView)findViewById(R.id.paraMessage);
+        TextView txtPrevious = (TextView) findViewById(R.id.txtPrevious);
+        TextView txtNext = (TextView) findViewById(R.id.txtNext);
+        btnPrevious = (LinearLayout) findViewById(R.id.btnPrevious);
+        btnNext = (LinearLayout) findViewById(R.id.btnNext);
 
-        statMessage = (TextView)findViewById(R.id.statMessage);
+        TextView para1 = (TextView) findViewById(R.id.para1);
+        TextView paraMessage = (TextView) findViewById(R.id.paraMessage);
 
-        TextView tableRow1 = (TextView)findViewById(R.id.tableRow1);
-        TextView tableRow2 = (TextView)findViewById(R.id.tableRow2);
-        TextView tableRow3 = (TextView)findViewById(R.id.tableRow3);
-        TextView tableRow4 = (TextView)findViewById(R.id.tableRow4);
-        graph_detail = (LinearLayout)findViewById(R.id.graph_detail);
+        statMessage = (TextView) findViewById(R.id.statMessage);
 
-        value1 = (TextView)findViewById(R.id.table1Value);
-        value2 = (TextView)findViewById(R.id.table2Value);
-        value3 = (TextView)findViewById(R.id.table3Value);
-        value4 = (TextView)findViewById(R.id.table4Value);
+        TextView tableRow1 = (TextView) findViewById(R.id.tableRow1);
+        TextView tableRow2 = (TextView) findViewById(R.id.tableRow2);
+        TextView tableRow3 = (TextView) findViewById(R.id.tableRow3);
+        TextView tableRow4 = (TextView) findViewById(R.id.tableRow4);
+        graph_detail = (LinearLayout) findViewById(R.id.graph_detail);
+
+        value1 = (TextView) findViewById(R.id.table1Value);
+        value2 = (TextView) findViewById(R.id.table2Value);
+        value3 = (TextView) findViewById(R.id.table3Value);
+        value4 = (TextView) findViewById(R.id.table4Value);
 
         setFontToViewBold(txtPrevious, txtNext, para1, paraMessage, statMessage,
-        tableRow1, tableRow2, tableRow3, tableRow4);
+                tableRow1, tableRow2, tableRow3, tableRow4);
 
         bindData();
 
     }
 
-    public void initListener(){
+    public void initListener() {
 
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Previous", Toast.LENGTH_SHORT).show();
+                if (canGoPrevious && STATUS==LIST_SIZE_BIGGER_THAN_16) {
+                    graph_detail.removeAllViews();
+
+                    if(position_now - Constants.GRAPH_MAX_COUNT >= 15){
+                        position_now = (position_now - Constants.GRAPH_MAX_COUNT);
+                        Log.d("MyTagStat", "Now Position is "+position_now);
+                        Log.d("MyTagStat", "Go Previous from "+(position_now - Constants.GRAPH_MAX_COUNT)+" to "+position_now);
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((position_now - Constants.GRAPH_MAX_COUNT), position_now);
+                    }else{
+                        Log.d("MyTagStat", "Go Previous from "+0+" to "+position_now);
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(0, position_now);
+                        position_now = 0;
+                        Log.d("MyTagStat", "Now Position is "+position_now);
+                        canGoPrevious = false;
+                    }
+                    canGoNext = true;
+                    graphCall = new GraphCall(getContext(), graph_detail, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
+                    graphCall.setGraph();
+                    graphCall.showGraph();
+                }else{
+                    Toast.makeText(getContext(), "기록이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Next", Toast.LENGTH_SHORT).show();
+                if (canGoNext && STATUS==LIST_SIZE_BIGGER_THAN_16) {
+                    graph_detail.removeAllViews();
+
+                    if(position_now + Constants.GRAPH_MAX_COUNT < Constants.LIST_AVG.size()-Constants.GRAPH_MAX_COUNT){
+                        position_now = (position_now + Constants.GRAPH_MAX_COUNT);
+                        Log.d("MyTag", "Now Position is "+position_now);
+                        Log.d("MyTag", "Go Next from "+position_now+" to "+(position_now + Constants.GRAPH_MAX_COUNT));
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(position_now, position_now + Constants.GRAPH_MAX_COUNT);
+                    }else{
+                        Log.d("MyTag", "Go Next from "+(Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT)+" to "+(Constants.LIST_AVG.size()-1));
+                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT), Constants.LIST_AVG.size()-1);
+                        position_now = Constants.LIST_AVG.size()-1;
+                        Log.d("MyTag", "Now Position is "+position_now);
+                        canGoNext = false;
+                    }
+                    canGoPrevious = true;
+                    graphCall = new GraphCall(getContext(), graph_detail, Constants.GRAPH_MAX_COUNT, Constants.LIST_FOR_GRAPH);
+                    graphCall.setGraph();
+                    graphCall.showGraph();
+                }else{
+                    Toast.makeText(getContext(), "기록이 없습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
     }
 
-    public void bindData(){
+    public void bindData() {
         value1.setText(Float.toString(Constants.BEST_SCORE));
         value2.setText(Float.toString(Constants.AVG_SCORE));
         value3.setText(Constants.START_DATE);
         value4.setText(Integer.toString(Constants.LIST_AVG.size()));
+
+        switch (STATUS) {
+            case LIST_SIZE_ZERO:
+                canGoNext = false;
+                canGoPrevious = false;
+                break;
+            case LIST_SIZE_SMALLER_THAN_16:
+                canGoNext = false;
+                canGoPrevious = false;
+                break;
+            case LIST_SIZE_BIGGER_THAN_16:
+                position_now = Constants.LIST_AVG.size()-1;
+                canGoNext = false;
+                canGoPrevious = true;
+                break;
+        }
     }
 
     @Override
     public void onBack() {
         Intent intent = new Intent(getContext(), MainActivity.class);
-        Constants.TAB_POSITION=0;
+        Constants.TAB_POSITION = 0;
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

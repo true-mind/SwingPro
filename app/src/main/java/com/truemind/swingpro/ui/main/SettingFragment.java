@@ -68,7 +68,6 @@ public class SettingFragment extends BaseFragment {
         keyValues.add("2");
         keyValues.add("3");
         keyValues.add("4");
-        keyValues.add("5");
 
         TextView normalSetting = (TextView)layout.findViewById(R.id.normalSetting);
         TextView txtLogin = (TextView)layout.findViewById(R.id.txtLogin);
@@ -91,6 +90,8 @@ public class SettingFragment extends BaseFragment {
             setTxtColor(txtMessage, R.color.colorLightGrey);
             checkMessage.setChecked(true);
             checkMessage.setClickable(false);
+
+            setTxtColor(txtLogin, R.color.colorLightGrey);
             checkLogin.setChecked(false);
             checkLogin.setClickable(false);
         }

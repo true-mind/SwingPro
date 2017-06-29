@@ -12,6 +12,7 @@ import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 현석 on 2017-06-28.
@@ -35,8 +36,8 @@ public class GraphCall {
 
     boolean NOT_IN_REGULAR_CASE = false;
     int minus_parameter;
-    private ArrayList<Integer> dataset = new ArrayList<>();
-    static ArrayList<Float> GRAPH_MATCHED_DATA = new ArrayList<>();
+    private List<Integer> dataset = new ArrayList<>();
+    static List<Float> GRAPH_MATCHED_DATA = new ArrayList<>();
 
     public int min_in_list;
     public int max_in_list;
@@ -51,7 +52,7 @@ public class GraphCall {
      * @param dataset   그래프를 출력하기 위한 데이터 셋
      * @param color     막대 그래프의 막대 색상 정의
      */
-    public GraphCall(Context context, LinearLayout graphBase, int max_count, ArrayList<Integer> dataset, int color) {
+    public GraphCall(Context context, LinearLayout graphBase, int max_count, List<Integer> dataset, int color) {
         this.context = context;
         this.graphBase = graphBase;
         this.max_count = max_count;
@@ -68,7 +69,7 @@ public class GraphCall {
      * @param max_count 그래프의 가로 최대 개수
      * @param dataset   그래프를 출력하기 위한 데이터 셋
      */
-    public GraphCall(Context context, LinearLayout graphBase, int max_count, ArrayList<Integer> dataset) {
+    public GraphCall(Context context, LinearLayout graphBase, int max_count, List<Integer> dataset) {
         this.context = context;
         this.graphBase = graphBase;
         this.max_count = max_count;

@@ -29,7 +29,7 @@
     <string name="personal_account">개인계정</string>
     <string name="_1_15">1회부터 15회까지의 최근 기록만 표시됩니다.</string>
     <string name="domainBase">(평균속도 / 회차)</string>
-    <string name="demo_text_status">아주 빠르게 호전되고 있습니다.</string>
+    <string name="demo_text_status">로컬버전에선 피드백 메시지가 출력되지 않습니다.</string>
     <string name="normal_setting">일반설정</string>
     <string name="auto_login">자동으로 로그인</string>
     <string name="recv_no_message">메시지 받지 않기</string>
