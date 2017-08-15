@@ -23,12 +23,11 @@
                     style="@style/m_w_Horizontal">
                     <TextView
                         android:id="@+id/record_max_tv"
-                        style="@style/plain22spBlackText"
-                        android:text="338" />
+                        style="@style/plain22spBlackText" />
                     <TextView
                         android:id="@+id/txt_ms"
-                        style="@style/plain22spGreyText"
-                        android:text="ms" />
+                        style="@style/plain18spGreyText"
+                        android:text="CPS" />
                 </LinearLayout>
                 <TextView
                     android:id="@+id/txt26"
@@ -40,12 +39,11 @@
                     android:layout_marginTop="5dp">
                     <TextView
                         android:id="@+id/record_avg_tv"
-                        style="@style/plain22spBlackText"
-                        android:text="338" />
+                        style="@style/plain22spBlackText" />
                     <TextView
                         android:id="@+id/txt_ms2"
-                        style="@style/plain22spGreyText"
-                        android:text="ms" />
+                        style="@style/plain18spGreyText"
+                        android:text="CPS" />
                 </LinearLayout>
 
             </LinearLayout>

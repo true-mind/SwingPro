@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseDispatchKey;
+import com.truemind.swingpro.ui.main.MainActivity;
 
 import java.util.ArrayList;
 
@@ -375,6 +377,10 @@ public class TestSeqActivity extends BaseDispatchKey {
 
     @Override
     public void onBack() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION = 1;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 }

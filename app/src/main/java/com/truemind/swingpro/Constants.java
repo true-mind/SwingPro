@@ -11,7 +11,6 @@ public class Constants {
 
     public static int TAB_POSITION = 0;
 
-    public static ArrayList<Integer> LIST_AVG = new ArrayList<>();
     public static List<Integer> LIST_FOR_GRAPH = new ArrayList<>();
 
     public static int GRAPH_MAX_COUNT = 15+1;
@@ -22,9 +21,5 @@ public class Constants {
     public static int TEST_TEMPO_BPM = 60;
     public static int TEST_TEMPO_BPM_KEY = 6;
 
-    public static float BEST_SCORE = 999999999;
-    public static float AVG_SCORE = 999999999;
-
-    public static String START_DATE = "";
 
 }

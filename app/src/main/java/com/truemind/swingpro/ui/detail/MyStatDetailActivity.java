@@ -23,6 +23,9 @@ import com.truemind.swingpro.graph_util.GraphCall;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.test_tempo.TestTempoActivity;
 import com.truemind.swingpro.util.ProgressDialog;
+import com.truemind.swingpro.util.Save;
+
+import java.util.ArrayList;
 
 /**
  * Created by 현석 on 2017-06-19.
@@ -33,6 +36,7 @@ public class MyStatDetailActivity extends BaseActivity {
     private static final int LIST_SIZE_BIGGER_THAN_16 = 0;
     private static final int LIST_SIZE_SMALLER_THAN_16 = 1;
     private static final int LIST_SIZE_ZERO = 2;
+    public static ArrayList<Integer> LIST_AVG;
 
     LinearLayout btnPrevious;
     LinearLayout btnNext;
@@ -60,21 +64,33 @@ public class MyStatDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_stat_detail);
 
         initSlideMenu("통계");
+        LIST_AVG = new ArrayList<>();
         initView();
-        initListener();
-
+        
         progressDialog = new ProgressDialog(getContext());
         progressDialog.show();
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Constants.LIST_AVG.size()));
-                if (Constants.LIST_AVG.size() < 1) {
+
+
+                if (Save.countTime(getContext())<1) {
+                    LIST_AVG = new ArrayList<>();
+                } else {
+                    String[] dataSetString = Save.dataSetRecord(getContext()).split(",");
+
+                    for (String aDataSetString : dataSetString)
+                        LIST_AVG.add(Integer.parseInt(aDataSetString));
+
+                }
+                
+                Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Save.countTime(getContext())));
+                if (Save.countTime(getContext()) < 1) {
                     threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
-                } else if (Constants.LIST_AVG.size() < Constants.GRAPH_MAX_COUNT) {
-                    for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                } else if (Save.countTime(getContext()) < Constants.GRAPH_MAX_COUNT) {
+                    for (int i = 0; i < Save.countTime(getContext()); i++) {
+                        Constants.LIST_FOR_GRAPH = LIST_AVG;
                     }
                     graph_detail.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -88,7 +104,7 @@ public class MyStatDetailActivity extends BaseActivity {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT + 1), Constants.LIST_AVG.size());
+                    Constants.LIST_FOR_GRAPH = LIST_AVG.subList((Save.countTime(getContext()) - Constants.GRAPH_MAX_COUNT + 1), Save.countTime(getContext()));
 
                     graph_detail.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -170,10 +186,10 @@ public class MyStatDetailActivity extends BaseActivity {
                         position_now = (position_now - Constants.GRAPH_MAX_COUNT + 1);
                         Log.d("MyTagStat", "Now Position is " + position_now);
                         Log.d("MyTagStat", "Go Previous from " + (position_now - Constants.GRAPH_MAX_COUNT) + " to " + position_now);
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((position_now - Constants.GRAPH_MAX_COUNT), position_now);
+                        Constants.LIST_FOR_GRAPH = LIST_AVG.subList((position_now - Constants.GRAPH_MAX_COUNT), position_now);
                     } else {
                         Log.d("MyTagStat", "Go Previous from " + 0 + " to " + position_now);
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(0, position_now);
+                        Constants.LIST_FOR_GRAPH = LIST_AVG.subList(0, position_now);
                         position_now = 0;
                         Log.d("MyTagStat", "Now Position is " + position_now);
                         canGoPrevious = false;
@@ -194,15 +210,15 @@ public class MyStatDetailActivity extends BaseActivity {
                 if (canGoNext && STATUS == LIST_SIZE_BIGGER_THAN_16) {
                     graph_detail.removeAllViews();
 
-                    if (position_now + Constants.GRAPH_MAX_COUNT < Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) {
+                    if (position_now + Constants.GRAPH_MAX_COUNT < Save.countTime(getContext()) - Constants.GRAPH_MAX_COUNT) {
                         position_now = (position_now + Constants.GRAPH_MAX_COUNT);
                         Log.d("MyTag", "Now Position is " + position_now);
                         Log.d("MyTag", "Go Next from " + position_now + " to " + (position_now + Constants.GRAPH_MAX_COUNT));
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList(position_now, position_now + Constants.GRAPH_MAX_COUNT);
+                        Constants.LIST_FOR_GRAPH = LIST_AVG.subList(position_now, position_now + Constants.GRAPH_MAX_COUNT);
                     } else {
-                        Log.d("MyTag", "Go Next from " + (Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) + " to " + (Constants.LIST_AVG.size()));
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT) + 1, Constants.LIST_AVG.size());
-                        position_now = Constants.LIST_AVG.size();
+                        Log.d("MyTag", "Go Next from " + (Save.countTime(getContext()) - Constants.GRAPH_MAX_COUNT) + " to " + (Save.countTime(getContext())));
+                        Constants.LIST_FOR_GRAPH = LIST_AVG.subList((Save.countTime(getContext()) - Constants.GRAPH_MAX_COUNT) + 1, Save.countTime(getContext()));
+                        position_now = Save.countTime(getContext());
                         Log.d("MyTag", "Now Position is " + position_now);
                         canGoNext = false;
                     }
@@ -219,10 +235,10 @@ public class MyStatDetailActivity extends BaseActivity {
     }
 
     public void bindData() {
-        value1.setText(Float.toString(Constants.BEST_SCORE));
-        value2.setText(Float.toString(Constants.AVG_SCORE));
-        value3.setText(Constants.START_DATE);
-        value4.setText(Integer.toString(Constants.LIST_AVG.size()));
+        value1.setText(Float.toString(Save.bestScore(getContext())));
+        value2.setText(Float.toString(Save.avgScore(getContext())));
+        value3.setText(Save.firstDate(getContext()));
+        value4.setText(Integer.toString(Save.countTime(getContext())));
 
         switch (STATUS) {
             case LIST_SIZE_ZERO:
@@ -234,7 +250,7 @@ public class MyStatDetailActivity extends BaseActivity {
                 canGoPrevious = false;
                 break;
             case LIST_SIZE_BIGGER_THAN_16:
-                position_now = Constants.LIST_AVG.size();
+                position_now = Save.countTime(getContext());
                 canGoNext = false;
                 canGoPrevious = true;
                 break;

@@ -1,5 +1,6 @@
 package com.truemind.swingpro.ui.detail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseActivity;
+import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.util.RecordRecyclerAdapter;
+import com.truemind.swingpro.util.Save;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ public class MyRecordDetailActivity extends BaseActivity {
     private TextView tv_max;
     private RecyclerView recyclerView;
     private ArrayList<Integer> results;
+    public static ArrayList<Integer> LIST_AVG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,24 +35,38 @@ public class MyRecordDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_my_record_detail);
         initView();
         initSlideMenu("내 기록");
+
+        LIST_AVG = new ArrayList<>();
+
+        if (Save.countTime(getContext()) < 1) {
+            LIST_AVG = new ArrayList<>();
+        } else {
+            String[] dataSetString = Save.dataSetRecord(getContext()).split(",");
+
+            for (String aDataSetString : dataSetString)
+                LIST_AVG.add(Integer.parseInt(aDataSetString));
+
+        }
+
         bindData();
         addData();
     }
 
     public void bindData() {
-        if (Constants.BEST_SCORE == 999999999) {
+
+        if (Save.countTime(getContext())<1) {
             txt_ms.setText("NR");
             txt_ms2.setText("NR");
         } else {
-            txt_ms.setText(Float.toString(1 / Constants.BEST_SCORE * 1000));
-            Log.d("MyTag", "BEST_SCORE: " + Float.toString(1 / Constants.BEST_SCORE * 1000));
-            txt_ms2.setText(Float.toString(1 / Constants.AVG_SCORE * 1000));
-            Log.d("MyTag", "AVG_SCORE: " + Float.toString(1 / Constants.AVG_SCORE * 1000));
+            tv_max.setText(Float.toString(1 / Save.bestScore(getContext()) * 1000));
+            Log.d("MyTag", "BEST_SCORE: " + Float.toString(1 / Save.bestScore(getContext()) * 1000));
+            tv_avg.setText(Float.toString(1 / Save.avgScore(getContext()) * 1000));
+            Log.d("MyTag", "AVG_SCORE: " + Float.toString(1 / Save.avgScore(getContext()) * 1000));
         }
     }
 
     private void addData() {
-        recyclerView.setAdapter(new RecordRecyclerAdapter(getContext(), Constants.LIST_AVG, R.layout.listitem_record));
+        recyclerView.setAdapter(new RecordRecyclerAdapter(getContext(), LIST_AVG, R.layout.listitem_record));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
@@ -68,6 +86,10 @@ public class MyRecordDetailActivity extends BaseActivity {
 
     @Override
     public void onBack() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION = 0;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 }

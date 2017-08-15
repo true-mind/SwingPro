@@ -93,8 +93,6 @@ public class MainActivity extends BaseActivity {
     /**
      * for onBackPress
      */
-    public static final long FINISH_INTERVAL_TIME = 2000;
-    public long backPressedTime = 0;
     private int backCount = 0;
 
     @Override
@@ -143,7 +141,7 @@ public class MainActivity extends BaseActivity {
         CustomAdapter viewPagerAdapter = new CustomAdapter(getLayoutInflater());
         imgPager.setAdapter(viewPagerAdapter);
 
-        /** "Measure" 탭에서의 하단 버튼 생성을 위해*/
+        /** "Setting" 탭에서의 하단 버튼 생성을 위해*/
         alphaBounce = AnimationUtils.loadAnimation(getContext(), R.anim.alpha_bounce);
         settingBtnBaseInit();
 
@@ -273,11 +271,10 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 아래 메서드는 모든 fragment 갱신 시 호출 되며, 호출 직후 현재 탭이 두번째 탭인지 확인.
-     * 이 후 두번째 탭일 경우 추가 세팅 버튼 레이아웃을 노출시킨다.
+     * 이 후 세번째 탭일 경우 추가 세팅 버튼 레이아웃을 노출시킨다.
      */
     public void settingBtnBaseInit() {
-        if (currentTab == SECOND_TAB
-                || currentTab == THIRD_TAB) {
+        if (currentTab == THIRD_TAB) {
             settingBtnBase.setVisibility(View.VISIBLE);
             settingBtnBase.startAnimation(alphaBounce);
             btnKeyMap.setOnClickListener(new View.OnClickListener() {

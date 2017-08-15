@@ -11,6 +11,7 @@ import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
+import com.truemind.swingpro.util.Save;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import java.util.logging.SimpleFormatter;
 public class TestSeqResult extends BaseActivity {
 
     ArrayList<String> dataClone = new ArrayList<>();
+    public static ArrayList<Integer> LIST_AVG;
     Button btnBack;
 
     TextView txtBtn1Time1;
@@ -56,6 +58,8 @@ public class TestSeqResult extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_test_seq_result);
         super.onCreate(savedInstanceState);
+
+        LIST_AVG = new ArrayList<>();
 
         initView();
         initSlideMenu("Test");
@@ -157,22 +161,46 @@ public class TestSeqResult extends BaseActivity {
 
         String dataIntoConstants = dataClone.get(20);
         txtAvgTime.setText(dataIntoConstants);
-        float sumAll = (Constants.AVG_SCORE * Constants.LIST_AVG.size()) + Integer.parseInt(dataIntoConstants);
-        Constants.LIST_AVG.add(Integer.parseInt(dataIntoConstants));
-        Constants.AVG_SCORE = sumAll / Constants.LIST_AVG.size();
-        if (Constants.START_DATE.length() < 3) {
-            long today = System.currentTimeMillis();
-            SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
-            Constants.START_DATE = date.format(today);
+
+        if (Save.dataSetRecord(getContext()).length() < 3) {
+            LIST_AVG = new ArrayList<>();
+        } else {
+            String[] dataSetString = Save.dataSetRecord(getContext()).split(",");
+
+            for (String aDataSetString : dataSetString)
+                LIST_AVG.add(Integer.parseInt(aDataSetString));
+
         }
 
-        saveMyPreferences(getMyPreferencesSize(),
-                Integer.parseInt(dataIntoConstants), getMyPreferencesSize() + 1);
+        int dataSize = Save.countTime(getContext())+1;
+
+        float sumAll = (Save.avgScore(getContext()) * dataSize) + Integer.parseInt(dataIntoConstants);
+        String addData = (","+dataIntoConstants);
+
+        if (dataSize<2) {
+            Save.dataSetRecord(getContext(), dataIntoConstants);
+            Save.avgScore(getContext(), Float.parseFloat(dataIntoConstants));
+        }else{
+            Save.dataSetRecord(getContext(), Save.dataSetRecord(getContext())+addData);
+            float avgScore = sumAll / dataSize+1;
+            Save.avgScore(getContext(), avgScore);
+        }
+
+        if (Save.firstDate(getContext()).length() < 2) {
+            long today = System.currentTimeMillis();
+            SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+            Save.firstDate(getContext(), date.format(today));
+        }
+
+        Save.countTime(getContext(), dataSize);
 
     }
 
     public void goBack() {
-        startActivity(new Intent(getContext(), MainActivity.class));
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION = 1;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 

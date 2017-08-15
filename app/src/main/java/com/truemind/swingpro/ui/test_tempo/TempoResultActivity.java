@@ -1,13 +1,16 @@
 package com.truemind.swingpro.ui.test_tempo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseActivity;
+import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.util.TempoRecyclerAdapter;
 
 import java.util.ArrayList;
@@ -48,6 +51,10 @@ public class TempoResultActivity extends BaseActivity {
 
     @Override
     public void onBack() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION = 1;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 }

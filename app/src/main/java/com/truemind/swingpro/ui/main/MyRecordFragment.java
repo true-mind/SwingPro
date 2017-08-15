@@ -29,6 +29,10 @@ import com.truemind.swingpro.ui.message.MessageActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
 import com.truemind.swingpro.graph_util.LineGraph;
 import com.truemind.swingpro.util.ProgressDialog;
+import com.truemind.swingpro.util.Save;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by 현석 on 2017-06-15.
@@ -39,6 +43,7 @@ public class MyRecordFragment extends BaseFragment {
     private static final int LIST_SIZE_BIGGER_THAN_16 = 0;
     private static final int LIST_SIZE_SMALLER_THAN_16 = 1;
     private static final int LIST_SIZE_ZERO = 2;
+    public static ArrayList<Integer> LIST_AVG;
 
     LinearLayout layout;
     TextView speedAvg;
@@ -78,18 +83,35 @@ public class MyRecordFragment extends BaseFragment {
         layout = (LinearLayout) inflater.inflate(R.layout.frag_my_record, container, false);
         initView();
         initFooter(getActivity(), layout);
+
+        LIST_AVG = new ArrayList<>();
+
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.show();
 
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Constants.LIST_AVG.size()));
-                if (Constants.LIST_AVG.size() < 1) {
+
+                Log.d("MyTag", "dataset.record: " + Save.dataSetRecord(getActivity().getApplicationContext()));
+
+                if (Save.countTime(getActivity().getApplicationContext())<1) {
+                    LIST_AVG = new ArrayList<>();
+
+                } else {
+                    String[] dataSetString = Save.dataSetRecord(getActivity().getApplicationContext()).split(",");
+                    for (String aDataSetString : dataSetString)
+                        LIST_AVG.add(Integer.parseInt(aDataSetString));
+
+                }
+
+                Log.d("MyTag", "List_Avg.Size: " + Integer.toString(Save.countTime(getActivity().getApplicationContext())));
+
+                if (Save.countTime(getActivity().getApplicationContext()) < 1) {
                     threadhandler.sendEmptyMessage(LIST_SIZE_ZERO);
-                } else if (Constants.LIST_AVG.size() < Constants.GRAPH_MAX_COUNT) {
-                    for (int i = 0; i < Constants.LIST_AVG.size(); i++) {
-                        Constants.LIST_FOR_GRAPH = Constants.LIST_AVG;
+                } else if (Save.countTime(getActivity().getApplicationContext()) < Constants.GRAPH_MAX_COUNT) {
+                    for (int i = 0; i < Save.countTime(getActivity().getApplicationContext()); i++) {
+                        Constants.LIST_FOR_GRAPH = LIST_AVG;
                     }
                     txtNoData.setVisibility(View.INVISIBLE);
                     graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -103,7 +125,7 @@ public class MyRecordFragment extends BaseFragment {
 
                     threadhandler.sendEmptyMessage(LIST_SIZE_SMALLER_THAN_16);
                 } else {
-                    Constants.LIST_FOR_GRAPH = Constants.LIST_AVG.subList((Constants.LIST_AVG.size() - Constants.GRAPH_MAX_COUNT+1), Constants.LIST_AVG.size());
+                    Constants.LIST_FOR_GRAPH = LIST_AVG.subList((Save.countTime(getActivity().getApplicationContext()) - Constants.GRAPH_MAX_COUNT + 1), Save.countTime(getActivity().getApplicationContext()));
                     txtNoData.setVisibility(View.INVISIBLE);
                     graph.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
@@ -213,14 +235,14 @@ public class MyRecordFragment extends BaseFragment {
     }
 
     public void bindData() {
-        if (Constants.BEST_SCORE == 999999999) {
+        if (Save.countTime(getActivity().getApplicationContext())<1) {
             speedFast.setText("NR");
             speedAvg.setText("NR");
         } else {
-            speedFast.setText(Float.toString(1 / Constants.BEST_SCORE * 1000));
-            Log.d("MyTag", "BEST_SCORE: " + Float.toString(1 / Constants.BEST_SCORE * 1000));
-            speedAvg.setText(Float.toString(1 / Constants.AVG_SCORE * 1000));
-            Log.d("MyTag", "AVG_SCORE: " + Float.toString(1 / Constants.AVG_SCORE * 1000));
+            speedFast.setText(Float.toString(1 / Save.bestScore(getActivity().getApplicationContext()) * 1000));
+            Log.d("MyTag", "BEST_SCORE: " + Float.toString(1 / Save.bestScore(getActivity().getApplicationContext()) * 1000));
+            speedAvg.setText(Float.toString(1 / Save.avgScore(getActivity().getApplicationContext()) * 1000));
+            Log.d("MyTag", "AVG_SCORE: " + Float.toString(1 / Save.avgScore(getActivity().getApplicationContext()) * 1000));
         }
     }
 
@@ -229,7 +251,7 @@ public class MyRecordFragment extends BaseFragment {
         txtDetail1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Constants.LIST_AVG.size() < 1) {
+                if (Save.countTime(getActivity().getApplicationContext()) < 1) {
                     Toast.makeText(getActivity(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getActivity(), MyStatDetailActivity.class);
@@ -243,7 +265,7 @@ public class MyRecordFragment extends BaseFragment {
         txtDetail2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Constants.LIST_AVG.size() < 1) {
+                if (Save.countTime(getActivity().getApplicationContext()) < 1) {
                     Toast.makeText(getActivity(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getActivity(), MyRecordDetailActivity.class);

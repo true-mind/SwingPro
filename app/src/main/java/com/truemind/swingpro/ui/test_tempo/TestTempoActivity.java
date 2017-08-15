@@ -22,6 +22,7 @@ import android.widget.ToggleButton;
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.base.BaseDispatchKey;
+import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.util.AdapterSpinner;
 
 import java.util.ArrayList;
@@ -278,6 +279,10 @@ public class TestTempoActivity extends BaseDispatchKey {
             handler.removeMessages(0);
         }
         handler = null;
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        Constants.TAB_POSITION = 1;
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 }

@@ -21,6 +21,7 @@ import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
 import com.truemind.swingpro.util.AdapterSpinner;
 import com.truemind.swingpro.util.CommonDialog;
+import com.truemind.swingpro.util.Save;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,15 +127,16 @@ public class SettingFragment extends BaseFragment {
                     @Override
                     public void onClose(DialogInterface dialog, int which, Object data) {
                         if (which == 1) {
-                            if (Constants.LIST_AVG.size() < 1) {
+                            if (Save.dataSetRecord(getActivity().getApplicationContext()).length() < 1) {
                                 CommonDialog dialogDone = new CommonDialog();
                                 dialogDone.showDialog(getActivity(), "삭제할 데이터가 존재하지 않습니다.");
                             } else {
-                                Constants.LIST_AVG.clear();
-                                Constants.BEST_SCORE = 999999999;
-                                Constants.AVG_SCORE = 999999999;
-                                Constants.START_DATE = "";
-                                if (Constants.LIST_AVG.size() < 1) {
+                                Save.dataSetRecord(getActivity().getApplicationContext(), "");
+                                Save.bestScore(getActivity().getApplicationContext(), 999999999);
+                                Save.avgScore(getActivity().getApplicationContext(), 999999999);
+                                Save.firstDate(getActivity().getApplicationContext(), "");
+                                Save.countTime(getActivity().getApplicationContext(), 0);
+                                if (Save.dataSetRecord(getActivity().getApplicationContext()).length() < 1) {
                                     CommonDialog dialogDone = new CommonDialog();
                                     dialogDone.showDialog(getActivity(), "데이터가 전부 삭제되었습니다.");
                                 }

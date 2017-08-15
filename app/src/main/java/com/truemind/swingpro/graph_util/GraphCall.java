@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.truemind.swingpro.Constants;
 import com.truemind.swingpro.R;
+import com.truemind.swingpro.util.Save;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,8 +162,8 @@ public class GraphCall {
      * 만약 현재 최고 속도보다 더 빠른 속도의 값이 나타날 때는 Constants.BEST_SCORE를 갱신
      */
     public void getBestScore() {
-        if (min_in_list < Constants.BEST_SCORE) {
-            Constants.BEST_SCORE = min_in_list;
+        if (min_in_list < Save.bestScore(context)) {
+            Save.bestScore(context, min_in_list);
         }
     }
 

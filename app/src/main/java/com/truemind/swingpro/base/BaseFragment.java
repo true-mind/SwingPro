@@ -62,37 +62,5 @@ public class BaseFragment extends Fragment {
         }
     }
 
-    public int getMyPreferences(int seq) {
-        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
-        return Integer.parseInt(pref.getString(Integer.toString(seq), "0"));
-    }
-
-    public int getMyPreferencesSize() {
-        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
-        return Integer.parseInt(pref.getString("Max", "0"));
-    }
-
-    public void saveMyPreferences(int seq, int value, int max) {
-        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Integer.toString(seq), Integer.toString(value));
-        editor.putString("Max", Integer.toString(max));
-        editor.apply();
-    }
-
-    public void removeMyPreferences(int seq) {
-        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.remove(Integer.toString(seq));
-        editor.apply();
-    }
-
-    public void removeMyAllPreferences() {
-        SharedPreferences pref = getActivity().getSharedPreferences("pref", getActivity().MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.clear();
-        editor.apply();
-    }
-
 
 }

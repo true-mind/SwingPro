@@ -24,6 +24,7 @@ import com.truemind.swingpro.ui.detail.MyStatDetailActivity;
 import com.truemind.swingpro.ui.main.MainActivity;
 import com.truemind.swingpro.ui.notice.NoticeActivity;
 import com.truemind.swingpro.util.CommonDialog;
+import com.truemind.swingpro.util.Save;
 
 
 /**
@@ -199,7 +200,7 @@ public abstract class BaseActivity extends Activity {
         baseMyStat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Constants.LIST_AVG.size() < 1) {
+                if (Save.dataSetRecord(getContext()).length() < 1) {
                     Toast.makeText(getContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getContext(), MyStatDetailActivity.class);
@@ -214,7 +215,7 @@ public abstract class BaseActivity extends Activity {
         baseMyRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Constants.LIST_AVG.size() < 1) {
+                if (Save.dataSetRecord(getContext()).length() < 1) {
                     Toast.makeText(getContext(), "데이터가 없습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(getContext(), MyRecordDetailActivity.class);
@@ -313,38 +314,6 @@ public abstract class BaseActivity extends Activity {
         public void onAnimationStart(Animation animation) {
 
         }
-    }
-
-    public int getMyPreferences(int seq) {
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        return Integer.parseInt(pref.getString(Integer.toString(seq), "0"));
-    }
-
-    public int getMyPreferencesSize() {
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        return Integer.parseInt(pref.getString("Max", "0"));
-    }
-
-    public void saveMyPreferences(int seq, int value, int max) {
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(Integer.toString(seq), Integer.toString(value));
-        editor.putString("Max", Integer.toString(max));
-        editor.apply();
-    }
-
-    public void removeMyPreferences(String seq) {
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.remove(seq);
-        editor.apply();
-    }
-
-    public void removeMyAllPreferences() {
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
-        editor.clear();
-        editor.apply();
     }
 
     @Override
